@@ -2,13 +2,13 @@
 <rss version="2.0">
   <channel>
     <title>Rayan Nakib</title>
-    <link>https://nakibrayan.codeberg.page</link>
+    <link>https://nakibrayan2.codeberg.page</link>
     <description></description>
     <language>en</language>
     <image>
       <title>Rayan Nakib</title>
-      <link>https://nakibrayan.codeberg.page</link>
-      <url>https://nakibrayan.codeberg.page/icons/picture.avif</url>
+      <link>https://nakibrayan2.codeberg.page</link>
+      <url>https://nakibrayan2.codeberg.page/icons/picture.avif</url>
       <width>546</width>
       <height>546</height>
     </image>
@@ -17,9 +17,9 @@
       <item>
         <title>Archlinux Post Install Guide</title>
         <pubDate>2023-05-25 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan.codeberg.page/blog/archlinux-post-install/</link>
-        <guid>https://nakibrayan.codeberg.page/blog/archlinux-post-install/</guid>
-        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/blog/archlinux-post-install/thumbnail.webp" alt="Archlinux Post Install Guide"/> <h2 id="1-install-drivers">1. Install Drivers</h2>
+        <link>https://nakibrayan2.codeberg.page/blog/archlinux-post-install/</link>
+        <guid>https://nakibrayan2.codeberg.page/blog/archlinux-post-install/</guid>
+        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/archlinux-post-install/thumbnail.webp" alt="Archlinux Post Install Guide"/> <h2 id="1-install-drivers">1. Install Drivers</h2>
 <h3 id="11-networkwireless">1.1 Network/Wireless</h3>
 <ol>
 <li>Check the driver status</li>
@@ -199,9 +199,9 @@
       <item>
         <title>Archlinux Install Guide With Full Disk Encryption</title>
         <pubDate>2023-05-19 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</link>
-        <guid>https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</guid>
-        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/thumbnail.webp" alt="Archlinux Install Guide With Full Disk Encryption"/> <h2 id="1-pre-installation">1. Pre installation</h2>
+        <link>https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</link>
+        <guid>https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</guid>
+        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/thumbnail.webp" alt="Archlinux Install Guide With Full Disk Encryption"/> <h2 id="1-pre-installation">1. Pre installation</h2>
 <h3 id="11-download-the-arch-linux-iso">1.1 Download the Arch Linux ISO</h3>
 <p>Visit the <a href="https://archlinux.org/download/">Download</a> page and acquire the ISO file, and the respective GnuPG signature.</p>
 <h3 id="12-verify-signature">1.2 Verify signature</h3>
@@ -509,9 +509,9 @@ Enter passphrase for /dev/sda2:
       <item>
         <title>Test Article</title>
         <pubDate>2023-05-18 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan.codeberg.page/blog/test-article/</link>
-        <guid>https://nakibrayan.codeberg.page/blog/test-article/</guid>
-        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/blog/test-article/thumbnail.webp" alt="Test Article"/> <h2 id="headings">Headings</h2>
+        <link>https://nakibrayan2.codeberg.page/blog/test-article/</link>
+        <guid>https://nakibrayan2.codeberg.page/blog/test-article/</guid>
+        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/test-article/thumbnail.webp" alt="Test Article"/> <h2 id="headings">Headings</h2>
 <p>The following HTML <code>&lt;h1&gt;—&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
 <h1 id="h1">H1</h1>
 <h2 id="h2">H2</h2>
@@ -743,9 +743,9 @@ Rem, architecto maiores hic odit deleniti aperiam dicta. Vitae illo numquam dict
       <item>
         <title>About Me</title>
         <pubDate>2023-05-17 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan.codeberg.page/about/</link>
-        <guid>https://nakibrayan.codeberg.page/about/</guid>
-        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/about/thumbnail.webp" alt="About Me"/> <p>My name is Rayan, and I live in a little house in Algeria with my Familly. I’m a software developer, mostly working in low level prgramming (with c, c++, rust).</p>
+        <link>https://nakibrayan2.codeberg.page/about/</link>
+        <guid>https://nakibrayan2.codeberg.page/about/</guid>
+        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/about/thumbnail.webp" alt="About Me"/> <p>My name is Rayan, and I live in a little house in Algeria with my Familly. I’m a software developer, mostly working in low level prgramming (with c, c++, rust).</p>
 <h2 id="projects">Projects</h2>
 <ul>
 <li>
