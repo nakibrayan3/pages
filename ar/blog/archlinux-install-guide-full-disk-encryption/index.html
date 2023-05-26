@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
+
+  
+  <meta name="lang" content="ar" />
+  
+
+  
+  <meta name="keywords" content="تشفير,دليل,أرش لينكس,لينكس" />
+  <meta name="description" content="دليل لكيفية تثبيت ArchLinux مع تشفير كامل للقرص" />
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <link rel="icon" href="/icons/favicon.ico">
+
+  <title>دليل تثبيت ArchLinux مع تشفير كامل للقرص - ريان نقيب</title>
+
+  <link rel="manifest" href="/manifest.json">
+
+  
+  <link
+    rel="stylesheet"
+    href="https://nakibrayan.codeberg.page/css/style.3b70799114f025aaab27a66ebb1c548ef8add430723fdef43a1da6a4978398f3.css"
+    integrity="sha256-O3B5kRTwJaqrJ6ZuuxxUjvit1DByP970Oh2mpJeDmPM="
+  />
+  
+
+</head>
+
+
+  <body class="container">
+    <nav>
+  <ul class="logo">
+    <li>
+      <a href="https://nakibrayan.codeberg.page/ar/" alt="ريان نقيب">ريان نقيب</a>
+    </li>
+  </ul>
+
+  <input type="checkbox" id="hamburger-check" hidden />
+  <label for="hamburger-check">
+    <div></div>
+    <div></div>
+    <div></div>
+  </label>
+
+  <ul class="nav-links">
+    <li>
+      <label for="hamburger-check" class="close-menu">
+        <div></div>
+        <div></div>
+      </label>
+    </li>
+
+    
+    <li><a href="/ar/blog" alt="مدونة">مدونة</a></li>
+    
+    <li><a href="/ar/about" alt="حولي">حولي</a></li>
+    
+
+    
+    
+
+    <li class="flex items-center">
+      
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/></svg>
+      <a href="/en" lang="en">English</a>
+      
+      
+      
+      
+    </li>
+    
+    
+
+    
+    <li id="theme-toggle" style="cursor: pointer;">
+      <details role="list" dir="rtl">
+        <summary aria-haspopup="listbox" role="link">اللون</summary>
+        <ul role="listbox presentation">
+          <li><a href="#" data-theme-switcher="auto">تلقائي</a></li>
+          <li><a href="#" data-theme-switcher="dark">داكن</a></li>
+          <li><a href="#" data-theme-switcher="light">فاتح</a></li>
+        </ul>
+      </details>
+    </li>
+    
+</nav>
+
+
+    <main>
+      <article>
+        
+
+<header>
+  
+  <img src="/ar/blog/archlinux-install-guide-full-disk-encryption/thumbnail.ar.webp" alt="دليل تثبيت ArchLinux مع تشفير كامل للقرص" width="800" height="600" class="thumbnail" />
+  
+
+  <hgroup>
+    <h1>دليل تثبيت ArchLinux مع تشفير كامل للقرص</h1>
+
+    <div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z"/></svg>
+        <p>May 19, 2023</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/></svg>
+        <p>9 دقيقة</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16"><path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/></svg>
+        <p>1896 كلمة</p>
+      </div>
+
+    
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/><path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/></svg>
+      
+      <a href="https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/">English</a>
+      
+    </div>
+    
+
+    </div>
+  </hgroup>
+</header>
+
+<h2 id="1-قبل-بدأ-التثبيت">1. قبل بدأ التثبيت</h2>
+<h3 id="11-تنزيل-ملف-ال-iso-الخاص-ب-arch-linux">1.1 تنزيل ملف ال ISO الخاص ب Arch Linux</h3>
+<p>قم بزيارة صفحة <a href="https://archlinux.org/download/">التنزيل</a> و أحصل على ملف ال ISO و توقيع ال GnuPG الخاص بملف ال ISO.</p>
+<h3 id="21-التحقق-من-توقيع-ال-gnupg">2.1 التحقق من توقيع ال GnuPG</h3>
+<p>يوصى التحقق من توقيع ملف ال ISO خاصة عند التنزيل من مرايا HTTP.</p>
+<p>في نظام مثبت فيه GnuPG يمكن التحقق من توقيع ملف ال ISO عن طريق <a href="https://archlinux.org/download/#checksums">تنزيل ملف توقيع GnuPG الخاص بملف ال ISO ضمن قسم Checksums </a> في صفحة تنزيل Arch Linux ثم التحقق منه بإستخدام:</p>
+<pre tabindex="0"><code>$ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
+</code></pre><h3 id="31-إنشاء-usb-قابل-للتثبيت">3.1 إنشاء USB قابل للتثبيت</h3>
+<p>ستحتاج إلى USB بسعة 2 جيجابايت على الأقل ، بعد ذلك قم بزيارة صفحة <a href="https://etcher.balena.io/#download-etcher">Etcher</a> وقم بتثبيت البرنامج.</p>
+<img src="/blog/archlinux-install-guide-full-disk-encryption/etcher-screenshot.png" alt="Etcher Screenshot" width="788" height="470"/>
+<p>في Etcher ضمن <code>Select Image</code> إختر ملف ال ISO ، و ضمن <code>Select Drive</code> إختر ال USB الذي تريد تثبيت Arch Linux فيه.</p>
+<p><strong>ملاحظة</strong>: ستؤدي هذه العملي إلى محو جميع البيانات الموجودة في ال USB لذا تأكد:</p>
+<ol>
+<li>
+<p>من عمل نسخ إحتياطية لجميع البيانات الموجودة في ال USB.</p>
+</li>
+<li>
+<p>من إختيار ال USB الصحيح الذي تريد تثبيت فيه Arch Linux.</p>
+</li>
+</ol>
+<h3 id="41-تشغيل-الحاسوب-من-ال-usb">4.1 تشغيل الحاسوب من ال USB</h3>
+<p><strong>ملاحضة</strong>: ال ISO الخاصة ب Arch Linux لا تدعم ميزة ال <code>Secure Boot</code> لذا ستحتاج إلى تعطيل ال Secure Boot لتتمكن من مواصة التثبيت ، يمكنك إعادة تفعيل خاصية ال Secure Boot بعد الإنتهاء من عملية التثبيت.</p>
+<ol>
+<li>
+<p>قم بتوجيه قرص التشغيل إلى ال USB الذي يحتوي على Arch Linux ، يتم تحقيق ذلك عادة عن طريق الضغط على مفتاح F2 أو F10 أو F12 (حسب نظامك) ، دليل اللوحة الأم يحتوي على تعليمات للقيام بهذا.</p>
+</li>
+<li>
+<p>عند التشغيل في ال USB الذي يحتوي على Arch Linux سترى قائمة مثل هذه:</p>
+</li>
+</ol>
+<img src="/blog/archlinux-install-guide-full-disk-encryption/archlinux-boot-menu.jpg" alt="arch linux iso boot menu" width="474" height="355"/>
+<p>إختر <code>Boot Arch Linux (x86_64)</code> (الخيار الأول) وإضغط على <kbd>Enter</kbd> للدخول إلى بيئة التثبيت.</p>
+<h3 id="51-تعيين-تخطيطة-لوحة-المفاتيح">5.1 تعيين تخطيطة لوحة المفاتيح</h3>
+<p>إذا كانت تخطيطة لوحة المفاتيح الخاصة بك باللغة الإنجليزية <code>en-us</code> ، فتخط هذا الجزء</p>
+<p>يمكن طباعة تخطيطات لوحة المفاتيح المتوفرة باستخدام الأمر:</p>
+<pre tabindex="0"><code># ls /usr/share/kbd/keymaps/**/*.map.gz
+</code></pre><p>لتعيين تخطيطة لوحة المفاتيح ، قم بتمرير اسم الملف إلى لأمر <code>loadkeys</code> مع حذف المسار وامتداد الملف. على سبيل المثال لتعيين تخطيطة لوحة المفاتيح الألمانية:</p>
+<pre tabindex="0"><code># loadkeys de-latin1
+</code></pre><h3 id="61-التحقق-من-وضع-التشغيل">6.1 التحقق من وضع التشغيل</h3>
+<p>للتحقق من وضع التشغيل ، قم بطباعة محتوي المجلد <code>efivars</code> بإستخدام الأمر:</p>
+<pre tabindex="0"><code># ls /sys/firmware/efi/efivars
+</code></pre><p>إذا أظهر الأمر محتوى المجلد بدون أخطاء ، هذا يعني أنه تم تشغيل النظام على وضع ال UEFI ، و إن لم يكن المجلد موجود فقد تم تشغيل النظام على وضع BIOS (أو CSM).</p>
+<p>للأسف هذا الدليل فق للأنظمة التي تشتغل على وضع ال <code>UEFI</code> ، إذا لديك أي نمط تشغيل أخر فلن يعمل معك هذا الدليل.</p>
+<h3 id="71-اتصل-بالإنترنت">7.1 اتصل بالإنترنت</h3>
+<p>لإعداد اتصال بالشبكة اتبع الخطوات التالية:</p>
+<ol>
+<li>تأكد أن واجهة الشبكة الخاصة بك موجودة بإستخدام الأمر التالي:</li>
+</ol>
+<pre tabindex="0"><code># ip link
+</code></pre><p>بالنسبة للشبكات اللاسلكية و ال WWAN تأكد من أن بطاقة الشبكة غير محظورة بإستخدام <code>rfkill</code></p>
+<p>تحتوي العديد من أجهزة الكمبيوتر المحمولة على زر (أو مفتاح) لإيقاف تشغيل البطاقة اللاسلكية ومع ذلك ، يمكن أيضًا حظر البطاقة من خلال النظام. يمكن التعامل مع هذا بإستخدام الأمر التلي:</p>
+<pre tabindex="0"><code># rfkill
+</code></pre><pre tabindex="0"><code>ID TYPE      DEVICE      SOFT      HARD
+ 0 bluetooth hci0   unblocked unblocked
+ 1 wlan      phy0   unblocked unblocked
+</code></pre><p>إذا تم حظر بطافقة الشبكة عن طريق الزر (المفتاح) ، فاستخدم زر الجهاز (مفتاح) لإلغاء قفلها. إذا لم يتم حظر البطاقة عن طريق الزر (المفتاح) ولكن تم حظرها عن طريق النظام ، فاستخدم الأمر التالي لفك الحظر:</p>
+<pre tabindex="0"><code># rfkill unblock wlan
+</code></pre><ol start="2">
+<li>الإتصال بالإنترنت</li>
+</ol>
+<ul>
+<li>
+<p>إما توصيل الكابل السلكي للإنترنت.</p>
+</li>
+<li>
+<p>أو توصيل الشبكة لاسلكيا بإستخدام الأمر iwctl:</p>
+</li>
+</ul>
+<p>لتوصل الشبة لاسلكيا يجب الدخول إلى الواجهة التفاعلية للبرنامج بأستخدام الأمر:</p>
+<pre tabindex="0"><code># iwctl
+</code></pre><p>الأن يجب طباعة الأجهزة اللاسلكية المتوفرة:</p>
+<pre tabindex="0"><code>[iwd]# device list
+</code></pre><pre tabindex="0"><code>                                Devices                               *
+-----------------------------------------------------------------------
+  Name                Address           Powerd   Adapter   Mode
+-----------------------------------------------------------------------
+  wlan0               ************      on       phy0      station
+</code></pre><p>إذا كان الجهاز أو ال adapter الخاص به معطل ، يتم تفعيلهم بإستخدام الأمر التالي:</p>
+<pre tabindex="0"><code>[iwd]# device الجهاز set-property Powered on
+</code></pre><pre tabindex="0"><code>[iwd]# adapter adapter set-property Powered on
+</code></pre><p>ثم البدأ بعملية البحث عن شبكة (ملاحظة هذا الأمر ليس له أي إخراج):</p>
+<pre tabindex="0"><code>[iwd]# station device scan
+</code></pre><p>ثم طباعة الشبكال الاسلكية المتاحة بإستخدام الأمر:</p>
+<pre tabindex="0"><code>[iwd]# station device get-networks
+</code></pre><pre tabindex="0"><code>                    Available networks                      *
+-------------------------------------------------------------
+   Network name                     Security     Signal
+-------------------------------------------------------------
+   **********                       ****         *****
+   **********                       ****         *****
+   **********                       ****         *****
+   **********                       ****         *****
+</code></pre><p>للإتصال بالأنترنت إستعمل الأملر التالي</p>
+<pre tabindex="0"><code>[iwd]# station device connect إسم الشبكة
+</code></pre><p>إخيرا الخروج من الواجهة التفاعلية للبرنامج بإستخدام الأمر:</p>
+<pre tabindex="0"><code>[iwd]# exit
+</code></pre><ol start="3">
+<li>للتأكد من أن التوصيل بشبكة الإنترنت تم بشكل سليم إستخدم الأمر التالي:</li>
+</ol>
+<pre tabindex="0"><code># ping nakibrayan2.pages.dev
+</code></pre><h3 id="81-تحديث-ساعة-النظام">8.1 تحديث ساعة النظام</h3>
+<p>ستتم مزامنة الوقت تلقائيًا بمجرد إنشاء اتصال بالإنترنت ، استخدم أمر <code>timedatectl</code> لضمان دقة ساعة النظام:</p>
+<pre tabindex="0"><code># timedatectl
+</code></pre><h3 id="91-إنشاء-أقراص-إفتراضية">9.1 إنشاء أقراص إفتراضية</h3>
+<p>يعطي نظام التشغيل إسم لكل قرص (غير إفتراضي) في النضام ، مثل <code>dev/sda/</code> أو <code>dev/nvme0n1/</code> أو <code>dev/mmcblk0/</code> ، لتحديد إسم القرص المرغوب فيه يمكن إستعمال الأمر:</p>
+<pre tabindex="0"><code># lsblk
+</code></pre><p>قد يتم تجاهل النتائج التي تنتهي بـ <code>rom</code> أو <code>loop</code> أو <code>airoot</code>.</p>
+<p><strong>ملاحظة</strong>: ستؤدي هذه العملية إلى محو جميع البيانات الموجودة على القرص ، لذا تأكد من عمل نسخ احتياطية لجميع بياناتك ، وحدد القرص الصحيح لتثبيت نظام التشغيل عليه.</p>
+<p>للبدأ يجب الدخول إلى البيئة التفاعلية للأمر fdisk:</p>
+<pre tabindex="0"><code># fdisk /dev/إسم القرص المراد تقسيمه
+</code></pre><ol>
+<li>يجب إنشاء قرص إفتراضي من نوع GPT ، للقيام بذالك يجب إستعمال الأمر <code>g</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): g
+</code></pre><ol start="2">
+<li>إنشاء قرص إفتراضي للنظام EFI بإستخدام الأمر <code>n</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): n
+</code></pre><p>استخدام الخيار الافتراضي (اتركه فارغا)</p>
+<pre tabindex="0"><code>Partition number (1-128, default 1):
+</code></pre><p>استخدام الخيار الافتراضي (اتركه فارغا)</p>
+<pre tabindex="0"><code>First sector (2048-234441614, default 2048):
+</code></pre><p>هنا أكتب <code>512M+</code></p>
+<pre tabindex="0"><code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-234441614, default 234440703): +512M
+</code></pre><p>إذا طُلب منك إزالة التوقيع ، فقل نعم</p>
+<pre tabindex="0"><code>Do you want to remove the signature? [Y]es/[N]o: y
+</code></pre><ol start="3">
+<li>تغير نوع القرص الإفتراضي إلى EFI بإستخدام الأمر <code>t</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): t
+</code></pre><p>إختر 1</p>
+<pre tabindex="0"><code>Partition type or alias (type L to list all): 1
+</code></pre><ol start="4">
+<li>إنشاء قرص إفتراضي أخر للنظام /</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): n
+</code></pre><p>استخدام الخيار الافتراضي (اتركه فارغا)</p>
+<pre tabindex="0"><code>Partition number (2-128, default 2):
+</code></pre><p>استخدام الخيار الافتراضي (اتركه فارغا)</p>
+<pre tabindex="0"><code>First sector (1050624-234441614, default 1050624):
+</code></pre><p>استخدام الخيار الافتراضي (اتركه فارغا)</p>
+<pre tabindex="0"><code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (1050624-234441614, default 234440703):
+</code></pre><p>إذا طُلب منك إزالة التوقيع ، فقل نعم</p>
+<pre tabindex="0"><code>Do you want to remove the signature? [Y]es/[N]o: y
+</code></pre><ol start="5">
+<li>تغير نوع القرص الإفتراضي الثاني إلى Linux filesystem بإستخدام الأمر <code>t</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): t
+</code></pre><p>إختر القرص الإفتراضي الثاني 2</p>
+<pre tabindex="0"><code>Partition number (1,2, default 2): 2
+</code></pre><p>إختر 20</p>
+<pre tabindex="0"><code>Partition type or alias (type L to list all): 20
+</code></pre><ol start="6">
+<li>احفظ التغييرات باستخدام الأمر <code>w</code>:</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): w
+</code></pre><ol start="7">
+<li>الخروج من البيئة التفاعلية</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): q
+</code></pre><p><strong>ملاحظة</strong>: سنقوم بإنشاء ملف swap لاحقا.</p>
+<h3 id="101-تشفير-القرص-الإفتراضي-للنظام">10.1 تشفير القرص الإفتراضي للنظام</h3>
+<p>إسم القرص الإفتراضي للنظام هو إسم القرص غير الإفتراضي + 2 ، مثل <code>dev/sda2/</code> أو <code>dev/nvme0n1p2/</code> أو <code>dev/mmcblk0p2/</code>.</p>
+<ol>
+<li>تشفير القرص الإفتراضي للنظام</li>
+</ol>
+<pre tabindex="0"><code># cryptsetup luksFormat /dev/إسم القرص الإفتراضي للنظام
+</code></pre><pre tabindex="0"><code>WARNING!
+========
+This will overwrite data on /dev/sda2 irrevocably.
+
+Are you sure? (Type &#39;yes&#39; in capital letters): YES
+Enter passphrase for /dev/sda2: 
+</code></pre><p>ثم اكتب YES بأحرف كبيرة ، واكتب كلمة المرور الخاصة بك</p>
+<ol start="2">
+<li>فتح القرص الإفتراضي المشفر و إعطائه إسم cryptroot</li>
+</ol>
+<pre tabindex="0"><code># cryptsetup luksOpen /dev/dev/the_root_partition2 cryptroot
+</code></pre><h3 id="111-تهيئة-الاقراص-الإفتراضية">11.1 تهيئة الاقراص الإفتراضية</h3>
+<p>سنستعمل نظام الملفات ext4 في القرص الإفتراضي للنظام ، و نظام الملفات fat32 للقرص الإفتراضي لل efi.</p>
+<pre tabindex="0"><code># mkfs.ext4 /dev/mapper/cryptroot
+</code></pre><p>إسم القرص الإفتراضي efi هو إسم القرص غير الإفتراضي + 1 ، مثل <code>dev/sda1/</code> أو <code>dev/nvme0n1p1/</code> أو <code>dev/mmcblk0p1/</code>.</p>
+<pre tabindex="0"><code># mkfs.fat -F 32 /dev/efi_system_partition
+</code></pre><h3 id="121-تركيب-أنظمة-الملفات">12.1 تركيب أنظمة الملفات</h3>
+<p>يجب تركيب القرص الإفتراضي للنظام في mnt/ ، و القرص الإفتراضي ل EFI في mnt/boot/.</p>
+<pre tabindex="0"><code># mount /dev/mapper/cryptroot /mnt
+</code></pre><pre tabindex="0"><code># mount --mkdir /dev/efi_system_partition /mnt/boot
+</code></pre><h2 id="2-تثبيت-النظام">2. تثبيت النظام</h2>
+<h3 id="12-إختيار-مرايا-التنزيل">1.2 إختيار مرايا التنزيل</h3>
+<p>reflector يقوم بتحديث قائمة المرايا عن طريق اختيار 20 مرآة HTTPS متزامنة مؤخرًا وفرزها حسب معدل التنزيل للحصول على أفضل سرعات تنزيل.</p>
+<pre tabindex="0"><code># reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+</code></pre><h3 id="22-تحديث-archlinux-keyring">2.2 تحديث archlinux-keyring</h3>
+<p>لتحديد ما إذا كانت الحزم أصلية ، يستخدم pacman مفاتيح GnuPG ، لذلك نقوم بتحديث مفاتيح archlinux للحصول على أحدث مفاتيح gpg وتفادي حدوث أخطاء أثناء عملية التثبيت.</p>
+<pre tabindex="0"><code># pacman -Sy archlinux-keyring
+</code></pre><h3 id="32-تثبيت-الحزم-الأساسية">3.2 تثبيت الحزم الأساسية</h3>
+<p>يجب إستخدام برنامج pacstrap لتثبيت الحزم الأساسية للنظام.</p>
+<ul>
+<li>إذا لديك معالج <code>intel</code> إستخدم الأمر التالي:</li>
+</ul>
+<pre tabindex="0"><code># pacstrap -K /mnt base base-devel linux linux-firmware inte-ucode grub efibootmgr networkmanager man-db nano
+</code></pre><ul>
+<li>إذا لديك معالج <code>amd</code> إستخدم الأمر التلي:</li>
+</ul>
+<pre tabindex="0"><code># pacstrap -K /mnt base base-devel linux linux-firmware amd-ucode grub efibootmgr networkmanager man-db nano
+</code></pre><p>يجب أيضا تحميل محرر نصوص مثل <code>nano</code> أو <code>vim</code>.</p>
+<h3 id="3-تهيئة-النظام">3. تهيئة النظام</h3>
+<h3 id="13-إنشاء-ملف-swap">1.3 إنشاء ملف swap</h3>
+<p>إذا كان لديك ذاكرة وصول عشوائي منخفضة أقل من 12 جيجا بايت (أو أكثر من ذلك) ، فقم بإنشاء ملف swap يضاعف حجم ذاكرة الوصول العشوائي الخاصة بك.</p>
+<p>إذا كان لديك أكثر 12 جيجا بايت ، فقم بإنشاء ملف swap بنفس حجم ذاكرة الوصول العشوائي ، فعلى سبيل المثال إذا كان لديك ذاكرة وصول عشوائي 32 جيجا بايت ، فقم بإنشاء ملف swap بسعة 32 جيجا بايت.</p>
+<p><strong>ملاحظة</strong>: ملف ال sawp ليس ضروريًا ، ولكن يوصى به فإذا كان لديك ذاكرة وصول عشوائي منخفضة أو كمبيوتر محمول وترغب في إستعمال وضع السبات ، ولكن إذا لم تكن لديك مساحة القرص منخفظة أو كنت على كمبيوتر مكتبي ولا تهتم بإستعمال خاصية السبات ولديك الكثير من ذاكرة الوصول العشوائي (32 جيجا بايت فأكثر) ليس عليك إنشاء مساحة swap.</p>
+<p>تغير الصدفة إلى النظام الجديد</p>
+<pre tabindex="0"><code># arch-chroot /mnt
+</code></pre><p>استخدم dd لإنشاء ملف swap بالحجم الذي تختاره. على سبيل المثال ، إنشاء ملف swap بحجم 8 جيجا بايت:</p>
+<pre tabindex="0"><code># dd if=/dev/zero of=/swapfile bs=1G count=8 status=progress
+</code></pre><p>تعين الصلاحيات اللازمة لملف ال swap (ملف swap يمكن قرائته من أي مستخدم ثغرة أمنية كبيرة).</p>
+<pre tabindex="0"><code># chmod 0600 /swapfile
+</code></pre><p>بعد إنشاء ملف ال swap ذي الحجم الصحيح ، قم بتهيئته.</p>
+<pre tabindex="0"><code># mkswap -U clear /swapfile
+</code></pre><p>تشغيل ملف ال swap</p>
+<pre tabindex="0"><code># swapon /swapfile
+</code></pre><p>الخروج من صدفة النظام الجديد</p>
+<pre tabindex="0"><code>exit
+</code></pre><h3 id="23-إنشاء-ملف-fstab">2.3 إنشاء ملف fstab</h3>
+<p>ملف fstab يستعمل لتركيب الأقراص الازمة لتشغيل النظام بشكل صحيح.</p>
+<pre tabindex="0"><code># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre><h3 id="33-التغير-إلى-الصدفة-الخاصة-بالنظام-الجديد">3.3 التغير إلى الصدفة الخاصة بالنظام الجديد</h3>
+<pre tabindex="0"><code># arch-chroot /mnt
+</code></pre><h3 id="43-تحديد-المنطقة-الزمنية">4.3 تحديد المنطقة الزمنية</h3>
+<pre tabindex="0"><code># ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+</code></pre><p>استعمل أمر hwclock لانشاء الملف etc/adjtime/</p>
+<pre tabindex="0"><code># hwclock --systohc
+</code></pre><h3 id="53-تحديد-ملف-اللغات">5.3 تحديد ملف اللغات</h3>
+<p>عدل الملف <code>etc/locale.gen/</code> وأزل التعليق عن <code>en_US.UTF-8 UTF-8</code> و أزل التعليق على اللغات الأخرى المرغوب فيها. ثم قم بتوليد اللغات عن طريق الأمر:</p>
+<pre tabindex="0"><code># locale-gen
+</code></pre><p>قم بإنشاء ملف <code>etc/locale.conf/</code> ، واضبط متغير LANG وفقًا لذلك</p>
+<pre tabindex="0"><code>LANG=en_US.UTF-8
+</code></pre><p>إذا قمت بتعيين تخطيط لوحة مفاتيح ، فاجعل التغييرات مستمرة من خلال vconsole.conf عن طريق إنشاء الملف <code>etc/vconsole.conf/</code> وإضافة اسم تخطيطة لوحة المفاتيح إليه:</p>
+<pre tabindex="0"><code>KEYMAP=de-latin1
+</code></pre><h3 id="63-تهيئة-الشبكة">6.3 تهيئة الشبكة</h3>
+<p>أنشأ الملف <code>etc/hostname/</code></p>
+<pre tabindex="0"><code>myhostname
+</code></pre><p>تفعيل برنامج ال NetworkManager</p>
+<pre tabindex="0"><code># systemctl enable NetworkManager.service
+</code></pre><h3 id="73-initramfs">7.3 Initramfs</h3>
+<p>تعديل الملف <code>etc/mkinitcpio.conf/</code> ، في الصطر <code>()=HOOKS</code> يجب إضافة خيار <code>encrypt</code> بعد الخيار <code>block</code></p>
+<p>السطر القديم:</p>
+<pre tabindex="0"><code>HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck)
+</code></pre><p>السطر الجديد:</p>
+<pre tabindex="0"><code>HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
+</code></pre><p>ثم قم بتشغيل الأمر</p>
+<pre tabindex="0"><code># mkinitcpio -P
+</code></pre><h3 id="73-تحميل-وتهيئة-grub">7.3 تحميل وتهيئة Grub</h3>
+<ol>
+<li>تحميل grub</li>
+</ol>
+<pre tabindex="0"><code># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+</code></pre><ol start="2">
+<li>استعمل الأمر <code>blkid</code> للحول على ال UUID الخاص بالقرص الافتراضي المشفر</li>
+</ol>
+<pre tabindex="0"><code>/dev/sda2: UUID=&#34;********-****-****-****-************&#34;
+</code></pre><ol start="3">
+<li>عدال الملف <code>etc/default/grub/</code> و أضف الخيرات أدناه في السطر <code>&quot;&quot;=GRUB_CMDLINE_LINUX</code> ، وغير النجوم <code>*</code> بال UUID الخاص بالقرص الافتراضي المشفر.</li>
+</ol>
+<pre tabindex="0"><code>GRUB_CMDLINE_LINUX=&#34;cryptdevice=UUID=********-****-****-****-************:cryptroot root=/dev/mapper/cryptroot&#34;
+</code></pre><ol start="4">
+<li>تحديث ملف التهيئة ل grub</li>
+</ol>
+<pre tabindex="0"><code># grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><h3 id="93-تعين-كلمة-السر-الخاصة-بال-root">9.3 تعين كلمة السر الخاصة بال root</h3>
+<pre tabindex="0"><code># passwd
+</code></pre><h3 id="103-إنشاء-مستخدم">10.3 إنشاء مستخدم</h3>
+<p>لإستخدام النظام يجب إنشاء مستخدم لتسجيل الدخول إليه.</p>
+<ol>
+<li>إنشاء مستخدم وإضافته في مجموعة wheel</li>
+</ol>
+<pre tabindex="0"><code># useradd -m -G wheel إسم المستخدم الخاص بك بالحروف الاتنية
+</code></pre><ol start="2">
+<li>إعطاء المستخدم صلاحيات إستعمال الأمر sudo</li>
+</ol>
+<p>عدل <code>nano</code> بمحرر النصوص الخاص بك</p>
+<pre tabindex="0"><code>EDITOR=nano visudo
+</code></pre><p>أزل التعليق من هذا الصطر</p>
+<pre tabindex="0"><code>%wheel ALL=(ALL:ALL) ALL
+</code></pre><h2 id="4-إعادة-التشغيل">4. إعادة التشغيل</h2>
+<p>الان لديك نظام archlinux مثبت لكن لا تملك أي بيئة سطح مكتب أو أي برامج ، سأقوم في المستقبل بإنشاء <a href="/ar/blog/archlinux-post-install">دليل ما بعد التثبيت</a> ل ArchLinux.</p>
+<p>يمكنك الأن الخروج من صدفة النظام الجديد و إعادة تشغيل الجهاز</p>
+<pre tabindex="0"><code>exit
+</code></pre><pre tabindex="0"><code>reboot
+</code></pre><p>لا تنسي إعادة تعين قرص التشغيل الى القرص المحمل فيه ArchLinux.</p>
+
+
+
+
+
+<div style="margin-top: 3rem;">
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/ar/tags/%D9%84%D9%8A%D9%86%D9%83%D8%B3/" style="margin: 0.3rem auto;">#لينكس</a>
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/ar/tags/%D8%A3%D8%B1%D8%B4-%D9%84%D9%8A%D9%86%D9%83%D8%B3/" style="margin: 0.3rem auto;">#أرش لينكس</a>
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/ar/tags/%D8%AF%D9%84%D9%8A%D9%84/" style="margin: 0.3rem auto;">#دليل</a>
+  
+</div>
+
+
+
+
+
+<div class="giscus" style="margin-top: 3rem;"></div>
+
+
+
+
+
+        <footer>
+  <div>
+    <p>ريان نقيب</p>
+
+    <ul>
+    
+
+      
+
+      
+      <li>
+        <a href="https://github.com/nakibrayan3" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+    
+
+      
+      <li>
+        <a href="https://mastodon.social/@nakibrayan" target="_blank" rel="me noopener" aria-label="Mastodon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mastodon" viewBox="0 0 16 16"><path d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+    
+
+      
+
+      
+
+      
+      <li>
+        <a href="https://instagram.com/nakibrayan2" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+        </a>
+      </li>
+      
+
+      
+    
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a href="/ar/index.xml" rel="noopener" aria-label="rss feed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-rss-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+        </a>
+      </li>
+      
+    
+    </ul>
+  </div>
+</footer>
+
+      </article>
+
+      
+<script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+  }
+</script>
+
+
+
+<script>
+  
+
+
+  const themeSwitcher = {
+    
+    _scheme: "auto",
+    menuTarget: "details[role='list']",
+    buttonsTarget: "a[data-theme-switcher]",
+    buttonAttribute: "data-theme-switcher",
+    rootAttribute: "data-theme",
+    localStorageKey: "picoPreferredColorScheme",
+
+    
+    init() {
+      this.scheme = this.schemeFromLocalStorage;
+      this.initSwitchers();
+    },
+
+    
+    get schemeFromLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        if (window.localStorage.getItem(this.localStorageKey) !== null) {
+          return window.localStorage.getItem(this.localStorageKey);
+        }
+      }
+      return this._scheme;
+    },
+
+    
+    get preferredColorScheme() {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    },
+
+    
+    initSwitchers() {
+      const buttons = document.querySelectorAll(this.buttonsTarget);
+      buttons.forEach((button) => {
+        button.addEventListener(
+          "click",
+          (event) => {
+            event.preventDefault();
+            
+            this.scheme = button.getAttribute(this.buttonAttribute);
+            
+            document.querySelector(this.menuTarget).removeAttribute("open");
+          },
+          false
+        );
+      });
+    },
+
+    
+    set scheme(scheme) {
+      if (scheme == "auto") {
+        this.preferredColorScheme == "dark"
+          ? (this._scheme = "dark")
+          : (this._scheme = "light");
+      } else if (scheme == "dark" || scheme == "light") {
+        this._scheme = scheme;
+      }
+      this.applyScheme();
+      this.schemeToLocalStorage();
+    },
+
+    
+    get scheme() {
+      return this._scheme;
+    },
+
+    
+    applyScheme() {
+      document
+        .querySelector("html")
+        .setAttribute(this.rootAttribute, this.scheme);
+    },
+
+    
+    schemeToLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        window.localStorage.setItem(this.localStorageKey, this.scheme);
+      }
+    },
+  };
+
+  
+  themeSwitcher.init();
+</script>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="nakibrayan3/website"
+        data-repo-id="R_kgDOJlyr3Q"
+        data-category="Website Comments"
+        data-category-id="DIC_kwDOJlyr3c4CWpaT"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="ar"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+    </main>
+
+  </body>
+</html>

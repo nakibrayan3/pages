@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Rayan Nakib</title>
+    <link>https://nakibrayan.codeberg.page</link>
+    <description></description>
+    <language>en</language>
+    <image>
+      <title>Rayan Nakib</title>
+      <link>https://nakibrayan.codeberg.page</link>
+      <url>https://nakibrayan.codeberg.page/icons/picture.avif</url>
+      <width>546</width>
+      <height>546</height>
+    </image>
+
+    
+      <item>
+        <title>Archlinux Post Install Guide</title>
+        <pubDate>2023-05-25 00:00:00 &#43;0000 UTC</pubDate>
+        <link>https://nakibrayan.codeberg.page/blog/archlinux-post-install/</link>
+        <guid>https://nakibrayan.codeberg.page/blog/archlinux-post-install/</guid>
+        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/blog/archlinux-post-install/thumbnail.webp" alt="Archlinux Post Install Guide"/> <h2 id="1-install-drivers">1. Install Drivers</h2>
+<h3 id="11-networkwireless">1.1 Network/Wireless</h3>
+<ol>
+<li>Check the driver status</li>
+</ol>
+<p>To check if the driver for your card has been loaded, check the output of the <code>lspci -k</code> or <code>lsusb -v</code> command, depending on if the card is connected by <code>PCI(e)</code> or <code>USB</code>. You should see that some kernel driver is in use, for example:</p>
+<pre tabindex="0"><code>$ lspci -k
+</code></pre><pre tabindex="0"><code>06:00.0 Network controller: Intel Corporation WiFi Link 5100
+	Subsystem: Intel Corporation WiFi Link 5100 AGN
+	Kernel driver in use: iwlwifi
+	Kernel modules: iwlwifi
+</code></pre><p><strong>Note</strong>: If the card is a USB device, running <code>dmesg | grep usbcore</code> as root should give something like <code>usbcore: registered new interface driver rtl8187</code> as output.</p>
+<p>Also check the output of the <code>ip link</code> command to see if a wireless interface was created; usually the naming of the wireless network interfaces starts with the letter &ldquo;w&rdquo;, e.g. <code>wlan0</code> or <code>wlp2s0</code>. Then bring the interface up with:</p>
+<pre tabindex="0"><code># ip link set interface up
+</code></pre><p><strong>Note:</strong></p>
+<ul>
+<li>
+<p>If you get errors like <code>RTNETLINK answers: Operation not possible due to RF-kill</code>, make sure that the device is not hard-blocked or soft-blocked. See <a href="#13-rfkill-caveat">#Rfkill caveat</a> for details.</p>
+</li>
+<li>
+<p>If you get the error message <code>SIOCSIFFLAGS: No such file or directory</code>, it most certainly means that your wireless chipset requires a firmware to function.</p>
+</li>
+</ul>
+<p>Check kernel messages for firmware being loaded:</p>
+<pre tabindex="0"><code># dmesg | grep firmware
+</code></pre><pre tabindex="0"><code>[   7.148259] iwlwifi 0000:02:00.0: loaded firmware version 39.30.4.1 build 35138 op_mode iwldvm
+</code></pre><p>If there is no relevant output, check the messages for the full output for the module you identified earlier (<code>iwlwifi</code> in this example) to identify the relevant message or further issues:</p>
+<pre tabindex="0"><code># dmesg | grep iwlwifi
+</code></pre><pre tabindex="0"><code>[   12.342694] iwlwifi 0000:02:00.0: irq 44 for MSI/MSI-X
+[   12.353466] iwlwifi 0000:02:00.0: loaded firmware version 39.31.5.1 build 35138 op_mode iwldvm
+[   12.430317] iwlwifi 0000:02:00.0: CONFIG_IWLWIFI_DEBUG disabled
+...
+[   12.430341] iwlwifi 0000:02:00.0: Detected Intel(R) Corporation WiFi Link 5100 AGN, REV=0x6B
+</code></pre><p>If the kernel module is successfully loaded and the interface is up, you can skip the next section.</p>
+<ol start="2">
+<li>Installing driver/firmware</li>
+</ol>
+<p>Check the following lists to discover if your card is supported:</p>
+<ul>
+<li>
+<p>See the table of <a href="https://wireless.wiki.kernel.org/en/users/drivers">existing Linux wireless drivers</a> and follow to the specific driver&rsquo;s page, which contains a list of supported devices.</p>
+</li>
+<li>
+<p>The <a href="https://help.ubuntu.com/community/WifiDocs/WirelessCardsSupported">Ubuntu Wiki</a> has a good list of wireless cards and whether or not they are supported either in the Linux kernel or by a user-space driver (includes driver name).</p>
+</li>
+<li>
+<p>The Linux Questions&rsquo; <a href="https://web.archive.org/web/20110711100256/http://www.linuxquestions.org/hcl/index.php?cat=10">Hardware Compatibility List</a> (HCL) also have a good database of kernel-friendly hardware.</p>
+</li>
+</ul>
+<p>Note that some vendors ship products that may contain different chip sets, even if the product identifier is the same. Only the usb-id (for USB devices) or pci-id (for PCI devices) is authoritative.</p>
+<p>If your wireless card is not listed above, it is likely supported only under Windows (some Broadcom, 3com, etc). For these, you can try to use <a href="#14-ndiswrapper">#ndiswrapper</a>.</p>
+<p>Now search for driver in the archlinux repos</p>
+<pre tabindex="0"><code>$ pacman -Ss driver_name
+</code></pre><p>and install the appropriate package</p>
+<h3 id="12-rfkill-caveat">1.2 Rfkill caveat</h3>
+<p>Many laptops have a hardware button (or switch) to turn off the wireless card however, the card can also be blocked by the kernel. This can be handled by rfkill. To show the current status:</p>
+<pre tabindex="0"><code># rfkill
+</code></pre><pre tabindex="0"><code>ID TYPE      DEVICE      SOFT      HARD
+ 0 bluetooth hci0   unblocked unblocked
+ 1 wlan      phy0   unblocked unblocked
+</code></pre><p>If the card is hard-blocked, use the hardware button (switch) to unblock it. If the card is not hard-blocked but soft-blocked, use the following command:</p>
+<pre tabindex="0"><code># rfkill unblock wlan
+</code></pre><h3 id="13-ndiswrapper">1.3 ndiswrapper</h3>
+<p>Ndiswrapper is a wrapper script that allows you to use some Windows drivers in Linux. You will need the .inf and .sys files from your Windows driver.</p>
+<p><strong>Note</strong>: Be sure to use drivers appropriate to your architecture (x86 vs. x86_64).</p>
+<p><strong>Tip</strong>: If you need to extract these files from an .exe file, you can use <code>cabextract</code>.</p>
+<p>Follow these steps to configure ndiswrapper.</p>
+<ol>
+<li>
+<p>Install <code>ndiswrapper-dkms</code>.</p>
+</li>
+<li>
+<p>Install the driver to <code>/etc/ndiswrapper/</code>:</p>
+</li>
+</ol>
+<pre tabindex="0"><code># ndiswrapper -i filename.inf
+</code></pre><ol start="3">
+<li>List all installed drivers for ndiswrapper:</li>
+</ol>
+<pre tabindex="0"><code>$ ndiswrapper -l
+</code></pre><ol start="4">
+<li>Let ndiswrapper write its configuration in <code>/etc/modprobe.d/ndiswrapper.conf</code>:</li>
+</ol>
+<pre tabindex="0"><code># ndiswrapper -m
+# depmod -a
+</code></pre><ol start="5">
+<li>The ndiswrapper install is almost finished; you can load the module at boot.</li>
+</ol>
+<p>Today, all necessary modules loading is handled automatically by udev, so if you do not need to use any out-of-tree kernel modules, there is no need to put modules that should be loaded at boot in any configuration file. However, there are cases where you might want to load an extra module during the boot process, or blacklist another one for your computer to function properly.</p>
+<ul>
+<li>systemd</li>
+</ul>
+<p>create the file <code>/etc/modules-load.d/ndiswrapper.conf</code> and add this line.</p>
+<pre tabindex="0"><code>ndiswrapper
+</code></pre><ol start="6">
+<li>Test that ndiswrapper will load now:</li>
+</ol>
+<pre tabindex="0"><code># modprobe ndiswrapper
+# iwconfig
+</code></pre><h3 id="12-nvidia">1.2 NVIDIA</h3>
+<p><strong>Warning</strong>: Avoid installing the NVIDIA driver through the package provided from the NVIDIA website. Installation through pacman allows upgrading the driver together with the rest of the system.</p>
+<p>These instructions are for those using the stock <code>linux</code> or <code>linux-lts</code> packages.</p>
+<ol>
+<li>If you do not know what graphics card you have, find out by issuing:</li>
+</ol>
+<pre tabindex="0"><code>$ lspci -k | grep -A 2 -E &#34;(VGA|3D)&#34;
+</code></pre><ol start="2">
+<li>Determine the necessary driver version for your card by:</li>
+</ol>
+<ul>
+<li>
+<p>Visiting <a href="https://www.nvidia.com/Download/index.aspx">NVIDIA&rsquo;s driver download site</a> and using the dropdown lists.</p>
+</li>
+<li>
+<p>Finding the code name (e.g. NV50, NVC0, etc.) on <a href="https://nouveau.freedesktop.org/wiki/CodeNames/">nouveau wiki&rsquo;s code names page</a> or <a href="https://gitlab.freedesktop.org/nouveau/wiki/-/blob/master/sources/CodeNames.mdwn">nouveau&rsquo;s GitLab</a>, then looking up the name in <a href="https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/">NVIDIA&rsquo;s legacy card list</a>: if your card is not there you can use the latest driver.</p>
+</li>
+</ul>
+<ol start="3">
+<li>Install the appropriate driver for your card:</li>
+</ol>
+<ul>
+<li>
+<p>For the Maxwell <a href="https://nouveau.freedesktop.org/CodeNames.html#NV110">(NV110/GMXXX)</a> series and newer, install the <code>nvidia</code> package (for use with the linux kernel) or <code>nvidia-lts</code> (for use with the linux-lts kernel) package.</p>
+<ul>
+<li>If these packages do not work, <code>nvidia-beta</code><sup>AUR</sup> may have a newer driver version that offers support.</li>
+</ul>
+</li>
+<li>
+<p>Alternatively for the <a href="https://nouveau.freedesktop.org/CodeNames.html#NV160">Turing (NV160/TUXXX)</a> series or newer the <code>nvidia-open</code> package may be installed for open source kernel modules on the linux kernel (On other kernels <code>nvidia-open-dkms</code> must be used).</p>
+<ul>
+<li>This is currently alpha quality on desktop cards, so there will be issues. Due to <a href="https://github.com/NVIDIA/open-gpu-kernel-modules/issues/282">nvidia-open issue #282</a>, it does not work on systems that have AMD integrated GPUs.</li>
+</ul>
+</li>
+<li>
+<p>For the <a href="https://nouveau.freedesktop.org/CodeNames.html#NVE0">Kepler (NVE0/GKXXX)</a> series, install the <code>nvidia-470xx-dkms</code><sup>AUR</sup> package.</p>
+</li>
+</ul>
+<p><strong>Note</strong>: 470xx and older drivers may not function correctly on Linux 5.18 (or later) on systems with Intel CPUs 11th Gen and newer due an incompatibility with <a href="https://edc.intel.com/content/www/us/en/design/ipla/software-development-platforms/client/platforms/alder-lake-desktop/12th-generation-intel-core-processors-datasheet-volume-1-of-2/007/indirect-branch-tracking">Indirect Branch Tracking</a>. You can disable it by setting the <code>ibt=off</code> <a href="https://wiki.archlinux.org/title/Kernel_parameter">kernel parameter</a> from the boot loader. Be aware, this security feature is responsible for <a href="https://lwn.net/Articles/889475">mitigating a class of exploit techniques</a>.</p>
+<ul>
+<li>For even older cards, use the nouveau driver by installing the <code>mesa</code> package.</li>
+</ul>
+<ol start="4">
+<li>Remove <code>kms</code> from the <code>HOOKS=()</code> array in <code>/etc/mkinitcpio.conf</code> and regenerate the initramfs with the command:</li>
+</ol>
+<pre tabindex="0"><code># mkinitcpio -P
+</code></pre><p>This will prevent the initramfs from containing the nouveau module making sure the kernel cannot load it during early boot.</p>
+<ol start="5">
+<li>Reboot</li>
+</ol>
+<h2 id="2-install-a-desktop-environment">2. Install A Desktop Environment</h2>
+<p>if you don&rsquo;t know what to chose, just chose <code>gnome</code></p>
+<h3 id="21-gnome">2.1 Gnome</h3>
+<pre tabindex="0"><code>$ sudo pacman -S gnome
+</code></pre><pre tabindex="0"><code>$ sudo systemctl enable gdm.service
+</code></pre><pre tabindex="0"><code>$ reboot
+</code></pre><h3 id="22-kde-plasma">2.2 KDE plasma</h3>
+<pre tabindex="0"><code>$ sudo pacman -S plasma
+</code></pre><pre tabindex="0"><code>$ systemctl enable sddm.service
+</code></pre><pre tabindex="0"><code>$ reboot
+</code></pre><h3 id="23-xfce4">2.3 xfce4</h3>
+<pre tabindex="0"><code>$ sudo pacman -S xfce4 sddm
+</code></pre><pre tabindex="0"><code>$ systemctl enable sddm.service
+</code></pre><pre tabindex="0"><code>$ reboot
+</code></pre><h2 id="3-install-flatpak">3 Install flatpak</h2>
+<pre tabindex="0"><code>$ sudo pacman -S flatpak
+</code></pre><h2 id="4-install-an-aur-helper">4 Install An AUR Helper</h2>
+<pre tabindex="0"><code>$ sudo pacman -S git rustup
+</code></pre><pre tabindex="0"><code>$ rustup toolchain install stable
+</code></pre><pre tabindex="0"><code>$ git clone https://aur.archlinux.org/paru.git
+</code></pre><pre tabindex="0"><code>$ cd paru
+</code></pre><pre tabindex="0"><code>$ makepkg -si
+</code></pre><h2 id="5-install-and-setup-ntp">5. install and setup ntp</h2>
+<pre tabindex="0"><code>$ sudo pacman -S ntp
+</code></pre><pre tabindex="0"><code>$ timedatectl set-ntp true
+</code></pre>]]></description>
+      </item>
+    
+      <item>
+        <title>Archlinux Install Guide With Full Disk Encryption</title>
+        <pubDate>2023-05-19 00:00:00 &#43;0000 UTC</pubDate>
+        <link>https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</link>
+        <guid>https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</guid>
+        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/thumbnail.webp" alt="Archlinux Install Guide With Full Disk Encryption"/> <h2 id="1-pre-installation">1. Pre installation</h2>
+<h3 id="11-download-the-arch-linux-iso">1.1 Download the Arch Linux ISO</h3>
+<p>Visit the <a href="https://archlinux.org/download/">Download</a> page and acquire the ISO file, and the respective GnuPG signature.</p>
+<h3 id="12-verify-signature">1.2 Verify signature</h3>
+<p>It is recommended to verify the image signature before use, especially when downloading from an HTTP mirror.</p>
+<p>On a system with <code>GnuPG</code> installed, you can verify the image signature by downloading the ISO PGP signature <a href="https://archlinux.org/download/#checksums">under Checksums in the Download page</a> and verifying it with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
+</span></span></code></pre></div><h3 id="13-create-a-bootable-usb-of-arch-linux">1.3 Create a Bootable USB of Arch Linux</h3>
+<p>You will need a USB of at least 2GB, after that visit the <a href="https://etcher.balena.io/#download-etcher">Etcher</a> page and install the program.</p>
+<img src="/blog/archlinux-install-guide-full-disk-encryption/etcher-screenshot.png" alt="Etcher Screenshot" width="788" height="470"/>
+<p>in Etcher under <code>Select Image</code> chose the Arch Linux ISO you downloaded previously, and under <code>Select Drive</code> chose the USB that you want to install Arch Linux to.</p>
+<p><strong>NOTE</strong>: this prosess will erase all the data in the USB so make sure to:</p>
+<ol>
+<li>
+<p>back up all the data inside the USB.</p>
+</li>
+<li>
+<p>select the right USB to flash the ISO to.</p>
+</li>
+</ol>
+<h3 id="14-boot-from-the-live-usb">1.4 Boot from the live USB</h3>
+<p><strong>Note</strong>: Arch Linux installation images do not support <code>Secure Boot</code>. You will need to disable Secure Boot to boot the installation medium. If desired, Secure Boot can be set up after completing the installation.</p>
+<ol>
+<li>
+<p>Point the current boot device to the one which has the Arch Linux installation medium. Typically it is achieved by pressing F2, F10 or F12 key (depending upon your system), Refer to your motherboard&rsquo;s manual for details.</p>
+</li>
+<li>
+<p>When the installation medium&rsquo;s boot you will see a menu like this:</p>
+</li>
+</ol>
+<img src="/blog/archlinux-install-guide-full-disk-encryption/archlinux-boot-menu.jpg" alt="arch linux iso boot menu" width="474" height="355"/>
+<p>Select <code>Boot Arch Linux (x86_64)</code> (the fist option) and press <kbd>Enter</kbd> to enter the installation environment.</p>
+<h3 id="15-set-keyboard-layout">1.5 Set keyboard layout</h3>
+<p>if your keyboard layout is <code>en-us</code> skip this part</p>
+<p>The Available Keyboard layouts can be listed with</p>
+<pre tabindex="0"><code># ls /usr/share/kbd/keymaps/**/*.map.gz
+</code></pre><p>To set a keyboard layout, pass a corresponding file name to <code>loadkeys</code>, omitting path and file extension. For example, to set a German keyboard layout:</p>
+<pre tabindex="0"><code># loadkeys de-latin1
+</code></pre><h3 id="16-verify-the-boot-mode">1.6 Verify the boot mode</h3>
+<p>To verify the boot mode, list the <code>efivars</code> directory</p>
+<pre tabindex="0"><code># ls /sys/firmware/efi/efivars
+</code></pre><p>If the command shows the directory without error, then the system is booted in UEFI mode. If the directory does not exist, the system may be booted in BIOS (or CSM) mode.</p>
+<p>Unfortunately This Guide is only for systems with <code>UEFI</code> mode, if you have another boot mode this guide won&rsquo;t work.</p>
+<h3 id="17-connect-to-the-internet">1.7 Connect to the internet</h3>
+<p>To set up a network connection in the live environment, go through the following steps:</p>
+<ol>
+<li>Ensure your network interface is listed and enabled, with <code>ip-link</code></li>
+</ol>
+<pre tabindex="0"><code># ip link
+</code></pre><p>For wireless and WWAN, make sure the card is not blocked with rfkill.</p>
+<p>Many laptops have a hardware button (or switch) to turn off the wireless card however, the card can also be blocked by the kernel. This can be handled by rfkill. To show the current status:</p>
+<pre tabindex="0"><code># rfkill
+</code></pre><pre tabindex="0"><code>ID TYPE      DEVICE      SOFT      HARD
+ 0 bluetooth hci0   unblocked unblocked
+ 1 wlan      phy0   unblocked unblocked
+</code></pre><p>If the card is hard-blocked, use the hardware button (switch) to unblock it. If the card is not hard-blocked but soft-blocked, use the following command:</p>
+<pre tabindex="0"><code># rfkill unblock wlan
+</code></pre><ol start="2">
+<li>Connect to the network</li>
+</ol>
+<ul>
+<li>
+<p>with Ethernet plug in the cable.</p>
+</li>
+<li>
+<p>or wifi using the iwctl command</p>
+</li>
+</ul>
+<p>To connect to wifi, First you need to get in the <code>iwctl</code> interactive prompt with</p>
+<pre tabindex="0"><code># iwctl
+</code></pre><p>and then list the wifi devices with</p>
+<pre tabindex="0"><code>[iwd]# device list
+</code></pre><pre tabindex="0"><code>                                Devices                               *
+-----------------------------------------------------------------------
+  Name                Address           Powerd   Adapter   Mode
+-----------------------------------------------------------------------
+  wlan0               ************      on       phy0      station
+</code></pre><p>If the device or its corresponding adapter is turned off, turn it on</p>
+<pre tabindex="0"><code>[iwd]# device device set-property Powered on
+</code></pre><pre tabindex="0"><code>[iwd]# adapter adapter set-property Powered on
+</code></pre><p>Then, initiate a scan for networks (note that this command will not output anything)</p>
+<pre tabindex="0"><code>[iwd]# station device scan
+</code></pre><p>You can then list all available networks</p>
+<pre tabindex="0"><code>[iwd]# station device get-networks
+</code></pre><pre tabindex="0"><code>                    Available networks                      *
+-------------------------------------------------------------
+   Network name                     Security     Signal
+-------------------------------------------------------------
+   **********                       ****         *****
+   **********                       ****         *****
+   **********                       ****         *****
+   **********                       ****         *****
+</code></pre><p>connect to a network</p>
+<pre tabindex="0"><code>[iwd]# station device connect SSID
+</code></pre><p>Finally exit <code>iwctl</code>&rsquo;s interactive prompt with</p>
+<pre tabindex="0"><code>[iwd]# exit
+</code></pre><ol start="3">
+<li>The connection may be verified with ping</li>
+</ol>
+<pre tabindex="0"><code># ping nakibrayan2.pages.dev
+</code></pre><h3 id="18-update-the-system-clock">1.8 Update the system clock</h3>
+<p>time will be synced automatically once a connection to the internet is established, Use <code>timedatectl</code> to ensure the system clock is accurate</p>
+<pre tabindex="0"><code># timedatectl
+</code></pre><h3 id="19-partition-the-disks">1.9 Partition the disks</h3>
+<p>When recognized by the live system, disks are assigned to a block device such as <code>/dev/sda</code>, <code>/dev/nvme0n1</code> or <code>/dev/mmcblk0</code>. To identify these devices, use lsblk</p>
+<pre tabindex="0"><code># lsblk
+</code></pre><p>Results ending in <code>rom</code>, <code>loop</code> or <code>airoot</code> may be ignored.</p>
+<p><strong>NOTE</strong>: this prosess will erase all the data in the disk, so make sure to back up all your data, and select the right disk to install the OS to.</p>
+<p>to start enter to fdisk&rsquo;s interactive shell</p>
+<pre tabindex="0"><code># fdisk /dev/the_disk_to_be_partitioned
+</code></pre><ol>
+<li>create a new empty GPT partition table using the command <code>g</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): g
+</code></pre><ol start="2">
+<li>create a EFI system partition with the command <code>n</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): n
+</code></pre><p>use defalut (leave empty)</p>
+<pre tabindex="0"><code>Partition number (1-128, default 1):
+</code></pre><p>use defalut (leave empty)</p>
+<pre tabindex="0"><code>First sector (2048-234441614, default 2048):
+</code></pre><p>here use <code>+512M</code></p>
+<pre tabindex="0"><code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-234441614, default 234440703): +512M
+</code></pre><p>if you are asked to remove the signature say yes</p>
+<pre tabindex="0"><code>Do you want to remove the signature? [Y]es/[N]o: y
+</code></pre><ol start="3">
+<li>set the partition type to EFI System using the <code>t</code> command</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): t
+</code></pre><p>then select 1</p>
+<pre tabindex="0"><code>Partition type or alias (type L to list all): 1
+</code></pre><ol start="4">
+<li>now create another partition for root /</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): n
+</code></pre><p>select default (leave empty)</p>
+<pre tabindex="0"><code>Partition number (2-128, default 2):
+</code></pre><p>select default (leave empty)</p>
+<pre tabindex="0"><code>First sector (1050624-234441614, default 1050624):
+</code></pre><p>select default (leave empty)</p>
+<pre tabindex="0"><code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (1050624-234441614, default 234440703):
+</code></pre><p>if you are asked to remove the signature say yes</p>
+<pre tabindex="0"><code>Do you want to remove the signature? [Y]es/[N]o: y
+</code></pre><ol start="5">
+<li>set the partition type to Linux filesystem using the <code>t</code> command</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): t
+</code></pre><p>select the second partition 2</p>
+<pre tabindex="0"><code>Partition number (1,2, default 2): 2
+</code></pre><p>then select 20</p>
+<pre tabindex="0"><code>Partition type or alias (type L to list all): 20
+</code></pre><ol start="6">
+<li>save the changes with the <code>w</code> command</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): w
+</code></pre><ol start="7">
+<li>quit</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): q
+</code></pre><p>NOTE: Will create a swap file later</p>
+<h3 id="110-encrypt-root-partition">1.10 Encrypt root partition</h3>
+<p>the root Partition is <code>/dev/the_disk_partitioned2</code>, like <code>/dev/sda2</code>, <code>/dev/nvme0n1p2</code> or <code>/dev/mmcblk0p2</code>.</p>
+<ol>
+<li>encrypt the root partition</li>
+</ol>
+<pre tabindex="0"><code># cryptsetup luksFormat /dev/the_root_partition2
+</code></pre><pre tabindex="0"><code>WARNING!
+========
+This will overwrite data on /dev/sda2 irrevocably.
+
+Are you sure? (Type &#39;yes&#39; in capital letters): YES
+Enter passphrase for /dev/sda2: 
+</code></pre><p>then type YES in capital letters, and type you password</p>
+<ol start="2">
+<li>open the encrypted partition and give it a name of cryptroot</li>
+</ol>
+<pre tabindex="0"><code># cryptsetup luksOpen /dev/dev/the_root_partition2 cryptroot
+</code></pre><h3 id="111-format-the-partitions">1.11 Format the partitions</h3>
+<p>will use the ext4 file system for the root partition and fat32 fot the efi system partition.</p>
+<pre tabindex="0"><code># mkfs.ext4 /dev/mapper/cryptroot
+</code></pre><p>the efi Partition is <code>/dev/the_disk_partitioned1</code>, like <code>/dev/sda1</code>, <code>/dev/nvme0n1p1</code> or <code>/dev/mmcblk0p1</code>.</p>
+<pre tabindex="0"><code># mkfs.fat -F 32 /dev/efi_system_partition
+</code></pre><h3 id="112-mount-the-file-systems">1.12 Mount the file systems</h3>
+<p>Mount the root volume to /mnt, and mount the EFI system partition to /mnt/boot.</p>
+<pre tabindex="0"><code># mount /dev/mapper/cryptroot /mnt
+</code></pre><pre tabindex="0"><code># mount --mkdir /dev/efi_system_partition /mnt/boot
+</code></pre><h2 id="2-installation">2. Installation</h2>
+<h3 id="21-select-the-mirrors">2.1 Select the mirrors</h3>
+<p>reflector updates the mirror list by choosing 20 most recently synchronized HTTPS mirrors and sorting them by download rate to get faster download speeds.</p>
+<pre tabindex="0"><code># reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+</code></pre><h3 id="22-update-archlinux-keyring">2.2 update archlinux-keyring</h3>
+<p>To determine if packages are authentic, pacman uses GnuPG keys in a web of trust model, so we update the archlinux keyring to get the latest gpg keys and avoid errors when installing packages.</p>
+<pre tabindex="0"><code># pacman -Sy archlinux-keyring
+</code></pre><h3 id="23-install-essential-packages">2.3 Install essential packages</h3>
+<p>Use the pacstrap script to install the base system.</p>
+<ul>
+<li>if you have an <code>intel</code> cpu use this command:</li>
+</ul>
+<pre tabindex="0"><code># pacstrap -K /mnt base base-devel linux linux-firmware inte-ucode grub efibootmgr networkmanager man-db nano
+</code></pre><ul>
+<li>if you have an <code>amd</code> cup use this command:</li>
+</ul>
+<pre tabindex="0"><code># pacstrap -K /mnt base base-devel linux linux-firmware amd-ucode grub efibootmgr networkmanager man-db nano
+</code></pre><p>and install a text editor <code>nano</code> or <code>vim</code>.</p>
+<h3 id="3-configure-the-system">3. Configure the system</h3>
+<h3 id="31-create-swap-file">3.1 Create swap file</h3>
+<p>if you have low ram lower then 12GB create a swap file double you ram size (or more then that).</p>
+<p>if you have more then 12BG ram create the same swap size as your ram size, for exampe if you have 32BG ram create a 32BG swap file.</p>
+<p><strong>NOTE</strong>: swap is not necessary, but it&rsquo;s recommended if you have low ram or have a laptop and want to do hibernate, but if you don&rsquo;t have alot of disk space, or you are in a desktop computer and don&rsquo;t care about hibernation and have lot of ram (32BG plus) you don&rsquo;t have to create swap space.</p>
+<ol>
+<li>Change root into the new system</li>
+</ol>
+<pre tabindex="0"><code># arch-chroot /mnt
+</code></pre><ol start="2">
+<li>Use dd to create a swap file the size of your choosing. For example, creating an 8 GiB swap file</li>
+</ol>
+<pre tabindex="0"><code># dd if=/dev/zero of=/swapfile bs=1G count=8 status=progress
+</code></pre><ol start="3">
+<li>Set the right permissions (a world-readable swap file is a huge local vulnerability)</li>
+</ol>
+<pre tabindex="0"><code># chmod 0600 /swapfile
+</code></pre><ol start="4">
+<li>After creating the correctly sized file, format it to swap</li>
+</ol>
+<pre tabindex="0"><code># mkswap -U clear /swapfile
+</code></pre><ol start="5">
+<li>Activate the swap file</li>
+</ol>
+<pre tabindex="0"><code># swapon /swapfile
+</code></pre><ol start="6">
+<li>new exit</li>
+</ol>
+<pre tabindex="0"><code>exit
+</code></pre><h3 id="32-fstab">3.2 Fstab</h3>
+<p>an fstab file is used to mount all the partitions at boot</p>
+<pre tabindex="0"><code># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre><h3 id="33-chroot">3.3 Chroot</h3>
+<p>Change root into the new system</p>
+<pre tabindex="0"><code># arch-chroot /mnt
+</code></pre><h3 id="34-time-zone">3.4 Time zone</h3>
+<pre tabindex="0"><code># ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+</code></pre><p>Run hwclock to generate /etc/adjtime</p>
+<pre tabindex="0"><code># hwclock --systohc
+</code></pre><h3 id="35-localization">3.5 Localization</h3>
+<p>edit <code>/etc/locale.gen</code> and uncomment <code>en_US.UTF-8 UTF-8</code> and other needed locales. Generate the locales by running</p>
+<pre tabindex="0"><code># locale-gen
+</code></pre><p>Create the <code>/etc/locale.conf</code> file, and set the LANG variable accordingly</p>
+<pre tabindex="0"><code>LANG=en_US.UTF-8
+</code></pre><p>If you set a keyboard layout, make the changes persistent in vconsole.conf by create the file <code>/etc/vconsole.conf</code> and adding your keyboard layout name to it</p>
+<pre tabindex="0"><code>KEYMAP=de-latin1
+</code></pre><h3 id="36-network-configuration">3.6 Network configuration</h3>
+<p>create the file <code>/etc/hostname</code></p>
+<pre tabindex="0"><code>myhostname
+</code></pre><p>enable NetworkManager</p>
+<pre tabindex="0"><code># systemctl enable NetworkManager.service
+</code></pre><h3 id="37-initramfs">3.7 Initramfs</h3>
+<p>edit the file <code>/etc/mkinitcpio.conf</code>, in the line were <code>HOOKS=()</code> add the option <code>encrypt</code> after the option <code>block</code></p>
+<p>old line:</p>
+<pre tabindex="0"><code>HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck)
+</code></pre><p>new line:</p>
+<pre tabindex="0"><code>HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
+</code></pre><p>and then run the command</p>
+<pre tabindex="0"><code># mkinitcpio -P
+</code></pre><h3 id="38-grub-boot-loader">3.8 Grub Boot loader</h3>
+<ol>
+<li>install grub</li>
+</ol>
+<pre tabindex="0"><code># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+</code></pre><ol start="2">
+<li>use <code>blkid</code> to get the encrypted partition&rsquo;s UUID</li>
+</ol>
+<pre tabindex="0"><code>/dev/sda2: UUID=&#34;********-****-****-****-************&#34;
+</code></pre><ol start="3">
+<li>edit <code>/etc/default/grub</code>, and add the options bellow to the line <code>GRUB_CMDLINE_LINUX=&quot;&quot;</code>, and change the <code>*</code> with the UUID of the encrypted partition.</li>
+</ol>
+<pre tabindex="0"><code>GRUB_CMDLINE_LINUX=&#34;cryptdevice=UUID=********-****-****-****-************:cryptroot root=/dev/mapper/cryptroot&#34;
+</code></pre><ol start="4">
+<li>now update grub config</li>
+</ol>
+<pre tabindex="0"><code># grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><h3 id="39-set-root-password">3.9 Set Root Password</h3>
+<pre tabindex="0"><code># passwd
+</code></pre><h3 id="310-create-a-user">3.10 create a user</h3>
+<p>to use the system you have to create a user to login to.</p>
+<ol>
+<li>create a user and add it to the wheel group</li>
+</ol>
+<pre tabindex="0"><code># useradd -m -G wheel your_username
+</code></pre><ol start="2">
+<li>allow the user to use sudo</li>
+</ol>
+<p>replase <code>nano</code> with your editor of choise</p>
+<pre tabindex="0"><code>EDITOR=nano visudo
+</code></pre><p>and uncomment the line</p>
+<pre tabindex="0"><code>%wheel ALL=(ALL:ALL) ALL
+</code></pre><h2 id="4-reboot">4 Reboot</h2>
+<p>now you you have basic archlinux install without a desktop envirment or any programs installed, i will have a <a href="/blog/archlinux-post-install">guide for Post-installation</a> in the future.</p>
+<p>now you have to exit the shell of the new system and then reboot</p>
+<pre tabindex="0"><code>exit
+</code></pre><pre tabindex="0"><code>reboot
+</code></pre><p>Don&rsquo;t forget to set the boot device to the drive that have the archlinux installed in it.</p>
+]]></description>
+      </item>
+    
+      <item>
+        <title>Test Article</title>
+        <pubDate>2023-05-18 00:00:00 &#43;0000 UTC</pubDate>
+        <link>https://nakibrayan.codeberg.page/blog/test-article/</link>
+        <guid>https://nakibrayan.codeberg.page/blog/test-article/</guid>
+        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/blog/test-article/thumbnail.webp" alt="Test Article"/> <h2 id="headings">Headings</h2>
+<p>The following HTML <code>&lt;h1&gt;—&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
+<h1 id="h1">H1</h1>
+<h2 id="h2">H2</h2>
+<h3 id="h3">H3</h3>
+<h4 id="h4">H4</h4>
+<h5 id="h5">H5</h5>
+<h6 id="h6">H6</h6>
+<h2 id="paragraph">Paragraph</h2>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium placeat ratione nostrum harum velit, ipsum delectus qui ab dolorem obcaecati neque rerum laborum officiis voluptates libero possimus quas sapiente assumenda?
+Rem, architecto maiores hic odit deleniti aperiam dicta. Vitae illo numquam dicta suscipit molestias rerum totam, quasi aliquam dolor temporibus cum minus recusandae sit quae deserunt. Vero necessitatibus magni voluptatibus?</p>
+<p>Modi soluta, rem nobis facilis exercitationem ipsum possimus officia iure suscipit laudantium voluptates expedita sit commodi explicabo deserunt doloremque. Accusantium, ipsa itaque. Accusamus laudantium dolorem provident modi? Quasi, saepe animi!</p>
+<p>Possimus repellendus sequi eos voluptatum accusantium delectus earum laudantium eveniet excepturi laborum! Sunt veniam vitae necessitatibus nobis ipsum quas voluptas, porro laborum fugiat commodi nihil optio doloribus consectetur deserunt atque.</p>
+<h2 id="links">Links</h2>
+<p>This is a <a href="/">internal link</a> to another page. This one points to a <a href="https://gnu.org">external page</a> nad will be open in a new tag.</p>
+<h2 id="blockquotes">Blockquotes</h2>
+<h3 id="blockquote-without-attribution">Blockquote without attribution</h3>
+<blockquote>
+<p>Tiam, ad mint andaepu dandae nostion secatur sequo quae. Note that you can use Markdown syntax within a blockquote.</p>
+</blockquote>
+<h3 id="blockquote-with-attribution">Blockquote with attribution</h3>
+<blockquote>
+<p>Don&rsquo;t communicate by sharing memory, share memory by communicating.<br>
+— <cite>Rob Pike<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></cite></p>
+</blockquote>
+<h2 id="tables">Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bob</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Alice</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inline-markdown-within-tables">Inline Markdown within tables</h3>
+<table>
+<thead>
+<tr>
+<th>Italics</th>
+<th>Bold</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>italics</em></td>
+<td><strong>bold</strong></td>
+<td><code>code</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="code-blocks">Code Blocks</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;!doctype html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">html</span> <span style="color:#50fa7b">lang</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">meta</span> <span style="color:#50fa7b">charset</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;utf-8&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">title</span>&gt;Example HTML5 Document&lt;/<span style="color:#ff79c6">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">head</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">p</span>&gt;Test&lt;/<span style="color:#ff79c6">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">body</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">html</span>&gt;
+</span></span></code></pre></div><h2 id="list-types">List Types</h2>
+<h3 id="ordered-list">Ordered List</h3>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ol>
+<h3 id="unordered-list">Unordered List</h3>
+<ul>
+<li>List item</li>
+<li>Another item</li>
+<li>And another item</li>
+</ul>
+<h3 id="nested-list">Nested list</h3>
+<ul>
+<li>Fruit
+<ul>
+<li>Apple</li>
+<li>Orange</li>
+<li>Banana</li>
+</ul>
+</li>
+<li>Dairy
+<ul>
+<li>Milk</li>
+<li>Cheese</li>
+</ul>
+</li>
+</ul>
+<h2 id="other-elements--abbr-sub-sup-kbd-mark">Other Elements — abbr, sub, sup, kbd, mark</h2>
+<p><abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.</p>
+<p>H<sub>2</sub>O</p>
+<p>X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup></p>
+<p>Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.</p>
+<p>Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.</p>
+<h2 id="emoji">Emoji</h2>
+<p>🙈 🙈 🙉 🙉 🙊 🙊</p>
+<h2 id="diagrams">Diagrams</h2>
+
+
+
+<div class="goat svg-container ">
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 680 121"
+      >
+      <g transform='translate(8,16)'>
+<path d='M 440,0 L 464,0' fill='none' stroke='currentColor'></path>
+<path d='M 576,0 L 584,0' fill='none' stroke='currentColor'></path>
+<path d='M 408,16 L 440,16' fill='none' stroke='currentColor'></path>
+<path d='M 552,16 L 560,16' fill='none' stroke='currentColor'></path>
+<path d='M 144,32 L 176,32' fill='none' stroke='currentColor'></path>
+<path d='M 176,32 L 208,32' fill='none' stroke='currentColor'></path>
+<path d='M 296,32 L 312,32' fill='none' stroke='currentColor'></path>
+<path d='M 312,32 L 328,32' fill='none' stroke='currentColor'></path>
+<path d='M 440,32 L 464,32' fill='none' stroke='currentColor'></path>
+<path d='M 576,32 L 584,32' fill='none' stroke='currentColor'></path>
+<path d='M 384,48 L 408,48' fill='none' stroke='currentColor'></path>
+<path d='M 512,48 L 536,48' fill='none' stroke='currentColor'></path>
+<path d='M 128,64 L 144,64' fill='none' stroke='currentColor'></path>
+<path d='M 144,64 L 160,64' fill='none' stroke='currentColor'></path>
+<path d='M 192,64 L 208,64' fill='none' stroke='currentColor'></path>
+<path d='M 208,64 L 224,64' fill='none' stroke='currentColor'></path>
+<path d='M 440,64 L 464,64' fill='none' stroke='currentColor'></path>
+<path d='M 576,64 L 584,64' fill='none' stroke='currentColor'></path>
+<path d='M 408,80 L 440,80' fill='none' stroke='currentColor'></path>
+<path d='M 552,80 L 560,80' fill='none' stroke='currentColor'></path>
+<path d='M 440,96 L 464,96' fill='none' stroke='currentColor'></path>
+<path d='M 576,96 L 584,96' fill='none' stroke='currentColor'></path>
+<path d='M 128,64 L 128,80' fill='none' stroke='currentColor'></path>
+<path d='M 144,32 L 144,64' fill='none' stroke='currentColor'></path>
+<path d='M 160,64 L 160,80' fill='none' stroke='currentColor'></path>
+<path d='M 176,0 L 176,32' fill='none' stroke='currentColor'></path>
+<path d='M 192,64 L 192,80' fill='none' stroke='currentColor'></path>
+<path d='M 208,32 L 208,64' fill='none' stroke='currentColor'></path>
+<path d='M 224,64 L 224,80' fill='none' stroke='currentColor'></path>
+<path d='M 280,48 L 280,64' fill='none' stroke='currentColor'></path>
+<path d='M 312,0 L 312,32' fill='none' stroke='currentColor'></path>
+<path d='M 344,48 L 344,64' fill='none' stroke='currentColor'></path>
+<path d='M 408,16 L 408,48' fill='none' stroke='currentColor'></path>
+<path d='M 408,48 L 408,80' fill='none' stroke='currentColor'></path>
+<path d='M 440,0 L 440,16' fill='none' stroke='currentColor'></path>
+<path d='M 440,16 L 440,32' fill='none' stroke='currentColor'></path>
+<path d='M 440,64 L 440,80' fill='none' stroke='currentColor'></path>
+<path d='M 440,80 L 440,96' fill='none' stroke='currentColor'></path>
+<path d='M 536,32 L 536,48' fill='none' stroke='currentColor'></path>
+<path d='M 536,48 L 536,64' fill='none' stroke='currentColor'></path>
+<path d='M 8,80 L 24,48' fill='none' stroke='currentColor'></path>
+<path d='M 24,48 L 48,0' fill='none' stroke='currentColor'></path>
+<path d='M 56,80 L 72,48' fill='none' stroke='currentColor'></path>
+<path d='M 624,48 L 640,16' fill='none' stroke='currentColor'></path>
+<path d='M 640,16 L 648,0' fill='none' stroke='currentColor'></path>
+<path d='M 640,80 L 648,64' fill='none' stroke='currentColor'></path>
+<path d='M 24,48 L 40,80' fill='none' stroke='currentColor'></path>
+<path d='M 48,0 L 72,48' fill='none' stroke='currentColor'></path>
+<path d='M 72,48 L 88,80' fill='none' stroke='currentColor'></path>
+<path d='M 624,48 L 640,80' fill='none' stroke='currentColor'></path>
+<path d='M 640,80 L 648,96' fill='none' stroke='currentColor'></path>
+<path d='M 640,16 L 648,32' fill='none' stroke='currentColor'></path>
+<path d='M 576,0 A 16,16 0 0,0 560,16' fill='none' stroke='currentColor'></path>
+<path d='M 552,16 A 16,16 0 0,0 536,32' fill='none' stroke='currentColor'></path>
+<path d='M 296,32 A 16,16 0 0,0 280,48' fill='none' stroke='currentColor'></path>
+<path d='M 328,32 A 16,16 0 0,1 344,48' fill='none' stroke='currentColor'></path>
+<path d='M 560,16 A 16,16 0 0,0 576,32' fill='none' stroke='currentColor'></path>
+<path d='M 280,64 A 16,16 0 0,0 264,80' fill='none' stroke='currentColor'></path>
+<path d='M 280,64 A 16,16 0 0,1 296,80' fill='none' stroke='currentColor'></path>
+<path d='M 344,64 A 16,16 0 0,0 328,80' fill='none' stroke='currentColor'></path>
+<path d='M 344,64 A 16,16 0 0,1 360,80' fill='none' stroke='currentColor'></path>
+<path d='M 576,64 A 16,16 0 0,0 560,80' fill='none' stroke='currentColor'></path>
+<path d='M 536,64 A 16,16 0 0,0 552,80' fill='none' stroke='currentColor'></path>
+<path d='M 560,80 A 16,16 0 0,0 576,96' fill='none' stroke='currentColor'></path>
+<text text-anchor='middle' x='8' y='100' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='40' y='100' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='56' y='100' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='88' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='128' y='100' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='160' y='100' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='192' y='100' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='224' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='264' y='100' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='296' y='100' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='328' y='100' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='360' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='480' y='4' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='480' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='480' y='68' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='480' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='600' y='4' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='600' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='600' y='68' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='600' y='100' fill='currentColor' style='font-size:1em'>4</text>
+<text text-anchor='middle' x='664' y='4' fill='currentColor' style='font-size:1em'>1</text>
+<text text-anchor='middle' x='664' y='36' fill='currentColor' style='font-size:1em'>2</text>
+<text text-anchor='middle' x='664' y='68' fill='currentColor' style='font-size:1em'>3</text>
+<text text-anchor='middle' x='664' y='100' fill='currentColor' style='font-size:1em'>4</text>
+</g>
+
+    </svg>
+  
+</div>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>The above quote is excerpted from Rob Pike&rsquo;s <a href="https://www.youtube.com/watch?v=PAAkCSZUG1c">talk</a> during Gopherfest, November 18, 2015.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></description>
+      </item>
+    
+      <item>
+        <title>About Me</title>
+        <pubDate>2023-05-17 00:00:00 &#43;0000 UTC</pubDate>
+        <link>https://nakibrayan.codeberg.page/about/</link>
+        <guid>https://nakibrayan.codeberg.page/about/</guid>
+        <description><![CDATA[<img src="https://nakibrayan.codeberg.page/about/thumbnail.webp" alt="About Me"/> <p>My name is Rayan, and I live in a little house in Algeria with my Familly. I’m a software developer, mostly working in low level prgramming (with c, c++, rust).</p>
+<h2 id="projects">Projects</h2>
+<ul>
+<li>
+<p><a href="https://github.com/nakibrayan3/website">website</a></p>
+</li>
+<li>
+<p><a href="https://github.com/nakibrayan3/workout-journal-website">workout-journal-website</a></p>
+</li>
+</ul>
+<h2 id="contact-me">Contact Me</h2>
+<p><a href="mailto:rayan.nakib@tutamail.com">rayan.nakib@tutamail.com</a></p>
+<p><a href="/about/nakibrayan.gpg">Download gpg key</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg | gpg --import
+</span></span></code></pre></div><p>GPG Fingerprint:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
+</span></span></code></pre></div><h2 id="software-i-use">Software I Use</h2>
+<table>
+<thead>
+<tr>
+<th>Program</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>Arch Linux</td>
+</tr>
+<tr>
+<td>Terminal</td>
+<td>Kitty</td>
+</tr>
+<tr>
+<td>Shell</td>
+<td>zsh</td>
+</tr>
+<tr>
+<td>Window Manager</td>
+<td>Hyprland</td>
+</tr>
+<tr>
+<td>Status bar</td>
+<td>waybar-hyprland</td>
+</tr>
+<tr>
+<td>wallpaper manager</td>
+<td>hyprpaper</td>
+</tr>
+<tr>
+<td>app launcher</td>
+<td>fuzzel</td>
+</tr>
+<tr>
+<td>Text Editor</td>
+<td>neovim</td>
+</tr>
+<tr>
+<td>Web Browser</td>
+<td>Firefox with the arkenfox user.js and Ublock Origin</td>
+</tr>
+<tr>
+<td>File manager</td>
+<td>lf &amp; nemo</td>
+</tr>
+<tr>
+<td>Video/audio player</td>
+<td>mpv</td>
+</tr>
+<tr>
+<td>Document Viewer</td>
+<td>zathura</td>
+</tr>
+<tr>
+<td>instant messaging app</td>
+<td>Session</td>
+</tr>
+<tr>
+<td>password manager</td>
+<td>keepassxc</td>
+</tr>
+<tr>
+<td>rss reader</td>
+<td>newsboat</td>
+</tr>
+<tr>
+<td>torrent client</td>
+<td>qbittorrent</td>
+</tr>
+<tr>
+<td>Cryptocurrencies</td>
+<td>Bitcoin &amp; Monero</td>
+</tr>
+</tbody>
+</table>
+]]></description>
+      </item>
+    
+  </channel>
+</rss>

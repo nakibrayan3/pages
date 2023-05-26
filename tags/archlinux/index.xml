@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>archlinux on Rayan Nakib</title>
+    <link>https://nakibrayan.codeberg.page/tags/archlinux/</link>
+    <description>Recent content in archlinux on Rayan Nakib</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 25 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://nakibrayan.codeberg.page/tags/archlinux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Archlinux Post Install Guide</title>
+      <link>https://nakibrayan.codeberg.page/blog/archlinux-post-install/</link>
+      <pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://nakibrayan.codeberg.page/blog/archlinux-post-install/</guid>
+      <description>1. Install Drivers 1.1 Network/Wireless Check the driver status To check if the driver for your card has been loaded, check the output of the lspci -k or lsusb -v command, depending on if the card is connected by PCI(e) or USB. You should see that some kernel driver is in use, for example:
+$ lspci -k 06:00.0 Network controller: Intel Corporation WiFi Link 5100 Subsystem: Intel Corporation WiFi Link 5100 AGN Kernel driver in use: iwlwifi Kernel modules: iwlwifi Note: If the card is a USB device, running dmesg | grep usbcore as root should give something like usbcore: registered new interface driver rtl8187 as output.</description>
+    </item>
+    
+    <item>
+      <title>Archlinux Install Guide With Full Disk Encryption</title>
+      <link>https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</link>
+      <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://nakibrayan.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</guid>
+      <description>1. Pre installation 1.1 Download the Arch Linux ISO Visit the Download page and acquire the ISO file, and the respective GnuPG signature.
+1.2 Verify signature It is recommended to verify the image signature before use, especially when downloading from an HTTP mirror.
+On a system with GnuPG installed, you can verify the image signature by downloading the ISO PGP signature under Checksums in the Download page and verifying it with</description>
+    </item>
+    
+  </channel>
+</rss>

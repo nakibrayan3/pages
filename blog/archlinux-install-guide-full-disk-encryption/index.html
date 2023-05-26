@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
+
+  
+  <meta name="lang" content="en" />
+  
+
+  
+  <meta name="keywords" content="linux,archlinux,tutorial,encryption" />
+  <meta name="description" content="A Guide for how to install archlinux with full disk encryption encryption" />
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <link rel="icon" href="/icons/favicon.ico">
+
+  <title>Archlinux Install Guide With Full Disk Encryption - Rayan Nakib</title>
+
+  <link rel="manifest" href="/manifest.json">
+
+  
+  <link
+    rel="stylesheet"
+    href="https://nakibrayan.codeberg.page/css/style.3b70799114f025aaab27a66ebb1c548ef8add430723fdef43a1da6a4978398f3.css"
+    integrity="sha256-O3B5kRTwJaqrJ6ZuuxxUjvit1DByP970Oh2mpJeDmPM="
+  />
+  
+
+</head>
+
+
+  <body class="container">
+    <nav>
+  <ul class="logo">
+    <li>
+      <a href="https://nakibrayan.codeberg.page/" alt="Rayan Nakib">Rayan Nakib</a>
+    </li>
+  </ul>
+
+  <input type="checkbox" id="hamburger-check" hidden />
+  <label for="hamburger-check">
+    <div></div>
+    <div></div>
+    <div></div>
+  </label>
+
+  <ul class="nav-links">
+    <li>
+      <label for="hamburger-check" class="close-menu">
+        <div></div>
+        <div></div>
+      </label>
+    </li>
+
+    
+    <li><a href="/blog" alt="Blog">Blog</a></li>
+    
+    <li><a href="/about" alt="About">About</a></li>
+    
+
+    
+    
+
+    <li class="flex items-center">
+      
+      
+      
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/></svg>
+      <a href="/ar" lang="ar">العربية</a>
+      
+      
+    </li>
+    
+    
+
+    
+    <li id="theme-toggle" style="cursor: pointer;">
+      <details role="list" dir="rtl">
+        <summary aria-haspopup="listbox" role="link">Theme</summary>
+        <ul role="listbox presentation">
+          <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+          <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+          <li><a href="#" data-theme-switcher="light">Light</a></li>
+        </ul>
+      </details>
+    </li>
+    
+</nav>
+
+
+    <main>
+      <article>
+        
+
+<header>
+  
+  <img src="/blog/archlinux-install-guide-full-disk-encryption/thumbnail.webp" alt="Archlinux Install Guide With Full Disk Encryption" width="800" height="600" class="thumbnail" />
+  
+
+  <hgroup>
+    <h1>Archlinux Install Guide With Full Disk Encryption</h1>
+
+    <div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z"/></svg>
+        <p>May 19, 2023</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/></svg>
+        <p>9 minutes</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16"><path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/></svg>
+        <p>1841 words</p>
+      </div>
+
+    
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/><path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/></svg>
+      
+      <a href="https://nakibrayan.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/">العربية</a>
+      
+    </div>
+    
+
+    </div>
+  </hgroup>
+</header>
+
+<h2 id="1-pre-installation">1. Pre installation</h2>
+<h3 id="11-download-the-arch-linux-iso">1.1 Download the Arch Linux ISO</h3>
+<p>Visit the <a href="https://archlinux.org/download/">Download</a> page and acquire the ISO file, and the respective GnuPG signature.</p>
+<h3 id="12-verify-signature">1.2 Verify signature</h3>
+<p>It is recommended to verify the image signature before use, especially when downloading from an HTTP mirror.</p>
+<p>On a system with <code>GnuPG</code> installed, you can verify the image signature by downloading the ISO PGP signature <a href="https://archlinux.org/download/#checksums">under Checksums in the Download page</a> and verifying it with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --keyserver-options auto-key-retrieve --verify archlinux-version-x86_64.iso.sig
+</span></span></code></pre></div><h3 id="13-create-a-bootable-usb-of-arch-linux">1.3 Create a Bootable USB of Arch Linux</h3>
+<p>You will need a USB of at least 2GB, after that visit the <a href="https://etcher.balena.io/#download-etcher">Etcher</a> page and install the program.</p>
+<img src="/blog/archlinux-install-guide-full-disk-encryption/etcher-screenshot.png" alt="Etcher Screenshot" width="788" height="470"/>
+<p>in Etcher under <code>Select Image</code> chose the Arch Linux ISO you downloaded previously, and under <code>Select Drive</code> chose the USB that you want to install Arch Linux to.</p>
+<p><strong>NOTE</strong>: this prosess will erase all the data in the USB so make sure to:</p>
+<ol>
+<li>
+<p>back up all the data inside the USB.</p>
+</li>
+<li>
+<p>select the right USB to flash the ISO to.</p>
+</li>
+</ol>
+<h3 id="14-boot-from-the-live-usb">1.4 Boot from the live USB</h3>
+<p><strong>Note</strong>: Arch Linux installation images do not support <code>Secure Boot</code>. You will need to disable Secure Boot to boot the installation medium. If desired, Secure Boot can be set up after completing the installation.</p>
+<ol>
+<li>
+<p>Point the current boot device to the one which has the Arch Linux installation medium. Typically it is achieved by pressing F2, F10 or F12 key (depending upon your system), Refer to your motherboard&rsquo;s manual for details.</p>
+</li>
+<li>
+<p>When the installation medium&rsquo;s boot you will see a menu like this:</p>
+</li>
+</ol>
+<img src="/blog/archlinux-install-guide-full-disk-encryption/archlinux-boot-menu.jpg" alt="arch linux iso boot menu" width="474" height="355"/>
+<p>Select <code>Boot Arch Linux (x86_64)</code> (the fist option) and press <kbd>Enter</kbd> to enter the installation environment.</p>
+<h3 id="15-set-keyboard-layout">1.5 Set keyboard layout</h3>
+<p>if your keyboard layout is <code>en-us</code> skip this part</p>
+<p>The Available Keyboard layouts can be listed with</p>
+<pre tabindex="0"><code># ls /usr/share/kbd/keymaps/**/*.map.gz
+</code></pre><p>To set a keyboard layout, pass a corresponding file name to <code>loadkeys</code>, omitting path and file extension. For example, to set a German keyboard layout:</p>
+<pre tabindex="0"><code># loadkeys de-latin1
+</code></pre><h3 id="16-verify-the-boot-mode">1.6 Verify the boot mode</h3>
+<p>To verify the boot mode, list the <code>efivars</code> directory</p>
+<pre tabindex="0"><code># ls /sys/firmware/efi/efivars
+</code></pre><p>If the command shows the directory without error, then the system is booted in UEFI mode. If the directory does not exist, the system may be booted in BIOS (or CSM) mode.</p>
+<p>Unfortunately This Guide is only for systems with <code>UEFI</code> mode, if you have another boot mode this guide won&rsquo;t work.</p>
+<h3 id="17-connect-to-the-internet">1.7 Connect to the internet</h3>
+<p>To set up a network connection in the live environment, go through the following steps:</p>
+<ol>
+<li>Ensure your network interface is listed and enabled, with <code>ip-link</code></li>
+</ol>
+<pre tabindex="0"><code># ip link
+</code></pre><p>For wireless and WWAN, make sure the card is not blocked with rfkill.</p>
+<p>Many laptops have a hardware button (or switch) to turn off the wireless card however, the card can also be blocked by the kernel. This can be handled by rfkill. To show the current status:</p>
+<pre tabindex="0"><code># rfkill
+</code></pre><pre tabindex="0"><code>ID TYPE      DEVICE      SOFT      HARD
+ 0 bluetooth hci0   unblocked unblocked
+ 1 wlan      phy0   unblocked unblocked
+</code></pre><p>If the card is hard-blocked, use the hardware button (switch) to unblock it. If the card is not hard-blocked but soft-blocked, use the following command:</p>
+<pre tabindex="0"><code># rfkill unblock wlan
+</code></pre><ol start="2">
+<li>Connect to the network</li>
+</ol>
+<ul>
+<li>
+<p>with Ethernet plug in the cable.</p>
+</li>
+<li>
+<p>or wifi using the iwctl command</p>
+</li>
+</ul>
+<p>To connect to wifi, First you need to get in the <code>iwctl</code> interactive prompt with</p>
+<pre tabindex="0"><code># iwctl
+</code></pre><p>and then list the wifi devices with</p>
+<pre tabindex="0"><code>[iwd]# device list
+</code></pre><pre tabindex="0"><code>                                Devices                               *
+-----------------------------------------------------------------------
+  Name                Address           Powerd   Adapter   Mode
+-----------------------------------------------------------------------
+  wlan0               ************      on       phy0      station
+</code></pre><p>If the device or its corresponding adapter is turned off, turn it on</p>
+<pre tabindex="0"><code>[iwd]# device device set-property Powered on
+</code></pre><pre tabindex="0"><code>[iwd]# adapter adapter set-property Powered on
+</code></pre><p>Then, initiate a scan for networks (note that this command will not output anything)</p>
+<pre tabindex="0"><code>[iwd]# station device scan
+</code></pre><p>You can then list all available networks</p>
+<pre tabindex="0"><code>[iwd]# station device get-networks
+</code></pre><pre tabindex="0"><code>                    Available networks                      *
+-------------------------------------------------------------
+   Network name                     Security     Signal
+-------------------------------------------------------------
+   **********                       ****         *****
+   **********                       ****         *****
+   **********                       ****         *****
+   **********                       ****         *****
+</code></pre><p>connect to a network</p>
+<pre tabindex="0"><code>[iwd]# station device connect SSID
+</code></pre><p>Finally exit <code>iwctl</code>&rsquo;s interactive prompt with</p>
+<pre tabindex="0"><code>[iwd]# exit
+</code></pre><ol start="3">
+<li>The connection may be verified with ping</li>
+</ol>
+<pre tabindex="0"><code># ping nakibrayan2.pages.dev
+</code></pre><h3 id="18-update-the-system-clock">1.8 Update the system clock</h3>
+<p>time will be synced automatically once a connection to the internet is established, Use <code>timedatectl</code> to ensure the system clock is accurate</p>
+<pre tabindex="0"><code># timedatectl
+</code></pre><h3 id="19-partition-the-disks">1.9 Partition the disks</h3>
+<p>When recognized by the live system, disks are assigned to a block device such as <code>/dev/sda</code>, <code>/dev/nvme0n1</code> or <code>/dev/mmcblk0</code>. To identify these devices, use lsblk</p>
+<pre tabindex="0"><code># lsblk
+</code></pre><p>Results ending in <code>rom</code>, <code>loop</code> or <code>airoot</code> may be ignored.</p>
+<p><strong>NOTE</strong>: this prosess will erase all the data in the disk, so make sure to back up all your data, and select the right disk to install the OS to.</p>
+<p>to start enter to fdisk&rsquo;s interactive shell</p>
+<pre tabindex="0"><code># fdisk /dev/the_disk_to_be_partitioned
+</code></pre><ol>
+<li>create a new empty GPT partition table using the command <code>g</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): g
+</code></pre><ol start="2">
+<li>create a EFI system partition with the command <code>n</code></li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): n
+</code></pre><p>use defalut (leave empty)</p>
+<pre tabindex="0"><code>Partition number (1-128, default 1):
+</code></pre><p>use defalut (leave empty)</p>
+<pre tabindex="0"><code>First sector (2048-234441614, default 2048):
+</code></pre><p>here use <code>+512M</code></p>
+<pre tabindex="0"><code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-234441614, default 234440703): +512M
+</code></pre><p>if you are asked to remove the signature say yes</p>
+<pre tabindex="0"><code>Do you want to remove the signature? [Y]es/[N]o: y
+</code></pre><ol start="3">
+<li>set the partition type to EFI System using the <code>t</code> command</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): t
+</code></pre><p>then select 1</p>
+<pre tabindex="0"><code>Partition type or alias (type L to list all): 1
+</code></pre><ol start="4">
+<li>now create another partition for root /</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): n
+</code></pre><p>select default (leave empty)</p>
+<pre tabindex="0"><code>Partition number (2-128, default 2):
+</code></pre><p>select default (leave empty)</p>
+<pre tabindex="0"><code>First sector (1050624-234441614, default 1050624):
+</code></pre><p>select default (leave empty)</p>
+<pre tabindex="0"><code>Last sector, +/-sectors or +/-size{K,M,G,T,P} (1050624-234441614, default 234440703):
+</code></pre><p>if you are asked to remove the signature say yes</p>
+<pre tabindex="0"><code>Do you want to remove the signature? [Y]es/[N]o: y
+</code></pre><ol start="5">
+<li>set the partition type to Linux filesystem using the <code>t</code> command</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): t
+</code></pre><p>select the second partition 2</p>
+<pre tabindex="0"><code>Partition number (1,2, default 2): 2
+</code></pre><p>then select 20</p>
+<pre tabindex="0"><code>Partition type or alias (type L to list all): 20
+</code></pre><ol start="6">
+<li>save the changes with the <code>w</code> command</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): w
+</code></pre><ol start="7">
+<li>quit</li>
+</ol>
+<pre tabindex="0"><code>Command (m for help): q
+</code></pre><p>NOTE: Will create a swap file later</p>
+<h3 id="110-encrypt-root-partition">1.10 Encrypt root partition</h3>
+<p>the root Partition is <code>/dev/the_disk_partitioned2</code>, like <code>/dev/sda2</code>, <code>/dev/nvme0n1p2</code> or <code>/dev/mmcblk0p2</code>.</p>
+<ol>
+<li>encrypt the root partition</li>
+</ol>
+<pre tabindex="0"><code># cryptsetup luksFormat /dev/the_root_partition2
+</code></pre><pre tabindex="0"><code>WARNING!
+========
+This will overwrite data on /dev/sda2 irrevocably.
+
+Are you sure? (Type &#39;yes&#39; in capital letters): YES
+Enter passphrase for /dev/sda2: 
+</code></pre><p>then type YES in capital letters, and type you password</p>
+<ol start="2">
+<li>open the encrypted partition and give it a name of cryptroot</li>
+</ol>
+<pre tabindex="0"><code># cryptsetup luksOpen /dev/dev/the_root_partition2 cryptroot
+</code></pre><h3 id="111-format-the-partitions">1.11 Format the partitions</h3>
+<p>will use the ext4 file system for the root partition and fat32 fot the efi system partition.</p>
+<pre tabindex="0"><code># mkfs.ext4 /dev/mapper/cryptroot
+</code></pre><p>the efi Partition is <code>/dev/the_disk_partitioned1</code>, like <code>/dev/sda1</code>, <code>/dev/nvme0n1p1</code> or <code>/dev/mmcblk0p1</code>.</p>
+<pre tabindex="0"><code># mkfs.fat -F 32 /dev/efi_system_partition
+</code></pre><h3 id="112-mount-the-file-systems">1.12 Mount the file systems</h3>
+<p>Mount the root volume to /mnt, and mount the EFI system partition to /mnt/boot.</p>
+<pre tabindex="0"><code># mount /dev/mapper/cryptroot /mnt
+</code></pre><pre tabindex="0"><code># mount --mkdir /dev/efi_system_partition /mnt/boot
+</code></pre><h2 id="2-installation">2. Installation</h2>
+<h3 id="21-select-the-mirrors">2.1 Select the mirrors</h3>
+<p>reflector updates the mirror list by choosing 20 most recently synchronized HTTPS mirrors and sorting them by download rate to get faster download speeds.</p>
+<pre tabindex="0"><code># reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+</code></pre><h3 id="22-update-archlinux-keyring">2.2 update archlinux-keyring</h3>
+<p>To determine if packages are authentic, pacman uses GnuPG keys in a web of trust model, so we update the archlinux keyring to get the latest gpg keys and avoid errors when installing packages.</p>
+<pre tabindex="0"><code># pacman -Sy archlinux-keyring
+</code></pre><h3 id="23-install-essential-packages">2.3 Install essential packages</h3>
+<p>Use the pacstrap script to install the base system.</p>
+<ul>
+<li>if you have an <code>intel</code> cpu use this command:</li>
+</ul>
+<pre tabindex="0"><code># pacstrap -K /mnt base base-devel linux linux-firmware inte-ucode grub efibootmgr networkmanager man-db nano
+</code></pre><ul>
+<li>if you have an <code>amd</code> cup use this command:</li>
+</ul>
+<pre tabindex="0"><code># pacstrap -K /mnt base base-devel linux linux-firmware amd-ucode grub efibootmgr networkmanager man-db nano
+</code></pre><p>and install a text editor <code>nano</code> or <code>vim</code>.</p>
+<h3 id="3-configure-the-system">3. Configure the system</h3>
+<h3 id="31-create-swap-file">3.1 Create swap file</h3>
+<p>if you have low ram lower then 12GB create a swap file double you ram size (or more then that).</p>
+<p>if you have more then 12BG ram create the same swap size as your ram size, for exampe if you have 32BG ram create a 32BG swap file.</p>
+<p><strong>NOTE</strong>: swap is not necessary, but it&rsquo;s recommended if you have low ram or have a laptop and want to do hibernate, but if you don&rsquo;t have alot of disk space, or you are in a desktop computer and don&rsquo;t care about hibernation and have lot of ram (32BG plus) you don&rsquo;t have to create swap space.</p>
+<ol>
+<li>Change root into the new system</li>
+</ol>
+<pre tabindex="0"><code># arch-chroot /mnt
+</code></pre><ol start="2">
+<li>Use dd to create a swap file the size of your choosing. For example, creating an 8 GiB swap file</li>
+</ol>
+<pre tabindex="0"><code># dd if=/dev/zero of=/swapfile bs=1G count=8 status=progress
+</code></pre><ol start="3">
+<li>Set the right permissions (a world-readable swap file is a huge local vulnerability)</li>
+</ol>
+<pre tabindex="0"><code># chmod 0600 /swapfile
+</code></pre><ol start="4">
+<li>After creating the correctly sized file, format it to swap</li>
+</ol>
+<pre tabindex="0"><code># mkswap -U clear /swapfile
+</code></pre><ol start="5">
+<li>Activate the swap file</li>
+</ol>
+<pre tabindex="0"><code># swapon /swapfile
+</code></pre><ol start="6">
+<li>new exit</li>
+</ol>
+<pre tabindex="0"><code>exit
+</code></pre><h3 id="32-fstab">3.2 Fstab</h3>
+<p>an fstab file is used to mount all the partitions at boot</p>
+<pre tabindex="0"><code># genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre><h3 id="33-chroot">3.3 Chroot</h3>
+<p>Change root into the new system</p>
+<pre tabindex="0"><code># arch-chroot /mnt
+</code></pre><h3 id="34-time-zone">3.4 Time zone</h3>
+<pre tabindex="0"><code># ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+</code></pre><p>Run hwclock to generate /etc/adjtime</p>
+<pre tabindex="0"><code># hwclock --systohc
+</code></pre><h3 id="35-localization">3.5 Localization</h3>
+<p>edit <code>/etc/locale.gen</code> and uncomment <code>en_US.UTF-8 UTF-8</code> and other needed locales. Generate the locales by running</p>
+<pre tabindex="0"><code># locale-gen
+</code></pre><p>Create the <code>/etc/locale.conf</code> file, and set the LANG variable accordingly</p>
+<pre tabindex="0"><code>LANG=en_US.UTF-8
+</code></pre><p>If you set a keyboard layout, make the changes persistent in vconsole.conf by create the file <code>/etc/vconsole.conf</code> and adding your keyboard layout name to it</p>
+<pre tabindex="0"><code>KEYMAP=de-latin1
+</code></pre><h3 id="36-network-configuration">3.6 Network configuration</h3>
+<p>create the file <code>/etc/hostname</code></p>
+<pre tabindex="0"><code>myhostname
+</code></pre><p>enable NetworkManager</p>
+<pre tabindex="0"><code># systemctl enable NetworkManager.service
+</code></pre><h3 id="37-initramfs">3.7 Initramfs</h3>
+<p>edit the file <code>/etc/mkinitcpio.conf</code>, in the line were <code>HOOKS=()</code> add the option <code>encrypt</code> after the option <code>block</code></p>
+<p>old line:</p>
+<pre tabindex="0"><code>HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck)
+</code></pre><p>new line:</p>
+<pre tabindex="0"><code>HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt filesystems fsck)
+</code></pre><p>and then run the command</p>
+<pre tabindex="0"><code># mkinitcpio -P
+</code></pre><h3 id="38-grub-boot-loader">3.8 Grub Boot loader</h3>
+<ol>
+<li>install grub</li>
+</ol>
+<pre tabindex="0"><code># grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+</code></pre><ol start="2">
+<li>use <code>blkid</code> to get the encrypted partition&rsquo;s UUID</li>
+</ol>
+<pre tabindex="0"><code>/dev/sda2: UUID=&#34;********-****-****-****-************&#34;
+</code></pre><ol start="3">
+<li>edit <code>/etc/default/grub</code>, and add the options bellow to the line <code>GRUB_CMDLINE_LINUX=&quot;&quot;</code>, and change the <code>*</code> with the UUID of the encrypted partition.</li>
+</ol>
+<pre tabindex="0"><code>GRUB_CMDLINE_LINUX=&#34;cryptdevice=UUID=********-****-****-****-************:cryptroot root=/dev/mapper/cryptroot&#34;
+</code></pre><ol start="4">
+<li>now update grub config</li>
+</ol>
+<pre tabindex="0"><code># grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre><h3 id="39-set-root-password">3.9 Set Root Password</h3>
+<pre tabindex="0"><code># passwd
+</code></pre><h3 id="310-create-a-user">3.10 create a user</h3>
+<p>to use the system you have to create a user to login to.</p>
+<ol>
+<li>create a user and add it to the wheel group</li>
+</ol>
+<pre tabindex="0"><code># useradd -m -G wheel your_username
+</code></pre><ol start="2">
+<li>allow the user to use sudo</li>
+</ol>
+<p>replase <code>nano</code> with your editor of choise</p>
+<pre tabindex="0"><code>EDITOR=nano visudo
+</code></pre><p>and uncomment the line</p>
+<pre tabindex="0"><code>%wheel ALL=(ALL:ALL) ALL
+</code></pre><h2 id="4-reboot">4 Reboot</h2>
+<p>now you you have basic archlinux install without a desktop envirment or any programs installed, i will have a <a href="/blog/archlinux-post-install">guide for Post-installation</a> in the future.</p>
+<p>now you have to exit the shell of the new system and then reboot</p>
+<pre tabindex="0"><code>exit
+</code></pre><pre tabindex="0"><code>reboot
+</code></pre><p>Don&rsquo;t forget to set the boot device to the drive that have the archlinux installed in it.</p>
+
+
+
+
+
+<div style="margin-top: 3rem;">
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/tags/linux/" style="margin: 0.3rem auto;">#linux</a>
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/tags/archlinux/" style="margin: 0.3rem auto;">#archlinux</a>
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/tags/tutorial/" style="margin: 0.3rem auto;">#tutorial</a>
+  
+</div>
+
+
+
+
+
+<div class="giscus" style="margin-top: 3rem;"></div>
+
+
+
+
+
+        <footer>
+  <div>
+    <p>Rayan Nakib</p>
+
+    <ul>
+    
+
+      
+
+      
+      <li>
+        <a href="https://github.com/nakibrayan3" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+    
+
+      
+      <li>
+        <a href="https://mastodon.social/@nakibrayan" target="_blank" rel="me noopener" aria-label="Mastodon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mastodon" viewBox="0 0 16 16"><path d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+    
+
+      
+
+      
+
+      
+      <li>
+        <a href="https://instagram.com/nakibrayan2" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+        </a>
+      </li>
+      
+
+      
+    
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a href="/index.xml" rel="noopener" aria-label="rss feed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-rss-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+        </a>
+      </li>
+      
+    
+    </ul>
+  </div>
+</footer>
+
+      </article>
+
+      
+<script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+  }
+</script>
+
+
+
+<script>
+  
+
+
+  const themeSwitcher = {
+    
+    _scheme: "auto",
+    menuTarget: "details[role='list']",
+    buttonsTarget: "a[data-theme-switcher]",
+    buttonAttribute: "data-theme-switcher",
+    rootAttribute: "data-theme",
+    localStorageKey: "picoPreferredColorScheme",
+
+    
+    init() {
+      this.scheme = this.schemeFromLocalStorage;
+      this.initSwitchers();
+    },
+
+    
+    get schemeFromLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        if (window.localStorage.getItem(this.localStorageKey) !== null) {
+          return window.localStorage.getItem(this.localStorageKey);
+        }
+      }
+      return this._scheme;
+    },
+
+    
+    get preferredColorScheme() {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    },
+
+    
+    initSwitchers() {
+      const buttons = document.querySelectorAll(this.buttonsTarget);
+      buttons.forEach((button) => {
+        button.addEventListener(
+          "click",
+          (event) => {
+            event.preventDefault();
+            
+            this.scheme = button.getAttribute(this.buttonAttribute);
+            
+            document.querySelector(this.menuTarget).removeAttribute("open");
+          },
+          false
+        );
+      });
+    },
+
+    
+    set scheme(scheme) {
+      if (scheme == "auto") {
+        this.preferredColorScheme == "dark"
+          ? (this._scheme = "dark")
+          : (this._scheme = "light");
+      } else if (scheme == "dark" || scheme == "light") {
+        this._scheme = scheme;
+      }
+      this.applyScheme();
+      this.schemeToLocalStorage();
+    },
+
+    
+    get scheme() {
+      return this._scheme;
+    },
+
+    
+    applyScheme() {
+      document
+        .querySelector("html")
+        .setAttribute(this.rootAttribute, this.scheme);
+    },
+
+    
+    schemeToLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        window.localStorage.setItem(this.localStorageKey, this.scheme);
+      }
+    },
+  };
+
+  
+  themeSwitcher.init();
+</script>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="nakibrayan3/website"
+        data-repo-id="R_kgDOJlyr3Q"
+        data-category="Website Comments"
+        data-category-id="DIC_kwDOJlyr3c4CWpaT"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+    </main>
+
+  </body>
+</html>

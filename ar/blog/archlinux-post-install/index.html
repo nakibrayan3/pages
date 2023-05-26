@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
+
+  
+  <meta name="lang" content="ar" />
+  
+
+  
+  <meta name="keywords" content="لينكس,أرش لينكس,دليل,بعد التثبيت" />
+  <meta name="description" content="ماذا تفعل بعد تثبيت ArchLinux" />
+
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <link rel="icon" href="/icons/favicon.ico">
+
+  <title>دليل ما بعد التثبيت Arch Linux - ريان نقيب</title>
+
+  <link rel="manifest" href="/manifest.json">
+
+  
+  <link
+    rel="stylesheet"
+    href="https://nakibrayan.codeberg.page/css/style.3b70799114f025aaab27a66ebb1c548ef8add430723fdef43a1da6a4978398f3.css"
+    integrity="sha256-O3B5kRTwJaqrJ6ZuuxxUjvit1DByP970Oh2mpJeDmPM="
+  />
+  
+
+</head>
+
+
+  <body class="container">
+    <nav>
+  <ul class="logo">
+    <li>
+      <a href="https://nakibrayan.codeberg.page/ar/" alt="ريان نقيب">ريان نقيب</a>
+    </li>
+  </ul>
+
+  <input type="checkbox" id="hamburger-check" hidden />
+  <label for="hamburger-check">
+    <div></div>
+    <div></div>
+    <div></div>
+  </label>
+
+  <ul class="nav-links">
+    <li>
+      <label for="hamburger-check" class="close-menu">
+        <div></div>
+        <div></div>
+      </label>
+    </li>
+
+    
+    <li><a href="/ar/blog" alt="مدونة">مدونة</a></li>
+    
+    <li><a href="/ar/about" alt="حولي">حولي</a></li>
+    
+
+    
+    
+
+    <li class="flex items-center">
+      
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/></svg>
+      <a href="/en" lang="en">English</a>
+      
+      
+      
+      
+    </li>
+    
+    
+
+    
+    <li id="theme-toggle" style="cursor: pointer;">
+      <details role="list" dir="rtl">
+        <summary aria-haspopup="listbox" role="link">اللون</summary>
+        <ul role="listbox presentation">
+          <li><a href="#" data-theme-switcher="auto">تلقائي</a></li>
+          <li><a href="#" data-theme-switcher="dark">داكن</a></li>
+          <li><a href="#" data-theme-switcher="light">فاتح</a></li>
+        </ul>
+      </details>
+    </li>
+    
+</nav>
+
+
+    <main>
+      <article>
+        
+
+<header>
+  
+  <img src="/ar/blog/archlinux-post-install/thumbnail.ar.webp" alt="دليل ما بعد التثبيت Arch Linux" width="800" height="600" class="thumbnail" />
+  
+
+  <hgroup>
+    <h1>دليل ما بعد التثبيت Arch Linux</h1>
+
+    <div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z"/></svg>
+        <p>May 25, 2023</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/></svg>
+        <p>6 دقيقة</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16"><path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/></svg>
+        <p>1138 كلمة</p>
+      </div>
+
+    
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/><path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/></svg>
+      
+      <a href="https://nakibrayan.codeberg.page/blog/archlinux-post-install/">English</a>
+      
+    </div>
+    
+
+    </div>
+  </hgroup>
+</header>
+
+<h2 id="1-تثبيت-برامج-التشغيل-driver">1. تثبيت برامج التشغيل (Driver)</h2>
+<h3 id="11-شبكة--لاسلكي">1.1 شبكة / لاسلكي</h3>
+<ol>
+<li>تحقق من حالة برامج التشغيل</li>
+</ol>
+<p>للتحقق مما إذا كان قد تم تحميل برنامج التشغيل الخاص ببطاقتك ، تحقق من إخراج الأمر <code>lspci -k</code> أو <code>lsusb -v</code> ، اعتمادًا على ما إذا كانت البطاقة متصلة عن طريق <code>PCI (e)</code> أو <code>USB</code>. يجب أن ترى أن بعض برامج تشغيل النوات (kernel) قيد الاستخدام ، على سبيل المثال:</p>
+<pre tabindex="0"><code>$ lspci -k
+</code></pre><pre tabindex="0"><code>06:00.0 Network controller: Intel Corporation WiFi Link 5100
+	Subsystem: Intel Corporation WiFi Link 5100 AGN
+	Kernel driver in use: iwlwifi
+	Kernel modules: iwlwifi
+</code></pre><p>** ملاحظة **: إذا كانت البطاقة عبارة عن جهاز USB ، فقم بتشغيل <code>dmesg | grep usbcore</code> كمستخدم root ، يجب أن يكون إخراج الأمر شيئًا مثل <code>usbcore: برنامج تشغيل واجهة جديد مسجل rtl8187</code>.</p>
+<p>تحقق أيضًا من إخراج الأمر <code>ip link</code> لمعرفة ما إذا تم إنشاء واجهة لاسلكية ، عادةً ما تبدأ تسمية واجهات الشبكة اللاسلكية بالحرف &ldquo;w&rdquo; ، على سبيل المثال &ldquo;wlan0&rdquo; أو &ldquo;wlp2s0&rdquo;. ثم قم بتفعيل الواجهة بإستخدام الامر:</p>
+<pre tabindex="0"><code># ip link set interface up
+</code></pre><p><strong>ملاحظة::</strong></p>
+<ul>
+<li>
+<p>إذا ظهرت لك أخطاء مثل <code>RTNETLINK answers: Operation not possible due to RF-kill</code> ، فتأكد من أن الجهاز ليس محجوبًا من خلال زر (مفتاح) إقاف الشبكات الاسلكية أو محظور عن طريق النظام. راجع <a href="#111-%D8%AA%D8%AD%D8%B0%D9%8A%D8%B1-rfkill">تخذير #Rfkill</a> للحصول على التفاصيل.</p>
+</li>
+<li>
+<p>إذا تلقيت رسالة الخطأ <code>SIOCSIFFLAGS: No such file or directory</code> ، فهذا يعني بالتأكيد أن مجموعة الشرائح اللاسلكية تتطلب برنامجً firmware لتعمل.</p>
+</li>
+</ul>
+<p>تحقق من رسائل النوات لل firmware الذي يتم تشغيله</p>
+<pre tabindex="0"><code># dmesg | grep firmware
+</code></pre><pre tabindex="0"><code>[   7.148259] iwlwifi 0000:02:00.0: loaded firmware version 39.30.4.1 build 35138 op_mode iwldvm
+</code></pre><p>إذا لم يكن هناك مخرجات ذات صلة ، فتحقق من الرسائل الخاصة بالإخراج الكاملة (<code>iwlwifi</code> في هذا المثال) لتحديد الرسالة ذات الصلة أو المشكلات الأخرى:</p>
+<pre tabindex="0"><code># dmesg | grep iwlwifi
+</code></pre><pre tabindex="0"><code>[   12.342694] iwlwifi 0000:02:00.0: irq 44 for MSI/MSI-X
+[   12.353466] iwlwifi 0000:02:00.0: loaded firmware version 39.31.5.1 build 35138 op_mode iwldvm
+[   12.430317] iwlwifi 0000:02:00.0: CONFIG_IWLWIFI_DEBUG disabled
+...
+[   12.430341] iwlwifi 0000:02:00.0: Detected Intel(R) Corporation WiFi Link 5100 AGN, REV=0x6B
+</code></pre><p>إذا تم تحميل firmware النوات بنجاح وتم تشغيل الواجهة ، يمكنك تخطي القسم التالي.</p>
+<ol start="2">
+<li>تثبيت برنامج التشغيل / firmware</li>
+</ol>
+<p>تحقق من القوائم التالية لاكتشاف ما إذا كانت بطاقتك مدعومة:</p>
+<ul>
+<li>
+<p>انظر الجدول في <a href="https://wireless.wiki.kernel.org/en/users/drivers">existing Linux wireless drivers</a> التي تحتوي على قائمة بالأجهزة المدعومة.</p>
+</li>
+<li>
+<p>صفحة <a href="https://help.ubuntu.com/community/WifiDocs/WirelessCardsSupported">Ubuntu Wiki</a> تحتوي على قائمة جيدة من البطاقات اللاسلكية وما إذا كانت مدعومة أم لا في نوات لينكس أو بواسطة برنامج تشغيل مساحة المستخدم (بما في ذلك اسم برنامج التشغيل).</p>
+</li>
+<li>
+<p>صفحة <a href="https://web.archive.org/web/20110711100256/http://www.linuxquestions.org/hcl/index.php?cat=10">Hardware Compatibility List</a> (HCL) لديك أيضًا قاعدة بيانات جيدة للأجهزة المتوافقة مع النوات.</p>
+</li>
+</ul>
+<p><strong>ملاحظة</strong>: بعض البائعين يعرفون مجموعة كبيرة من برامج التشغيل تحت نفس الإسم.</p>
+<p>إذا لم تكن بطاقتك اللاسلكية الخاصة بك مدرجة أعلاه ، فمن المحتمل أنها مدعومة فقط ضمن Windows (بعض Broadcom ، 3com ، إلخ). لهذه ، يمكنك محاولة استخدام <a href="#211-ndiswrapper">#ndiswrapper</a>.</p>
+<p>ابحث الآن عن برنامج التشغيل الخاص بك في مستودعات archlinux.</p>
+<pre tabindex="0"><code>$ pacman -Ss driver_name
+</code></pre><p>و بعدها قم بتثبيت برنامج التشغيل المناسب.</p>
+<h3 id="111-تحذير-rfkill">1.1.1 تحذير Rfkill</h3>
+<p>تحتوي العديد من أجهزة الكمبيوتر المحمولة على زر (أو مفتاح) لإيقاف تشغيل البطاقة اللاسلكية ومع ذلك ، يمكن أيضًا حظر البطاقة من خلال النظام. يمكن التعامل مع هذا بإستخدام الأمر التلي:</p>
+<pre tabindex="0"><code># rfkill
+</code></pre><pre tabindex="0"><code>ID TYPE      DEVICE      SOFT      HARD
+ 0 bluetooth hci0   unblocked unblocked
+ 1 wlan      phy0   unblocked unblocked
+</code></pre><p>إذا تم حظر بطافقة الشبكة عن طريق الزر (المفتاح) ، فاستخدم زر الجهاز (مفتاح) لإلغاء قفلها. إذا لم يتم حظر البطاقة عن طريق الزر (المفتاح) ولكن تم حظرها عن طريق النظام ، فاستخدم الأمر التالي لفك الحظر:</p>
+<pre tabindex="0"><code># rfkill unblock wlan
+</code></pre><h3 id="211-ndiswrapper">2.1.1 ndiswrapper</h3>
+<p>Ndiswrapper هو برنامج يسمح لك باستخدام بعض برامج تشغيل ويندوز (Windows Drivers) في لينكس. ستحتاج إلى ملفات <code>inf.</code> و <code>sys.</code> من برنامج تشغيل ويندوز (Windows Drivers).</p>
+<p>ملاحظة: تأكد من استخدام برامج التشغيل المناسبة لبنيتك (x86 أو x86_64).</p>
+<p><strong>نصيحة</strong>: إذا كنت بحاجة إلى استخراج هذه الملفات من ملف exe. ، فيمكنك استخدام <code>cabextract</code>.</p>
+<p>اتبع هذه الخطوات التالية لتهيئة ndiswrapper.</p>
+<ol>
+<li>
+<p>ثبت <code>ndiswrapper-dkms</code>.</p>
+</li>
+<li>
+<p>حمل برنامج التشغيل إلى <code>/etc/ndiswrapper/</code>:</p>
+</li>
+</ol>
+<pre tabindex="0"><code># ndiswrapper -i filename.inf
+</code></pre><ol start="3">
+<li>طباعة جميع مرامج التشغيل المتوفرة ل ndiswrapper:</li>
+</ol>
+<pre tabindex="0"><code>$ ndiswrapper -l
+</code></pre><ol start="4">
+<li>دع برنامج ndiswrapper يكتب ملفات التهيئة في <code>/etc/modprobe.d/ndiswrapper.conf</code>:</li>
+</ol>
+<pre tabindex="0"><code># ndiswrapper -m
+# depmod -a
+</code></pre><ol start="5">
+<li>تهيئة ndiswrapper تكاد تنتهي; الأن يمكنك تشغيل التبرنامج عند الإقلاع.</li>
+</ol>
+<p>إنشئ الملف <code>etc/modules-load.d/ndiswrapper.conf/</code> ثم ضف هذا الصطر إليه.</p>
+<pre tabindex="0"><code>ndiswrapper
+</code></pre><ol start="6">
+<li>جرب أنه تم تشغيل ndiswrapper بنجاح:</li>
+</ol>
+<pre tabindex="0"><code># modprobe ndiswrapper
+# iwconfig
+</code></pre><h3 id="21-نفيديا-nvidia">2.1 نفيديا NVIDIA</h3>
+<p><strong>تحذير</strong>: تجنب تثبيت برنامج تشغيل NVIDIA من خلال الحزمة المتوفرة من موقع NVIDIA. يسمح التثبيت من خلال pacman تحديث برنامج التشغيل مع بقية النظام.</p>
+<p>هذه التعليمات مخصصة لأولئك الذين يستخدمون الحزم الإفتراضية ل &ldquo;linux&rdquo; أو &ldquo;linux-lts&rdquo;.</p>
+<ol>
+<li>إذا كنت لا تعرف بطاقة الرسومات التي لديك ، فاكتشف ذلك من خلال إصدار:</li>
+</ol>
+<pre tabindex="0"><code>$ lspci -k | grep -A 2 -E &#34;(VGA|3D)&#34;
+</code></pre><ol start="2">
+<li>حدد إصدار برنامج التشغيل اللازم لبطاقتك من خلال:</li>
+</ol>
+<ul>
+<li>
+<p>زر صفحة <a href="https://www.nvidia.com/Download/index.aspx">NVIDIA&rsquo;s driver download site</a> و تحصل على إصدار برنامج التشغيل الازم من خلال القوائم.</p>
+</li>
+<li>
+<p>إبحث عن الاسم الرمزي (NV50, NVC0 إلخ.) في <a href="https://nouveau.freedesktop.org/wiki/CodeNames/">nouveau wiki&rsquo;s code names page</a> أو <a href="https://gitlab.freedesktop.org/nouveau/wiki/-/blob/master/sources/CodeNames.mdwn">nouveau&rsquo;s GitLab</a>, ثم إبحث عن الإسم في <a href="https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/">NVIDIA&rsquo;s legacy card list</a> ، إذا لم تكن بطاقتك موجودة في أم من اقوائم فإستخم أخر إصدار لبرنامج التشغيل الخاص بنفيديا</p>
+</li>
+</ul>
+<ol start="3">
+<li>ثبت برنامج التشغيل المناسب لبطاقة الشاشة الخاصة بك</li>
+</ol>
+<ul>
+<li>
+<p>لإصدار ال Maxwell <a href="https://nouveau.freedesktop.org/CodeNames.html#NV110">(NV110/GMXXX)</a> أو أي إصدرات أحدث ، حمل حزمة <code>nvidia</code> (للإستخدام مع نوات لينكس linux) أو حزمة <code>nvidia-lts</code> (للإستخدام من نوات لينكس المستقرة linux-lts).</p>
+<ul>
+<li>إذا لم تشتغل معك الحزمة فيمكنك الحصول على إصدار أحدث عن طريق حزمة <sup>AUR</sup> <code>nvidia-beta</code>.</li>
+</ul>
+</li>
+<li>
+<p>لإصدار ال <a href="https://nouveau.freedesktop.org/CodeNames.html#NV160">Turing (NV160/TUXXX)</a> أو أحدث حمل حزمة <code>nvidia-open</code> لبرامج تشغيل مفتوحة المصدر للينكس (لأنوية لينكس أخرى <code>nvidia-open-dkms</code> يجب إستعمال).</p>
+<ul>
+<li>هته الحزمة تجريبية لذلك ستواجه مشكلة بسبب <a href="https://github.com/NVIDIA/open-gpu-kernel-modules/issues/282">nvidia-open issue #282</a> فهي لن تعمل في الأنضمة التي تحتوي على كرت شاشة داخللي AMD.</li>
+</ul>
+</li>
+<li>
+<p>لإصدار <a href="https://nouveau.freedesktop.org/CodeNames.html#NVE0">Kepler (NVE0/GKXXX)</a> حمل حزمة <sup>AUR</sup><code>nvidia-470xx-dkms</code>.</p>
+</li>
+</ul>
+<p><strong>ملاحظة</strong>: لإصدارات 470xx وأقدم قد لا تعمل برامج التشغيل بشكل صحيح في نوات لينكس إصدار 5.18 (Linux 5.18) (أو إصدارات أحدث للينكس) مع  أنضمة تحتوي على معالج Intel الجيل الحادي عشر وأكثر بسبب عدم توافق مع <a href="https://edc.intel.com/content/www/us/en/design/ipla/software-development-platforms/client/platforms/alder-lake-desktop/12th-generation-intel-core-processors-datasheet-volume-1-of-2/007/indirect-branch-tracking">Indirect Branch Tracking</a>. يمكنك تعطيلها بإستخدام <code>ibt=off</code> <a href="https://wiki.archlinux.org/title/Kernel_parameter">kernel parameter</a> من ال boot loader. مع العلم بأن هذه الميزة الأمنية مسؤلة عن <a href="https://lwn.net/Articles/889475">mitigating a class of exploit techniques</a>.</p>
+<ul>
+<li>لإصدارات أقدم من ذلك إستخدم برنام التشغيل nouveau من خلال تحميل حزمة <code>mesa</code>.</li>
+</ul>
+<ol start="4">
+<li>إحذف <code>kms</code> من <code>()=HOOKS</code> في ملف <code>etc/mkinitcpio.conf/</code> وقم بتجديد ملف initramfs بإستخدام الأمر التلي:</li>
+</ol>
+<pre tabindex="0"><code># mkinitcpio -P
+</code></pre><p>سيؤدي هذا إلى منع initramfs من احتواء وحدة nouveau للتأكد من أن النوات لم تحمل برنامج تشقيل nouveau أثناء التشغيل.</p>
+<ol start="5">
+<li>قم بإعادة تشغيل الحاسوب</li>
+</ol>
+<h2 id="2-تحميل-بيئة-صطح-مكتب">2. تحميل بيئة صطح مكتب</h2>
+<p>إذا لا تعلم أي بيئة صطح مكتب عليك الإختبار فإخبر بيئة صطح المكتب <code>gnome</code></p>
+<h3 id="12-gnome">1.2 Gnome</h3>
+<pre tabindex="0"><code>$ sudo pacman -S gnome
+</code></pre><pre tabindex="0"><code>$ sudo systemctl enable gdm.service
+</code></pre><pre tabindex="0"><code>$ reboot
+</code></pre><h3 id="22-kde-plasma">2.2 KDE plasma</h3>
+<pre tabindex="0"><code>$ sudo pacman -S plasma
+</code></pre><pre tabindex="0"><code>$ systemctl enable sddm.service
+</code></pre><pre tabindex="0"><code>$ reboot
+</code></pre><h3 id="32-xfce4">3.2 xfce4</h3>
+<pre tabindex="0"><code>$ sudo pacman -S xfce4 sddm
+</code></pre><pre tabindex="0"><code>$ systemctl enable sddm.service
+</code></pre><pre tabindex="0"><code>$ reboot
+</code></pre><h2 id="3-تثبيت-flatpak">3 تثبيت flatpak</h2>
+<pre tabindex="0"><code>$ sudo pacman -S flatpak
+</code></pre><h2 id="4-تثبيت-مساعد-aur">4 تثبيت مساعد AUR</h2>
+<pre tabindex="0"><code>$ sudo pacman -S git rustup
+</code></pre><pre tabindex="0"><code>$ rustup toolchain install stable
+</code></pre><pre tabindex="0"><code>$ git clone https://aur.archlinux.org/paru.git
+</code></pre><pre tabindex="0"><code>$ cd paru
+</code></pre><pre tabindex="0"><code>$ makepkg -si
+</code></pre><h2 id="5-تثبيت-وتهيئة-ntp">5. تثبيت وتهيئة ntp</h2>
+<pre tabindex="0"><code>$ sudo pacman -S ntp
+</code></pre><pre tabindex="0"><code>$ timedatectl set-ntp true
+</code></pre>
+
+
+
+
+<div style="margin-top: 3rem;">
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/ar/tags/%D9%84%D9%8A%D9%86%D9%83%D8%B3/" style="margin: 0.3rem auto;">#لينكس</a>
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/ar/tags/%D8%A3%D8%B1%D8%B4-%D9%84%D9%8A%D9%86%D9%83%D8%B3/" style="margin: 0.3rem auto;">#أرش لينكس</a>
+  
+  <a role="button" href="https://nakibrayan.codeberg.page/ar/tags/%D8%AF%D9%84%D9%8A%D9%84/" style="margin: 0.3rem auto;">#دليل</a>
+  
+</div>
+
+
+
+
+
+<div class="giscus" style="margin-top: 3rem;"></div>
+
+
+
+
+
+        <footer>
+  <div>
+    <p>ريان نقيب</p>
+
+    <ul>
+    
+
+      
+
+      
+      <li>
+        <a href="https://github.com/nakibrayan3" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+    
+
+      
+      <li>
+        <a href="https://mastodon.social/@nakibrayan" target="_blank" rel="me noopener" aria-label="Mastodon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mastodon" viewBox="0 0 16 16"><path d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+    
+
+      
+
+      
+
+      
+      <li>
+        <a href="https://instagram.com/nakibrayan2" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+        </a>
+      </li>
+      
+
+      
+    
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a href="/ar/index.xml" rel="noopener" aria-label="rss feed">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-rss-fill" viewBox="0 0 16 16"><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1 0-2zm0 4a6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1 0-2zm.5 7a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+        </a>
+      </li>
+      
+    
+    </ul>
+  </div>
+</footer>
+
+      </article>
+
+      
+<script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+  }
+</script>
+
+
+
+<script>
+  
+
+
+  const themeSwitcher = {
+    
+    _scheme: "auto",
+    menuTarget: "details[role='list']",
+    buttonsTarget: "a[data-theme-switcher]",
+    buttonAttribute: "data-theme-switcher",
+    rootAttribute: "data-theme",
+    localStorageKey: "picoPreferredColorScheme",
+
+    
+    init() {
+      this.scheme = this.schemeFromLocalStorage;
+      this.initSwitchers();
+    },
+
+    
+    get schemeFromLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        if (window.localStorage.getItem(this.localStorageKey) !== null) {
+          return window.localStorage.getItem(this.localStorageKey);
+        }
+      }
+      return this._scheme;
+    },
+
+    
+    get preferredColorScheme() {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    },
+
+    
+    initSwitchers() {
+      const buttons = document.querySelectorAll(this.buttonsTarget);
+      buttons.forEach((button) => {
+        button.addEventListener(
+          "click",
+          (event) => {
+            event.preventDefault();
+            
+            this.scheme = button.getAttribute(this.buttonAttribute);
+            
+            document.querySelector(this.menuTarget).removeAttribute("open");
+          },
+          false
+        );
+      });
+    },
+
+    
+    set scheme(scheme) {
+      if (scheme == "auto") {
+        this.preferredColorScheme == "dark"
+          ? (this._scheme = "dark")
+          : (this._scheme = "light");
+      } else if (scheme == "dark" || scheme == "light") {
+        this._scheme = scheme;
+      }
+      this.applyScheme();
+      this.schemeToLocalStorage();
+    },
+
+    
+    get scheme() {
+      return this._scheme;
+    },
+
+    
+    applyScheme() {
+      document
+        .querySelector("html")
+        .setAttribute(this.rootAttribute, this.scheme);
+    },
+
+    
+    schemeToLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        window.localStorage.setItem(this.localStorageKey, this.scheme);
+      }
+    },
+  };
+
+  
+  themeSwitcher.init();
+</script>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="nakibrayan3/website"
+        data-repo-id="R_kgDOJlyr3Q"
+        data-category="Website Comments"
+        data-category-id="DIC_kwDOJlyr3c4CWpaT"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="ar"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+    </main>
+
+  </body>
+</html>
