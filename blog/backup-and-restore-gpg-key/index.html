@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="white">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="black">
+
+  
+  <meta name="lang" content="en" />
+  
+
+  
+  <meta name="keywords" content="gpg,pgp,backup,restore" />
+  <meta name="description" content="How To Backup and Restore GPG keys" />
+
+  <meta name="generator" content="Hugo 0.112.3">
+
+  <link rel="icon" href="/icons/favicon.ico">
+
+  <title>Backup and Restore GPG Key - Rayan Nakib</title>
+
+  <link rel="manifest" href="/manifest.json">
+
+  
+  <link
+    rel="stylesheet"
+    href="https://nakibrayan2.codeberg.page/css/style.94a3e0cfb9817c87feda007c66e777e440a71c417fd1cec2eb1462fa2f56d807.css"
+    integrity="sha256-lKPgz7mBfIf&#43;2gB8Zud35ECnHEF/0c7C6xRi&#43;i9W2Ac="
+  />
+  
+
+</head>
+
+
+  <body class="container">
+    <nav>
+  <ul class="logo">
+    <li>
+      <a href="https://nakibrayan2.codeberg.page/" alt="Rayan Nakib">Rayan Nakib</a>
+    </li>
+  </ul>
+
+  <input type="checkbox" id="hamburger-check" hidden />
+  <label for="hamburger-check">
+    <div></div>
+    <div></div>
+    <div></div>
+  </label>
+
+  <ul class="nav-links">
+    <li>
+      <label for="hamburger-check" class="close-menu">
+        <div></div>
+        <div></div>
+      </label>
+    </li>
+
+    
+    <li><a href="/blog" alt="Blog">Blog</a></li>
+    
+    <li><a href="/about" alt="About">About</a></li>
+    
+
+    
+    
+
+    <li class="flex items-center">
+      
+      
+      
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/></svg>
+      <a href="/ar" lang="ar">العربية</a>
+      
+      
+    </li>
+    
+    
+
+    
+    <li id="theme-toggle" style="cursor: pointer;">
+      <details role="list" dir="rtl">
+        <summary aria-haspopup="listbox" role="link">Theme</summary>
+        <ul role="listbox presentation">
+          <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+          <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+          <li><a href="#" data-theme-switcher="light">Light</a></li>
+        </ul>
+      </details>
+    </li>
+    
+</nav>
+
+
+    <main>
+      <article>
+        
+
+<header>
+  
+  <img src="/blog/backup-and-restore-gpg-key/thumbnail.webp" alt="Backup and Restore GPG Key" width="800" height="600" class="thumbnail" />
+  
+
+  <hgroup>
+    <h1>Backup and Restore GPG Key</h1>
+
+    <div>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z"/></svg>
+        <p>May 30, 2023</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/></svg>
+        <p>4 minutes</p>
+      </div>
+
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16"><path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/></svg>
+        <p>781 words</p>
+      </div>
+
+    
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/><path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"/></svg>
+      
+      <a href="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/">العربية</a>
+      
+    </div>
+    
+
+    </div>
+  </hgroup>
+</header>
+
+<h2 id="electronic-backups">Electronic Backups</h2>
+<h3 id="backup">Backup</h3>
+<ol>
+<li>Determine which key to backup.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
+</span></span><span style="display:flex;"><span>------------------------------------------
+</span></span><span style="display:flex;"><span>sec   rsa4096/BEBBEF4199FAB17B 2023-05-30 [SC]
+</span></span><span style="display:flex;"><span>      6BAD6CE934F697FD957D66ECBEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>uid                 [ultimate] test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>ssb   rsa4096/573DFC84D89031BF 2023-05-30 [E]
+</span></span></code></pre></div><ol start="2">
+<li>Export the private GPG key.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg -o private.gpg --export-options backup --export-secret-keys test.key@example.com
+</span></span></code></pre></div><p>this command will export the key to the file <code>private.gpg</code>. The export option <code>backup</code> exports all necessary data for GnuPG to restore the key.</p>
+<ol start="4">
+<li>place this backup somewhere safe. Ideally, store it offline.</li>
+</ol>
+<h3 id="restore">Restore</h3>
+<ol>
+<li>Import the private key.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --import-options restore --import private.gpg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gpg: key BEBBEF4199FAB17B: public key &#34;test key &lt;test.key@example.com&gt;&#34; imported
+</span></span><span style="display:flex;"><span>gpg: key BEBBEF4199FAB17B: secret key imported
+</span></span><span style="display:flex;"><span>gpg: Total number processed: 1
+</span></span><span style="display:flex;"><span>gpg:               imported: 1
+</span></span><span style="display:flex;"><span>gpg:       secret keys read: 1
+</span></span><span style="display:flex;"><span>gpg:   secret keys imported: 1
+</span></span></code></pre></div><p>this command will restore the key from the file <code>private.gpg</code>. The import option <code>restore</code> imports all necessary data for GnuPG to fully restore the key.</p>
+<ol start="2">
+<li>Edit the imported key</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
+</span></span><span style="display:flex;"><span>This is free software: you are free to change and redistribute it.
+</span></span><span style="display:flex;"><span>There is NO WARRANTY, to the extent permitted by law.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Secret key is available.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="3">
+<li>Type <code>trust</code> to modify the trust value of the key.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="4">
+<li>Type <code>5</code> to trust your keys completely.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
+</span></span><span style="display:flex;"><span>(by looking at passports, checking fingerprints from different sources, etc.)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  1 = I don&#39;t know or won&#39;t say
+</span></span><span style="display:flex;"><span>  2 = I do NOT trust
+</span></span><span style="display:flex;"><span>  3 = I trust marginally
+</span></span><span style="display:flex;"><span>  4 = I trust fully
+</span></span><span style="display:flex;"><span>  5 = I trust ultimately
+</span></span><span style="display:flex;"><span>  m = back to the main menu
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your decision? 5
+</span></span></code></pre></div><ol start="5">
+<li>Type <code>y</code> to confim</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: ultimate      validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>Please note that the shown key validity is not necessarily correct
+</span></span><span style="display:flex;"><span>unless you restart the program.
+</span></span></code></pre></div><ol start="6">
+<li>save</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
+</span></span></code></pre></div><h2 id="paper-backups">Paper Backups</h2>
+<h3 id="backup-1">Backup</h3>
+<ol>
+<li>Determine which key to backup.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
+</span></span><span style="display:flex;"><span>------------------------------------------
+</span></span><span style="display:flex;"><span>sec   rsa4096/BEBBEF4199FAB17B 2023-05-30 [SC]
+</span></span><span style="display:flex;"><span>      6BAD6CE934F697FD957D66ECBEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>uid                 [ultimate] test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>ssb   rsa4096/573DFC84D89031BF 2023-05-30 [E]
+</span></span></code></pre></div><ol start="2">
+<li>Export the private GPG key.</li>
+</ol>
+<p>Install <code>paperkey</code></p>
+<p><strong>Warning</strong>: You need to have the public key available when restoring the paperkey backup, Since it is safe to have your public key available publicly, consider uploading it to a keyserver.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --export-secret-key test.key@example.com | paperkey --output private.asc
+</span></span></code></pre></div><p>this command will output the secret key to the file <code>private.asc</code></p>
+<h3 id="restore-1">Restore</h3>
+<ol>
+<li>Import the private key.</li>
+</ol>
+<p>To restore the secret key you need to have a file with the paperkey data and the public key. Then run the following command to import the private key.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ paperkey --pubring public-key.gpg --secrets private.asc | gpg --import
+</span></span></code></pre></div><p>If you receive the error <code>unable to parse OpenPGP packets (is this armored data?)</code> while restoring your key, you need to dearmor your public key first:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --dearmor public-key.asc
+</span></span></code></pre></div><ol start="2">
+<li>Edit the imported key</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
+</span></span><span style="display:flex;"><span>This is free software: you are free to change and redistribute it.
+</span></span><span style="display:flex;"><span>There is NO WARRANTY, to the extent permitted by law.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Secret key is available.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="3">
+<li>Type <code>trust</code> to modify the trust value of the key.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="4">
+<li>Type <code>5</code> to trust your keys completely.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
+</span></span><span style="display:flex;"><span>(by looking at passports, checking fingerprints from different sources, etc.)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  1 = I don&#39;t know or won&#39;t say
+</span></span><span style="display:flex;"><span>  2 = I do NOT trust
+</span></span><span style="display:flex;"><span>  3 = I trust marginally
+</span></span><span style="display:flex;"><span>  4 = I trust fully
+</span></span><span style="display:flex;"><span>  5 = I trust ultimately
+</span></span><span style="display:flex;"><span>  m = back to the main menu
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your decision? 5
+</span></span></code></pre></div><ol start="5">
+<li>Type <code>y</code> to confim</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: ultimate      validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>Please note that the shown key validity is not necessarily correct
+</span></span><span style="display:flex;"><span>unless you restart the program.
+</span></span></code></pre></div><ol start="6">
+<li>save</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
+</span></span></code></pre></div>
+
+
+
+
+<div style="margin-top: 3rem;">
+  
+  <a role="button" href="https://nakibrayan2.codeberg.page/tags/gpg/" style="margin: 0.3rem auto;">#gpg</a>
+  
+  <a role="button" href="https://nakibrayan2.codeberg.page/tags/encryption/" style="margin: 0.3rem auto;">#encryption</a>
+  
+  <a role="button" href="https://nakibrayan2.codeberg.page/tags/tutorial/" style="margin: 0.3rem auto;">#tutorial</a>
+  
+</div>
+
+
+
+
+
+<div class="giscus" style="margin-top: 3rem;"></div>
+
+
+
+
+
+        <footer>
+  <div>
+    <p>Rayan Nakib</p>
+
+    <ul>
+    
+
+      
+
+      
+      <li>
+        <a href="https://codeberg.org/nakibrayan2" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Codeberg</title><path d="M11.955.49A12 12 0 0 0 0 12.49a12 12 0 0 0 1.832 6.373L11.838 5.928a.187.14 0 0 1 .324 0l10.006 12.935A12 12 0 0 0 24 12.49a12 12 0 0 0-12-12 12 12 0 0 0-.045 0zm.375 6.467l4.416 16.553a12 12 0 0 0 5.137-4.213z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+    
+
+      
+      <li>
+        <a href="https://mastodon.social/@nakibrayan" target="_blank" rel="me noopener" aria-label="Mastodon">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Mastodon</title><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/></svg>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+    
+
+      
+
+      
+
+      
+      <li>
+        <a href="https://instagram.com/nakibrayan2" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+        </a>
+      </li>
+      
+
+      
+    
+
+      
+
+      
+
+      
+
+      
+      <li>
+        <a href="/index.xml" rel="noopener" aria-label="rss feed">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>RSS</title><path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z"/></svg>
+        </a>
+      </li>
+      
+    
+    </ul>
+  </div>
+</footer>
+
+      </article>
+
+      
+<script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+  }
+</script>
+
+
+
+<script>
+  
+
+
+  const themeSwitcher = {
+    
+    _scheme: "auto",
+    menuTarget: "details[role='list']",
+    buttonsTarget: "a[data-theme-switcher]",
+    buttonAttribute: "data-theme-switcher",
+    rootAttribute: "data-theme",
+    localStorageKey: "picoPreferredColorScheme",
+
+    
+    init() {
+      this.scheme = this.schemeFromLocalStorage;
+      this.initSwitchers();
+    },
+
+    
+    get schemeFromLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        if (window.localStorage.getItem(this.localStorageKey) !== null) {
+          return window.localStorage.getItem(this.localStorageKey);
+        }
+      }
+      return this._scheme;
+    },
+
+    
+    get preferredColorScheme() {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    },
+
+    
+    initSwitchers() {
+      const buttons = document.querySelectorAll(this.buttonsTarget);
+      buttons.forEach((button) => {
+        button.addEventListener(
+          "click",
+          (event) => {
+            event.preventDefault();
+            
+            this.scheme = button.getAttribute(this.buttonAttribute);
+            
+            document.querySelector(this.menuTarget).removeAttribute("open");
+          },
+          false
+        );
+      });
+    },
+
+    
+    set scheme(scheme) {
+      if (scheme == "auto") {
+        this.preferredColorScheme == "dark"
+          ? (this._scheme = "dark")
+          : (this._scheme = "light");
+      } else if (scheme == "dark" || scheme == "light") {
+        this._scheme = scheme;
+      }
+      this.applyScheme();
+      this.schemeToLocalStorage();
+    },
+
+    
+    get scheme() {
+      return this._scheme;
+    },
+
+    
+    applyScheme() {
+      document
+        .querySelector("html")
+        .setAttribute(this.rootAttribute, this.scheme);
+    },
+
+    
+    schemeToLocalStorage() {
+      if (typeof window.localStorage !== "undefined") {
+        window.localStorage.setItem(this.localStorageKey, this.scheme);
+      }
+    },
+  };
+
+  
+  themeSwitcher.init();
+</script>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="nakibrayan3/website"
+        data-repo-id="R_kgDOJnxOEA"
+        data-category="Website Comments"
+        data-category-id="DIC_kwDOJnxOEM4CWwOQ"
+        data-mapping="pathname"
+        data-strict="1"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+
+    </main>
+
+  </body>
+</html>

@@ -5,7 +5,18 @@
     <link>https://nakibrayan2.codeberg.page/blog/</link>
     <description>Recent content in Blogs on Rayan Nakib</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 25 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://nakibrayan2.codeberg.page/blog/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 30 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://nakibrayan2.codeberg.page/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backup and Restore GPG Key</title>
+      <link>https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/</link>
+      <pubDate>Tue, 30 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/</guid>
+      <description>Electronic Backups Backup Determine which key to backup. $ gpg --list-secret-keys --keyid-format LONG /home/rayan/.local/share/gnupg/pubring.kbx ------------------------------------------ sec rsa4096/BEBBEF4199FAB17B 2023-05-30 [SC] 6BAD6CE934F697FD957D66ECBEBBEF4199FAB17B uid [ultimate] test key &amp;lt;test.key@example.com&amp;gt; ssb rsa4096/573DFC84D89031BF 2023-05-30 [E] Export the private GPG key. $ gpg -o private.gpg --export-options backup --export-secret-keys test.key@example.com this command will export the key to the file private.gpg. The export option backup exports all necessary data for GnuPG to restore the key.
+place this backup somewhere safe.</description>
+    </item>
+    
     <item>
       <title>Archlinux Post Install Guide</title>
       <link>https://nakibrayan2.codeberg.page/blog/archlinux-post-install/</link>

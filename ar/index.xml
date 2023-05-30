@@ -15,6 +15,194 @@
 
     
       <item>
+        <title>عمل نسخ إحتياطية لمفاتيح GPG</title>
+        <pubDate>2023-05-30 00:00:00 &#43;0000 UTC</pubDate>
+        <link>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</link>
+        <guid>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</guid>
+        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/thumbnail.ar.webp" alt="عمل نسخ إحتياطية لمفاتيح GPG"/> <h2 id="عمل-نسخة-إحتياطية-إلكترونية">عمل نسخة إحتياطية إلكترونية</h2>
+<h3 id="عمل-النسخة-الإحتياطية">عمل النسخة الإحتياطية</h3>
+<ol>
+<li>تحديد مفتاح gpg المراد عمل نسخة إحتياطية عليه.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
+</span></span><span style="display:flex;"><span>------------------------------------------
+</span></span><span style="display:flex;"><span>sec   rsa4096/BEBBEF4199FAB17B 2023-05-30 [SC]
+</span></span><span style="display:flex;"><span>      6BAD6CE934F697FD957D66ECBEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>uid                 [ultimate] test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>ssb   rsa4096/573DFC84D89031BF 2023-05-30 [E]
+</span></span></code></pre></div><ol start="2">
+<li>عمل نسخة إحتياطية على مفتاح ال GPG الخاص.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg -o private.gpg --export-options backup --export-secret-keys test.key@example.com
+</span></span></code></pre></div><p>سيقوم هذا الأمر بإستخراج مفتاح ال GPG إلى الملف <code>private.gpg</code> ، و يقوم خيار <code>backup</code> بإستخراج جميع البيانات الضرورية لإستعادة مفتاح ال GnuPG.</p>
+<ol start="4">
+<li>يفضل وضع هذه النسخة الاحتياطية في مكان آمن ، مثل وضعه في تخزين غير متصل بالشبكة.</li>
+</ol>
+<h3 id="إستعادة-مفتاح-ال-gpg-من-النسخة-الإحتياطية">إستعادة مفتاح ال GPG من النسخة الإحتياطية</h3>
+<ol>
+<li>إستيراد المفتاح الخاص.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --import-options restore --import private.gpg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gpg: key BEBBEF4199FAB17B: public key &#34;test key &lt;test.key@example.com&gt;&#34; imported
+</span></span><span style="display:flex;"><span>gpg: key BEBBEF4199FAB17B: secret key imported
+</span></span><span style="display:flex;"><span>gpg: Total number processed: 1
+</span></span><span style="display:flex;"><span>gpg:               imported: 1
+</span></span><span style="display:flex;"><span>gpg:       secret keys read: 1
+</span></span><span style="display:flex;"><span>gpg:   secret keys imported: 1
+</span></span></code></pre></div><p>سيقوم هذا الأمر باستعادة المفتاح من الملف <code>private.gpg</code> ، ويقوم خيار <code>restore</code> باستيراد جميع البيانات الضرورية لل GnuPG.</p>
+<ol start="2">
+<li>تعديل الملف الذي تم إستراده</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
+</span></span><span style="display:flex;"><span>This is free software: you are free to change and redistribute it.
+</span></span><span style="display:flex;"><span>There is NO WARRANTY, to the extent permitted by law.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Secret key is available.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="3">
+<li>أكبر <code>trust</code> لتعديل قيمة الثقة الخاصة بالمفتاح.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="4">
+<li>أكتب <code>5</code> لعمل ثقة كاملة بمفتاح ال GPG.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
+</span></span><span style="display:flex;"><span>(by looking at passports, checking fingerprints from different sources, etc.)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  1 = I don&#39;t know or won&#39;t say
+</span></span><span style="display:flex;"><span>  2 = I do NOT trust
+</span></span><span style="display:flex;"><span>  3 = I trust marginally
+</span></span><span style="display:flex;"><span>  4 = I trust fully
+</span></span><span style="display:flex;"><span>  5 = I trust ultimately
+</span></span><span style="display:flex;"><span>  m = back to the main menu
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your decision? 5
+</span></span></code></pre></div><ol start="5">
+<li>أكتب <code>y</code> لتأكيد الخيارات</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: ultimate      validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>Please note that the shown key validity is not necessarily correct
+</span></span><span style="display:flex;"><span>unless you restart the program.
+</span></span></code></pre></div><ol start="6">
+<li>حفض التغيريات</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
+</span></span></code></pre></div><h2 id="عمل-نسخة-إحتياطية-ورقية">عمل نسخة إحتياطية ورقية</h2>
+<h3 id="backup">Backup</h3>
+<ol>
+<li>تحديد مفتاح gpg المراد عمل نسخة إحتياطية عليه.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
+</span></span><span style="display:flex;"><span>------------------------------------------
+</span></span><span style="display:flex;"><span>sec   rsa4096/BEBBEF4199FAB17B 2023-05-30 [SC]
+</span></span><span style="display:flex;"><span>      6BAD6CE934F697FD957D66ECBEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>uid                 [ultimate] test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>ssb   rsa4096/573DFC84D89031BF 2023-05-30 [E]
+</span></span></code></pre></div><ol start="2">
+<li>عمل نسخة إحتياطية على مفتاح ال GPG الخاص.</li>
+</ol>
+<p>يجب تحميل برنامج <code>paperkey</code></p>
+<p><strong>تحذير</strong>: يجب أن يكون لديك المفتاح العام (public key) متاحًا عند استعادة النسخة الاحتياطية الورقية ، نظرًا لأنه من الآمن إتاحة مفتاحك العام للعلن ، ففكر في تحميله على خادم مفاتيح.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --export-secret-key test.key@example.com | paperkey --output private.asc
+</span></span></code></pre></div><p>سيقوم هذا الأمر بإستخراج المفتاح الخاص لل GPG إلى الملف <code>private.asc</code></p>
+<h3 id="إستعادة-مفتاح-ال-gpg-من-النسخة-الإحتياطية-1">إستعادة مفتاح ال GPG من النسخة الإحتياطية</h3>
+<ol>
+<li>إستيراد المفتاح الخاص.</li>
+</ol>
+<p>لاستعادة المفتاح السري ، يجب أن يكون لديك ملف ببيانات النسخة الإحتياطية الورقية والمفتاح العام. ثم قم بتشغيل الأمر التالي لاستيراد المفتاح الخاص.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ paperkey --pubring public-key.gpg --secrets private.asc | gpg --import
+</span></span></code></pre></div><p>إذا تحصلت على الخطأ <code>unable to parse OpenPGP packets (is this armored data?)</code> عند محاولة إستعادة المفتاح الخاص ، يجب أن تغير صيفة المفتاح العام إلى صيقة <code>dearmor</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --dearmor public-key.asc
+</span></span></code></pre></div><ol start="2">
+<li>تعديل الملف الذي تم إستراده</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
+</span></span><span style="display:flex;"><span>This is free software: you are free to change and redistribute it.
+</span></span><span style="display:flex;"><span>There is NO WARRANTY, to the extent permitted by law.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Secret key is available.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="3">
+<li>أكبر <code>trust</code> لتعديل قيمة الثقة الخاصة بالمفتاح.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span></code></pre></div><ol start="4">
+<li>أكتب <code>5</code> لعمل ثقة كاملة بمفتاح ال GPG.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
+</span></span><span style="display:flex;"><span>(by looking at passports, checking fingerprints from different sources, etc.)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  1 = I don&#39;t know or won&#39;t say
+</span></span><span style="display:flex;"><span>  2 = I do NOT trust
+</span></span><span style="display:flex;"><span>  3 = I trust marginally
+</span></span><span style="display:flex;"><span>  4 = I trust fully
+</span></span><span style="display:flex;"><span>  5 = I trust ultimately
+</span></span><span style="display:flex;"><span>  m = back to the main menu
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Your decision? 5
+</span></span></code></pre></div><ol start="5">
+<li>أكتب <code>y</code> لتأكيد الخيارات</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
+</span></span><span style="display:flex;"><span>     trust: ultimate      validity: unknown
+</span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
+</span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
+</span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
+</span></span><span style="display:flex;"><span>Please note that the shown key validity is not necessarily correct
+</span></span><span style="display:flex;"><span>unless you restart the program.
+</span></span></code></pre></div><ol start="6">
+<li>حفض التغيريات</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
+</span></span></code></pre></div>]]></description>
+      </item>
+    
+      <item>
         <title>دليل ما بعد التثبيت Arch Linux</title>
         <pubDate>2023-05-25 00:00:00 &#43;0000 UTC</pubDate>
         <link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</link>
