@@ -1,32 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>أرش لينكس on ريان نقيب</title>
-    <link>https://nakibrayan2.codeberg.page/ar/tags/%D8%A3%D8%B1%D8%B4-%D9%84%D9%8A%D9%86%D9%83%D8%B3/</link>
-    <description>Recent content in أرش لينكس on ريان نقيب</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>ar</language>
-    <lastBuildDate>Thu, 25 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://nakibrayan2.codeberg.page/ar/tags/%D8%A3%D8%B1%D8%B4-%D9%84%D9%8A%D9%86%D9%83%D8%B3/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>دليل ما بعد التثبيت Arch Linux</title>
-      <link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</link>
-      <pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</guid>
-      <description>1. تثبيت برامج التشغيل (Driver) 1.1 شبكة / لاسلكي تحقق من حالة برامج التشغيل للتحقق مما إذا كان قد تم تحميل برنامج التشغيل الخاص ببطاقتك ، تحقق من إخراج الأمر lspci -k أو lsusb -v ، اعتمادًا على ما إذا كانت البطاقة متصلة عن طريق PCI (e) أو USB. يجب أن ترى أن بعض برامج تشغيل النوات (kernel) قيد الاستخدام ، على سبيل المثال:
-$ lspci -k 06:00.0 Network controller: Intel Corporation WiFi Link 5100 Subsystem: Intel Corporation WiFi Link 5100 AGN Kernel driver in use: iwlwifi Kernel modules: iwlwifi ** ملاحظة **: إذا كانت البطاقة عبارة عن جهاز USB ، فقم بتشغيل dmesg | grep usbcore كمستخدم root ، يجب أن يكون إخراج الأمر شيئًا مثل usbcore: برنامج تشغيل واجهة جديد مسجل rtl8187.</description>
-    </item>
-    
-    <item>
-      <title>دليل تثبيت ArchLinux مع تشفير كامل للقرص</title>
-      <link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</link>
-      <pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</guid>
-      <description>1. قبل بدأ التثبيت 1.1 تنزيل ملف ال ISO الخاص ب Arch Linux قم بزيارة صفحة التنزيل و أحصل على ملف ال ISO و توقيع ال GnuPG الخاص بملف ال ISO.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>أرش لينكس on ريان نقيب</title><link>https://nakibrayan2.codeberg.page/ar/tags/%D8%A3%D8%B1%D8%B4-%D9%84%D9%8A%D9%86%D9%83%D8%B3/</link><description>Recent content in أرش لينكس on ريان نقيب</description><generator>Hugo -- gohugo.io</generator><language>ar</language><lastBuildDate>Thu, 25 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://nakibrayan2.codeberg.page/ar/tags/%D8%A3%D8%B1%D8%B4-%D9%84%D9%8A%D9%86%D9%83%D8%B3/index.xml" rel="self" type="application/rss+xml"/><item><title>دليل ما بعد التثبيت Arch Linux</title><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</link><pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</guid><description>1. تثبيت برامج التشغيل (Driver) 1.1 شبكة / لاسلكي تحقق من حالة برامج التشغيل للتحقق مما إذا كان قد تم تحميل برنامج التشغيل الخاص ببطاقتك ، تحقق من إخراج الأمر lspci -k أو lsusb -v ، اعتمادًا على ما إذا كانت البطاقة متصلة عن طريق PCI (e) أو USB. يجب أن ترى أن بعض برامج تشغيل النوات (kernel) قيد الاستخدام ، على سبيل المثال:
+$ lspci -k 06:00.0 Network controller: Intel Corporation WiFi Link 5100 Subsystem: Intel Corporation WiFi Link 5100 AGN Kernel driver in use: iwlwifi Kernel modules: iwlwifi ** ملاحظة **: إذا كانت البطاقة عبارة عن جهاز USB ، فقم بتشغيل dmesg | grep usbcore كمستخدم root ، يجب أن يكون إخراج الأمر شيئًا مثل usbcore: برنامج تشغيل واجهة جديد مسجل rtl8187.</description></item><item><title>دليل تثبيت ArchLinux مع تشفير كامل للقرص</title><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</link><pubDate>Fri, 19 May 2023 00:00:00 +0000</pubDate><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</guid><description>1. قبل بدأ التثبيت 1.1 تنزيل ملف ال ISO الخاص ب Arch Linux قم بزيارة صفحة التنزيل و أحصل على ملف ال ISO و توقيع ال GnuPG الخاص بملف ال ISO.
 2.1 التحقق من توقيع ال GnuPG يوصى التحقق من توقيع ملف ال ISO خاصة عند التنزيل من مرايا HTTP.
-في نظام مثبت فيه GnuPG يمكن التحقق من توقيع ملف ال ISO عن طريق تنزيل ملف توقيع GnuPG الخاص بملف ال ISO ضمن قسم Checksums في صفحة تنزيل Arch Linux ثم التحقق منه بإستخدام:</description>
-    </item>
-    
-  </channel>
-</rss>
+في نظام مثبت فيه GnuPG يمكن التحقق من توقيع ملف ال ISO عن طريق تنزيل ملف توقيع GnuPG الخاص بملف ال ISO ضمن قسم Checksums في صفحة تنزيل Arch Linux ثم التحقق منه بإستخدام:</description></item></channel></rss>

@@ -1,32 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
-  <channel>
-    <title>ريان نقيب</title>
-    <link>https://nakibrayan2.codeberg.page</link>
-    <description></description>
-    <language>ar</language>
-    <image>
-      <title>ريان نقيب</title>
-      <link>https://nakibrayan2.codeberg.page</link>
-      <url>https://nakibrayan2.codeberg.page/icons/picture.avif</url>
-      <width>546</width>
-      <height>546</height>
-    </image>
-
-    
-      <item>
-        <title>عمل نسخ إحتياطية لمفاتيح GPG</title>
-        <pubDate>2023-05-30 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</link>
-        <guid>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</guid>
-        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/thumbnail.ar.webp" alt="عمل نسخ إحتياطية لمفاتيح GPG"/> <h2 id="عمل-نسخة-إحتياطية-إلكترونية">عمل نسخة إحتياطية إلكترونية</h2>
-<h3 id="عمل-النسخة-الإحتياطية">عمل النسخة الإحتياطية</h3>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><description/><language>ar</language><image><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><url>https://nakibrayan2.codeberg.page/icons/picture.avif</url><width>546</width><height>546</height></image><item><title>عمل نسخة إحتياطية لمفتاح GPG</title><pubDate>2023-05-30 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/thumbnail.ar.webp" alt="عمل نسخة إحتياطية لمفتاح GPG"/> <h2 id="1-عمل-نسخة-إحتياطية-إلكترونية">1. عمل نسخة إحتياطية إلكترونية</h2>
+<h3 id="11-عمل-النسخة-الإحتياطية">1.1 عمل النسخة الإحتياطية</h3>
 <ol>
 <li>تحديد مفتاح gpg المراد عمل نسخة إحتياطية عليه.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
 </span></span><span style="display:flex;"><span>------------------------------------------
 </span></span><span style="display:flex;"><span>sec   rsa4096/BEBBEF4199FAB17B 2023-05-30 [SC]
 </span></span><span style="display:flex;"><span>      6BAD6CE934F697FD957D66ECBEBBEF4199FAB17B
@@ -35,18 +13,17 @@
 </span></span></code></pre></div><ol start="2">
 <li>عمل نسخة إحتياطية على مفتاح ال GPG الخاص.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg -o private.gpg --export-options backup --export-secret-keys test.key@example.com
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg -o private.gpg --export-options backup --export-secret-keys test.key@example.com
 </span></span></code></pre></div><p>سيقوم هذا الأمر بإستخراج مفتاح ال GPG إلى الملف <code>private.gpg</code> ، و يقوم خيار <code>backup</code> بإستخراج جميع البيانات الضرورية لإستعادة مفتاح ال GnuPG.</p>
-<ol start="4">
+<ol start="3">
 <li>يفضل وضع هذه النسخة الاحتياطية في مكان آمن ، مثل وضعه في تخزين غير متصل بالشبكة.</li>
 </ol>
-<h3 id="إستعادة-مفتاح-ال-gpg-من-النسخة-الإحتياطية">إستعادة مفتاح ال GPG من النسخة الإحتياطية</h3>
+<h3 id="21-إستعادة-مفتاح-ال-gpg-من-النسخة-الإحتياطية">2.1 إستعادة مفتاح ال GPG من النسخة الإحتياطية</h3>
 <ol>
 <li>إستيراد المفتاح الخاص.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --import-options restore --import private.gpg
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gpg: key BEBBEF4199FAB17B: public key &#34;test key &lt;test.key@example.com&gt;&#34; imported
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --import-options restore --import private.gpg
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg: key BEBBEF4199FAB17B: public key &#34;test key &lt;test.key@example.com&gt;&#34; imported
 </span></span><span style="display:flex;"><span>gpg: key BEBBEF4199FAB17B: secret key imported
 </span></span><span style="display:flex;"><span>gpg: Total number processed: 1
 </span></span><span style="display:flex;"><span>gpg:               imported: 1
@@ -56,9 +33,8 @@
 <ol start="2">
 <li>تعديل الملف الذي تم إستراده</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
 </span></span><span style="display:flex;"><span>This is free software: you are free to change and redistribute it.
 </span></span><span style="display:flex;"><span>There is NO WARRANTY, to the extent permitted by law.
 </span></span><span style="display:flex;"><span>
@@ -71,11 +47,10 @@
 </span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
 </span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
 </span></span></code></pre></div><ol start="3">
-<li>أكبر <code>trust</code> لتعديل قيمة الثقة الخاصة بالمفتاح.</li>
+<li>أكتب <code>trust</code> لتعديل قيمة الثقة الخاصة بالمفتاح.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
 </span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
 </span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
 </span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
@@ -84,7 +59,7 @@
 </span></span></code></pre></div><ol start="4">
 <li>أكتب <code>5</code> لعمل ثقة كاملة بمفتاح ال GPG.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
 </span></span><span style="display:flex;"><span>(by looking at passports, checking fingerprints from different sources, etc.)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  1 = I don&#39;t know or won&#39;t say
@@ -98,9 +73,8 @@
 </span></span></code></pre></div><ol start="5">
 <li>أكتب <code>y</code> لتأكيد الخيارات</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
 </span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
 </span></span><span style="display:flex;"><span>     trust: ultimate      validity: unknown
 </span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
@@ -111,15 +85,14 @@
 </span></span></code></pre></div><ol start="6">
 <li>حفض التغيريات</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
-</span></span></code></pre></div><h2 id="عمل-نسخة-إحتياطية-ورقية">عمل نسخة إحتياطية ورقية</h2>
-<h3 id="backup">Backup</h3>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
+</span></span></code></pre></div><h2 id="2-عمل-نسخة-إحتياطية-ورقية">2. عمل نسخة إحتياطية ورقية</h2>
+<h3 id="12-عمل-النسخة-الإحتياطية">1.2 عمل النسخة الإحتياطية</h3>
 <ol>
 <li>تحديد مفتاح gpg المراد عمل نسخة إحتياطية عليه.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --list-secret-keys --keyid-format LONG
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>/home/rayan/.local/share/gnupg/pubring.kbx
 </span></span><span style="display:flex;"><span>------------------------------------------
 </span></span><span style="display:flex;"><span>sec   rsa4096/BEBBEF4199FAB17B 2023-05-30 [SC]
 </span></span><span style="display:flex;"><span>      6BAD6CE934F697FD957D66ECBEBBEF4199FAB17B
@@ -129,23 +102,25 @@
 <li>عمل نسخة إحتياطية على مفتاح ال GPG الخاص.</li>
 </ol>
 <p>يجب تحميل برنامج <code>paperkey</code></p>
-<p><strong>تحذير</strong>: يجب أن يكون لديك المفتاح العام (public key) متاحًا عند استعادة النسخة الاحتياطية الورقية ، نظرًا لأنه من الآمن إتاحة مفتاحك العام للعلن ، ففكر في تحميله على خادم مفاتيح.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --export-secret-key test.key@example.com | paperkey --output private.asc
+<p><strong>تحذير</strong>: يجب أن يكون لديك المفتاح العام (public key) متاحًا عند استعادة النسخة الاحتياطية الورقية ، نظرًا لأنه من الآمن إتاحة مفتاحك العام للعلن ، ففكر في تحميله على خادم مفاتيح (keyserver).</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --export-secret-key test.key@example.com | paperkey --output private.asc
 </span></span></code></pre></div><p>سيقوم هذا الأمر بإستخراج المفتاح الخاص لل GPG إلى الملف <code>private.asc</code></p>
-<h3 id="إستعادة-مفتاح-ال-gpg-من-النسخة-الإحتياطية-1">إستعادة مفتاح ال GPG من النسخة الإحتياطية</h3>
+<ol start="3">
+<li>يفضل وضع هذه النسخة الاحتياطية في مكان آمن ، مثل وضعه في تخزين غير متصل بالشبكة.</li>
+</ol>
+<h3 id="22-إستعادة-مفتاح-ال-gpg-من-النسخة-الإحتياطية">2.2 إستعادة مفتاح ال GPG من النسخة الإحتياطية</h3>
 <ol>
 <li>إستيراد المفتاح الخاص.</li>
 </ol>
 <p>لاستعادة المفتاح السري ، يجب أن يكون لديك ملف ببيانات النسخة الإحتياطية الورقية والمفتاح العام. ثم قم بتشغيل الأمر التالي لاستيراد المفتاح الخاص.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ paperkey --pubring public-key.gpg --secrets private.asc | gpg --import
-</span></span></code></pre></div><p>إذا تحصلت على الخطأ <code>unable to parse OpenPGP packets (is this armored data?)</code> عند محاولة إستعادة المفتاح الخاص ، يجب أن تغير صيفة المفتاح العام إلى صيقة <code>dearmor</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --dearmor public-key.asc
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ paperkey --pubring public-key.gpg --secrets private.asc | gpg --import
+</span></span></code></pre></div><p>إذا تحصلت على الخطأ <code>unable to parse OpenPGP packets (is this armored data?)</code> عند محاولة إستعادة المفتاح ، يجب أن تغير صيفة المفتاح العام إلى صيقة <code>dearmor</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --dearmor public-key.asc
 </span></span></code></pre></div><ol start="2">
 <li>تعديل الملف الذي تم إستراده</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ gpg --edit-key test.key@example.com
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg (GnuPG) 2.2.41; Copyright (C) 2022 g10 Code GmbH
 </span></span><span style="display:flex;"><span>This is free software: you are free to change and redistribute it.
 </span></span><span style="display:flex;"><span>There is NO WARRANTY, to the extent permitted by law.
 </span></span><span style="display:flex;"><span>
@@ -158,11 +133,10 @@
 </span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: E
 </span></span><span style="display:flex;"><span>[ unknown] (1). test key &lt;test.key@example.com&gt;
 </span></span></code></pre></div><ol start="3">
-<li>أكبر <code>trust</code> لتعديل قيمة الثقة الخاصة بالمفتاح.</li>
+<li>أكتب <code>trust</code> لتعديل قيمة الثقة الخاصة بالمفتاح.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; trust
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
 </span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
 </span></span><span style="display:flex;"><span>     trust: unknown       validity: unknown
 </span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
@@ -171,7 +145,7 @@
 </span></span></code></pre></div><ol start="4">
 <li>أكتب <code>5</code> لعمل ثقة كاملة بمفتاح ال GPG.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Please decide how far you trust this user to correctly verify other users&#39; keys
 </span></span><span style="display:flex;"><span>(by looking at passports, checking fingerprints from different sources, etc.)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  1 = I don&#39;t know or won&#39;t say
@@ -185,9 +159,8 @@
 </span></span></code></pre></div><ol start="5">
 <li>أكتب <code>y</code> لتأكيد الخيارات</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Do you really want to set this key to ultimate trust? (y/N) y
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>sec  rsa4096/BEBBEF4199FAB17B
 </span></span><span style="display:flex;"><span>     created: 2023-05-30  expires: never       usage: SC
 </span></span><span style="display:flex;"><span>     trust: ultimate      validity: unknown
 </span></span><span style="display:flex;"><span>ssb  rsa4096/573DFC84D89031BF
@@ -198,16 +171,8 @@
 </span></span></code></pre></div><ol start="6">
 <li>حفض التغيريات</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
-</span></span></code></pre></div>]]></description>
-      </item>
-    
-      <item>
-        <title>دليل ما بعد التثبيت Arch Linux</title>
-        <pubDate>2023-05-25 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</link>
-        <guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</guid>
-        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/thumbnail.ar.webp" alt="دليل ما بعد التثبيت Arch Linux"/> <h2 id="1-تثبيت-برامج-التشغيل-driver">1. تثبيت برامج التشغيل (Driver)</h2>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
+</span></span></code></pre></div>]]></description></item><item><title>دليل ما بعد التثبيت Arch Linux</title><pubDate>2023-05-25 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/thumbnail.ar.webp" alt="دليل ما بعد التثبيت Arch Linux"/> <h2 id="1-تثبيت-برامج-التشغيل-driver">1. تثبيت برامج التشغيل (Driver)</h2>
 <h3 id="11-شبكة--لاسلكي">1.1 شبكة / لاسلكي</h3>
 <ol>
 <li>تحقق من حالة برامج التشغيل</li>
@@ -377,15 +342,7 @@
 </code></pre><h2 id="5-تثبيت-وتهيئة-ntp">5. تثبيت وتهيئة ntp</h2>
 <pre tabindex="0"><code>$ sudo pacman -S ntp
 </code></pre><pre tabindex="0"><code>$ timedatectl set-ntp true
-</code></pre>]]></description>
-      </item>
-    
-      <item>
-        <title>دليل تثبيت ArchLinux مع تشفير كامل للقرص</title>
-        <pubDate>2023-05-19 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</link>
-        <guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</guid>
-        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/thumbnail.ar.webp" alt="دليل تثبيت ArchLinux مع تشفير كامل للقرص"/> <h2 id="1-قبل-بدأ-التثبيت">1. قبل بدأ التثبيت</h2>
+</code></pre>]]></description></item><item><title>دليل تثبيت ArchLinux مع تشفير كامل للقرص</title><pubDate>2023-05-19 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/thumbnail.ar.webp" alt="دليل تثبيت ArchLinux مع تشفير كامل للقرص"/> <h2 id="1-قبل-بدأ-التثبيت">1. قبل بدأ التثبيت</h2>
 <h3 id="11-تنزيل-ملف-ال-iso-الخاص-ب-arch-linux">1.1 تنزيل ملف ال ISO الخاص ب Arch Linux</h3>
 <p>قم بزيارة صفحة <a href="https://archlinux.org/download/">التنزيل</a> و أحصل على ملف ال ISO و توقيع ال GnuPG الخاص بملف ال ISO.</p>
 <h3 id="21-التحقق-من-توقيع-ال-gnupg">2.1 التحقق من توقيع ال GnuPG</h3>
@@ -674,15 +631,7 @@ Enter passphrase for /dev/sda2:
 <pre tabindex="0"><code>exit
 </code></pre><pre tabindex="0"><code>reboot
 </code></pre><p>لا تنسي إعادة تعين قرص التشغيل الى القرص المحمل فيه ArchLinux.</p>
-]]></description>
-      </item>
-    
-      <item>
-        <title>مقالة تجريبية</title>
-        <pubDate>2023-05-18 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan2.codeberg.page/ar/blog/test-article/</link>
-        <guid>https://nakibrayan2.codeberg.page/ar/blog/test-article/</guid>
-        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/test-article/thumbnail.ar.webp" alt="مقالة تجريبية"/> <h2 id="عناوين">عناوين</h2>
+]]></description></item><item><title>مقالة تجريبية</title><pubDate>2023-05-18 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/test-article/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/test-article/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/test-article/thumbnail.ar.webp" alt="مقالة تجريبية"/> <h2 id="عناوين">عناوين</h2>
 <p>تمثل عناصر HTML التالية <code>&lt;h1&gt; - &lt;h6&gt;</code> ستة مستويات لعناوين الأقسام. يمثل <code>&lt;h1&gt;</code> أعلى مستوى للقسم بينما يمثل <code>&lt;h6&gt;</code> أدنى مستوى.</p>
 <h1 id="عنوان-1">عنوان 1</h1>
 <h2 id="عنوان-2">عنوان 2</h2>
@@ -775,19 +724,19 @@ Enter passphrase for /dev/sda2:
 </tbody>
 </table>
 <h2 id="مربع-التعليمات-البرمجية">مربع التعليمات البرمجية</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;!doctype html&gt;</span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">html</span> <span style="color:#50fa7b">dir</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;rtl&#34;</span> <span style="color:#50fa7b">lang</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;ar&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic">&lt;!doctype html&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">&lt;</span><span style="color:#81a1c1">html</span> <span style="color:#8fbcbb">dir</span><span style="color:#81a1c1">=</span><span style="color:#a3be8c">&#34;rtl&#34;</span> <span style="color:#8fbcbb">lang</span><span style="color:#81a1c1">=</span><span style="color:#a3be8c">&#34;ar&#34;</span><span style="color:#eceff4">&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">head</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">meta</span> <span style="color:#50fa7b">charset</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;utf-8&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">title</span>&gt;HTML5 مثال على مستند&lt;/<span style="color:#ff79c6">title</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">head</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">&lt;</span><span style="color:#81a1c1">head</span><span style="color:#eceff4">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">&lt;</span><span style="color:#81a1c1">meta</span> <span style="color:#8fbcbb">charset</span><span style="color:#81a1c1">=</span><span style="color:#a3be8c">&#34;utf-8&#34;</span><span style="color:#eceff4">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">&lt;</span><span style="color:#81a1c1">title</span><span style="color:#eceff4">&gt;</span>HTML5 مثال على مستند<span style="color:#eceff4">&lt;/</span><span style="color:#81a1c1">title</span><span style="color:#eceff4">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">&lt;/</span><span style="color:#81a1c1">head</span><span style="color:#eceff4">&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">body</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">p</span>&gt;تجربة&lt;/<span style="color:#ff79c6">p</span>&gt;
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">body</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">&lt;</span><span style="color:#81a1c1">body</span><span style="color:#eceff4">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">&lt;</span><span style="color:#81a1c1">p</span><span style="color:#eceff4">&gt;</span>تجربة<span style="color:#eceff4">&lt;/</span><span style="color:#81a1c1">p</span><span style="color:#eceff4">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">&lt;/</span><span style="color:#81a1c1">body</span><span style="color:#eceff4">&gt;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&lt;/<span style="color:#ff79c6">html</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">&lt;/</span><span style="color:#81a1c1">html</span><span style="color:#eceff4">&gt;</span>
 </span></span></code></pre></div><h2 id="أنواع-اللوائح">أنواع اللوائح</h2>
 <h3 id="لإحة-مرتبة">لإحة مرتبة</h3>
 <ol>
@@ -939,15 +888,7 @@ Enter passphrase for /dev/sda2:
 </li>
 </ol>
 </div>
-]]></description>
-      </item>
-    
-      <item>
-        <title>حولي</title>
-        <pubDate>2023-05-17 00:00:00 &#43;0000 UTC</pubDate>
-        <link>https://nakibrayan2.codeberg.page/ar/about/</link>
-        <guid>https://nakibrayan2.codeberg.page/ar/about/</guid>
-        <description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/about/thumbnail.ar.webp" alt="حولي"/> <p>اسمي ريان وأعيش في منزل صغير في الجزائر مع عائلتي. أنا مطور برمجيات ، وأعمل في الغالب في برامج منخفضة المستوى (بإستخدام لغات rust ، c ++ ، c).</p>
+]]></description></item><item><title>حولي</title><pubDate>2023-05-17 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/about/</link><guid>https://nakibrayan2.codeberg.page/ar/about/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/about/thumbnail.ar.webp" alt="حولي"/> <p>اسمي ريان وأعيش في منزل صغير في الجزائر مع عائلتي. أنا مطور برمجيات ، وأعمل في الغالب في برامج منخفضة المستوى (بإستخدام لغات rust ، c ++ ، c).</p>
 <h2 id="مشاريع">مشاريع</h2>
 <ul>
 <li>
@@ -960,9 +901,9 @@ Enter passphrase for /dev/sda2:
 <h2 id="إتصل-بي">إتصل بي</h2>
 <p><a href="mailto:rayan.nakib@tutamail.com">rayan.nakib@tutamail.com</a></p>
 <p><a href="/about/nakibrayan.gpg">تحميل مفتاح GPG</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg | gpg --import
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg <span style="color:#eceff4">|</span> gpg --import
 </span></span></code></pre></div><p>بصمة مفتاح ال GPG:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
 </span></span></code></pre></div><h2 id="البرمجيات-التي-أستخدمها">البرمجيات التي أستخدمها</h2>
 <table>
 <thead>
@@ -973,77 +914,69 @@ Enter passphrase for /dev/sda2:
 </thead>
 <tbody>
 <tr>
-<td>OS</td>
+<td>نظام التشغيل</td>
 <td>Arch Linux</td>
 </tr>
 <tr>
-<td>Terminal</td>
-<td>Kitty</td>
+<td>بيئة سطح المكتب</td>
+<td>Gnome</td>
 </tr>
 <tr>
-<td>Shell</td>
+<td>متصفح الشبكة</td>
+<td>Firefox ، arkenfox user.js ، Ublock Origin</td>
+</tr>
+<tr>
+<td>محاكي الطرفية</td>
+<td>Black Box</td>
+</tr>
+<tr>
+<td>الصدفة</td>
 <td>zsh</td>
 </tr>
 <tr>
-<td>Window Manager</td>
-<td>Hyprland</td>
+<td>محرر النصوص</td>
+<td>neovim ، Gnome Text Editor</td>
 </tr>
 <tr>
-<td>Status bar</td>
-<td>waybar-hyprland</td>
+<td>مدير الملفات</td>
+<td>nautilus</td>
 </tr>
 <tr>
-<td>wallpaper manager</td>
-<td>hyprpaper</td>
+<td>مشغل الفيديو و الصوت</td>
+<td>Celluloid</td>
 </tr>
 <tr>
-<td>app launcher</td>
-<td>fuzzel</td>
+<td>عارض المستندات</td>
+<td>evince</td>
 </tr>
 <tr>
-<td>Text Editor</td>
-<td>neovim</td>
+<td>عارض الصور</td>
+<td>eog</td>
 </tr>
 <tr>
-<td>Web Browser</td>
-<td>Firefox with the arkenfox user.js and Ublock Origin</td>
+<td>تطبيق الرسائل</td>
+<td>Element</td>
 </tr>
 <tr>
-<td>File manager</td>
-<td>lf &amp; nemo</td>
+<td>مدير كلمات السر</td>
+<td>Secrets</td>
 </tr>
 <tr>
-<td>Video/audio player</td>
-<td>mpv</td>
-</tr>
-<tr>
-<td>Document Viewer</td>
-<td>zathura</td>
-</tr>
-<tr>
-<td>instant messaging app</td>
-<td>Session</td>
-</tr>
-<tr>
-<td>password manager</td>
-<td>keepassxc</td>
-</tr>
-<tr>
-<td>rss reader</td>
+<td>قارئ آر إس إس</td>
 <td>newsboat</td>
 </tr>
 <tr>
-<td>torrent client</td>
-<td>qbittorrent</td>
+<td>برنامج التورنت</td>
+<td>Fragments</td>
 </tr>
 <tr>
-<td>Cryptocurrencies</td>
-<td>Bitcoin &amp; Monero</td>
+<td>محرر الصور</td>
+<td>GIMP</td>
+</tr>
+<tr>
+<td>العملات الرقمية</td>
+<td>Monero ، Bitcoin</td>
 </tr>
 </tbody>
 </table>
-]]></description>
-      </item>
-    
-  </channel>
-</rss>
+]]></description></item></channel></rss>
