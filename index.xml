@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Rayan Nakib</title><link>https://nakibrayan2.codeberg.page</link><description/><language>en</language><image><title>Rayan Nakib</title><link>https://nakibrayan2.codeberg.page</link><url>https://nakibrayan2.codeberg.page/icons/picture.avif</url><width>546</width><height>546</height></image><item><title>Backup and Restore GPG Key</title><pubDate>2023-05-30 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/</link><guid>https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/thumbnail.webp" alt="Backup and Restore GPG Key"/> <h2 id="1-electronic-backups">1. Electronic Backups</h2>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Rayan Nakib</title><link>https://nakibrayan2.codeberg.page</link><description/><language>en</language><image><title>Rayan Nakib</title><link>https://nakibrayan2.codeberg.page</link><url>https://nakibrayan2.codeberg.page/icons/512x512.png</url><width>546</width><height>546</height></image><item><title>Backup and Restore GPG Key</title><pubDate>2023-05-30 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/</link><guid>https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/backup-and-restore-gpg-key/thumbnail.webp" alt="Backup and Restore GPG Key"/> <h2 id="1-electronic-backups">1. Electronic Backups</h2>
 <h3 id="11-backup">1.1 Backup</h3>
 <ol>
 <li>Determine which key to backup.</li>
@@ -883,11 +883,20 @@ Rem, architecto maiores hic odit deleniti aperiam dicta. Vitae illo numquam dict
 </ul>
 <h2 id="contact-me">Contact Me</h2>
 <p><a href="mailto:rayan.nakib@tutamail.com">rayan.nakib@tutamail.com</a></p>
-<p><a href="/about/nakibrayan.gpg">Download gpg key</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg <span style="color:#eceff4">|</span> gpg --import
-</span></span></code></pre></div><p>GPG Fingerprint:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
-</span></span></code></pre></div><h2 id="software-i-use">Software I Use</h2>
+<!--
+[Download gpg key](/about/nakibrayan.gpg)
+
+```bash
+curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg | gpg --import
+```
+
+GPG Fingerprint:
+
+```txt
+3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
+```
+-->
+<h2 id="software-i-use">Software I Use</h2>
 <table>
 <thead>
 <tr>
@@ -950,7 +959,7 @@ Rem, architecto maiores hic odit deleniti aperiam dicta. Vitae illo numquam dict
 </tr>
 <tr>
 <td>Torrent Client</td>
-<td>Fragments</td>
+<td>qBittorrent</td>
 </tr>
 <tr>
 <td>Image Editor</td>

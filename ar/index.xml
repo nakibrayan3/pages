@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><description/><language>ar</language><image><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><url>https://nakibrayan2.codeberg.page/icons/picture.avif</url><width>546</width><height>546</height></image><item><title>عمل نسخة إحتياطية لمفتاح GPG</title><pubDate>2023-05-30 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/thumbnail.ar.webp" alt="عمل نسخة إحتياطية لمفتاح GPG"/> <h2 id="1-عمل-نسخة-إحتياطية-إلكترونية">1. عمل نسخة إحتياطية إلكترونية</h2>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><description/><language>ar</language><image><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><url>https://nakibrayan2.codeberg.page/icons/512x512.png</url><width>546</width><height>546</height></image><item><title>عمل نسخة إحتياطية لمفتاح GPG</title><pubDate>2023-05-30 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/thumbnail.ar.webp" alt="عمل نسخة إحتياطية لمفتاح GPG"/> <h2 id="1-عمل-نسخة-إحتياطية-إلكترونية">1. عمل نسخة إحتياطية إلكترونية</h2>
 <h3 id="11-عمل-النسخة-الإحتياطية">1.1 عمل النسخة الإحتياطية</h3>
 <ol>
 <li>تحديد مفتاح gpg المراد عمل نسخة إحتياطية عليه.</li>
@@ -900,11 +900,19 @@ Enter passphrase for /dev/sda2:
 </ul>
 <h2 id="إتصل-بي">إتصل بي</h2>
 <p><a href="mailto:rayan.nakib@tutamail.com">rayan.nakib@tutamail.com</a></p>
-<p><a href="/about/nakibrayan.gpg">تحميل مفتاح GPG</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg <span style="color:#eceff4">|</span> gpg --import
-</span></span></code></pre></div><p>بصمة مفتاح ال GPG:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
-</span></span></code></pre></div><h2 id="البرمجيات-التي-أستخدمها">البرمجيات التي أستخدمها</h2>
+<!--
+[تحميل مفتاح GPG](/about/nakibrayan.gpg)
+
+ ```bash
+ curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg | gpg --import
+ ```
+بصمة مفتاح ال GPG:
+
+```txt
+3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
+```
+-->
+<h2 id="البرمجيات-التي-أستخدمها">البرمجيات التي أستخدمها</h2>
 <table>
 <thead>
 <tr>
@@ -967,7 +975,7 @@ Enter passphrase for /dev/sda2:
 </tr>
 <tr>
 <td>برنامج التورنت</td>
-<td>Fragments</td>
+<td>qBittorrent</td>
 </tr>
 <tr>
 <td>محرر الصور</td>
