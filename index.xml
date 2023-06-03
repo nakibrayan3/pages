@@ -169,7 +169,16 @@
 <li>save</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
-</span></span></code></pre></div>]]></description></item><item><title>Archlinux Post Install Guide</title><pubDate>2023-05-25 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/blog/archlinux-post-install/</link><guid>https://nakibrayan2.codeberg.page/blog/archlinux-post-install/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/archlinux-post-install/thumbnail.webp" alt="Archlinux Post Install Guide"/> <h2 id="1-install-drivers">1. Install Drivers</h2>
+</span></span></code></pre></div><h2 id="sources">Sources</h2>
+<ul>
+<li>
+<p><a href="https://www.jwillikers.com/backup-and-restore-a-gpg-key">JWillikers: backup and restore a gpg key</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Paperkey">ArchLinux Wiki: Paperkey</a></p>
+</li>
+</ul>
+]]></description></item><item><title>Archlinux Post Install Guide</title><pubDate>2023-05-25 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/blog/archlinux-post-install/</link><guid>https://nakibrayan2.codeberg.page/blog/archlinux-post-install/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/archlinux-post-install/thumbnail.webp" alt="Archlinux Post Install Guide"/> <h2 id="1-install-drivers">1. Install Drivers</h2>
 <h3 id="11-networkwireless">1.1 Network/Wireless</h3>
 <ol>
 <li>Check the driver status</li>
@@ -343,7 +352,16 @@
 </code></pre><h2 id="5-install-and-setup-ntp">5. install and setup ntp</h2>
 <pre tabindex="0"><code>$ sudo pacman -S ntp
 </code></pre><pre tabindex="0"><code>$ timedatectl set-ntp true
-</code></pre>]]></description></item><item><title>Archlinux Install Guide With Full Disk Encryption</title><pubDate>2023-05-19 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</link><guid>https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/thumbnail.webp" alt="Archlinux Install Guide With Full Disk Encryption"/> <h2 id="1-pre-installation">1. Pre installation</h2>
+</code></pre><h1 id="sources">Sources</h1>
+<ul>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Network_configuration/Wireless">ArchLinux Wiki: Network configuration/Wireless</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/NVIDIA">ArchLinux Wiki: NVIDIA</a></p>
+</li>
+</ul>
+]]></description></item><item><title>Archlinux Install Guide With Full Disk Encryption</title><pubDate>2023-05-19 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</link><guid>https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/archlinux-install-guide-full-disk-encryption/thumbnail.webp" alt="Archlinux Install Guide With Full Disk Encryption"/> <h2 id="1-pre-installation">1. Pre installation</h2>
 <h3 id="11-download-the-arch-linux-iso">1.1 Download the Arch Linux ISO</h3>
 <p>Visit the <a href="https://archlinux.org/download/">Download</a> page and acquire the ISO file, and the respective GnuPG signature.</p>
 <h3 id="12-verify-signature">1.2 Verify signature</h3>
@@ -645,6 +663,18 @@ Enter passphrase for /dev/sda2:
 <pre tabindex="0"><code>exit
 </code></pre><pre tabindex="0"><code>reboot
 </code></pre><p>Don&rsquo;t forget to set the boot device to the drive that have the archlinux installed in it.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Installation_guide">ArchLinux Wiki: Install Guide</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Rfkill_caveat">ArchLinux Wiki: Network configuration/Wireless rfkill section</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/GRUB">ARchLinux Wiki: Grub</a></p>
+</li>
+</ul>
 ]]></description></item><item><title>Test Article</title><pubDate>2023-05-18 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/blog/test-article/</link><guid>https://nakibrayan2.codeberg.page/blog/test-article/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/blog/test-article/thumbnail.webp" alt="Test Article"/> <h2 id="headings">Headings</h2>
 <p>The following HTML <code>&lt;h1&gt;—&lt;h6&gt;</code> elements represent six levels of section headings. <code>&lt;h1&gt;</code> is the highest section level while <code>&lt;h6&gt;</code> is the lowest.</p>
 <h1 id="h1">H1</h1>

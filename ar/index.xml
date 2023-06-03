@@ -172,7 +172,16 @@
 <li>حفض التغيريات</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>gpg&gt; save
-</span></span></code></pre></div>]]></description></item><item><title>دليل ما بعد التثبيت Arch Linux</title><pubDate>2023-05-25 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/thumbnail.ar.webp" alt="دليل ما بعد التثبيت Arch Linux"/> <h2 id="1-تثبيت-برامج-التشغيل-driver">1. تثبيت برامج التشغيل (Driver)</h2>
+</span></span></code></pre></div><h2 id="المصادر">المصادر</h2>
+<ul>
+<li>
+<p><a href="https://www.jwillikers.com/backup-and-restore-a-gpg-key">JWillikers: backup and restore a gpg key</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Paperkey">ArchLinux Wiki: Paperkey</a></p>
+</li>
+</ul>
+]]></description></item><item><title>دليل ما بعد التثبيت Arch Linux</title><pubDate>2023-05-25 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-post-install/thumbnail.ar.webp" alt="دليل ما بعد التثبيت Arch Linux"/> <h2 id="1-تثبيت-برامج-التشغيل-driver">1. تثبيت برامج التشغيل (Driver)</h2>
 <h3 id="11-شبكة--لاسلكي">1.1 شبكة / لاسلكي</h3>
 <ol>
 <li>تحقق من حالة برامج التشغيل</li>
@@ -342,7 +351,16 @@
 </code></pre><h2 id="5-تثبيت-وتهيئة-ntp">5. تثبيت وتهيئة ntp</h2>
 <pre tabindex="0"><code>$ sudo pacman -S ntp
 </code></pre><pre tabindex="0"><code>$ timedatectl set-ntp true
-</code></pre>]]></description></item><item><title>دليل تثبيت ArchLinux مع تشفير كامل للقرص</title><pubDate>2023-05-19 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/thumbnail.ar.webp" alt="دليل تثبيت ArchLinux مع تشفير كامل للقرص"/> <h2 id="1-قبل-بدأ-التثبيت">1. قبل بدأ التثبيت</h2>
+</code></pre><h1 id="المصادر">المصادر</h1>
+<ul>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Network_configuration/Wireless">ArchLinux Wiki: Network configuration/Wireless</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/NVIDIA">ArchLinux Wiki: NVIDIA</a></p>
+</li>
+</ul>
+]]></description></item><item><title>دليل تثبيت ArchLinux مع تشفير كامل للقرص</title><pubDate>2023-05-19 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/archlinux-install-guide-full-disk-encryption/thumbnail.ar.webp" alt="دليل تثبيت ArchLinux مع تشفير كامل للقرص"/> <h2 id="1-قبل-بدأ-التثبيت">1. قبل بدأ التثبيت</h2>
 <h3 id="11-تنزيل-ملف-ال-iso-الخاص-ب-arch-linux">1.1 تنزيل ملف ال ISO الخاص ب Arch Linux</h3>
 <p>قم بزيارة صفحة <a href="https://archlinux.org/download/">التنزيل</a> و أحصل على ملف ال ISO و توقيع ال GnuPG الخاص بملف ال ISO.</p>
 <h3 id="21-التحقق-من-توقيع-ال-gnupg">2.1 التحقق من توقيع ال GnuPG</h3>
@@ -631,6 +649,18 @@ Enter passphrase for /dev/sda2:
 <pre tabindex="0"><code>exit
 </code></pre><pre tabindex="0"><code>reboot
 </code></pre><p>لا تنسي إعادة تعين قرص التشغيل الى القرص المحمل فيه ArchLinux.</p>
+<h2 id="المصادر">المصادر</h2>
+<ul>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Installation_guide">ArchLinux Wiki: Install Guide</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/Network_configuration/Wireless#Rfkill_caveat">ArchLinux Wiki: Network configuration/Wireless rfkill section</a></p>
+</li>
+<li>
+<p><a href="https://wiki.archlinux.org/title/GRUB">ARchLinux Wiki: Grub</a></p>
+</li>
+</ul>
 ]]></description></item><item><title>مقالة تجريبية</title><pubDate>2023-05-18 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/test-article/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/test-article/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/test-article/thumbnail.ar.webp" alt="مقالة تجريبية"/> <h2 id="عناوين">عناوين</h2>
 <p>تمثل عناصر HTML التالية <code>&lt;h1&gt; - &lt;h6&gt;</code> ستة مستويات لعناوين الأقسام. يمثل <code>&lt;h1&gt;</code> أعلى مستوى للقسم بينما يمثل <code>&lt;h6&gt;</code> أدنى مستوى.</p>
 <h1 id="عنوان-1">عنوان 1</h1>
