@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><description/><language>ar</language><image><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><url>https://nakibrayan2.codeberg.page/icons/512x512.png</url><width>546</width><height>546</height></image><item><title>عمل نسخة إحتياطية لمفتاح GPG</title><pubDate>2023-05-30 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/thumbnail.ar.webp" alt="عمل نسخة إحتياطية لمفتاح GPG"/> <h2 id="1-عمل-نسخة-إحتياطية-إلكترونية">1. عمل نسخة إحتياطية إلكترونية</h2>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><description/><language>ar</language><image><title>ريان نقيب</title><link>https://nakibrayan2.codeberg.page</link><url>https://nakibrayan2.codeberg.page/icons/512x512.png</url><width>546</width><height>546</height></image><item><title>سياسة الخصوصية</title><pubDate>2023-06-09 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/privacy/</link><guid>https://nakibrayan2.codeberg.page/ar/privacy/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page" alt="سياسة الخصوصية"/> <p>في سياسة الخصوصية هذه (&ldquo;السياسة&rdquo;) ، نصف كيف ريان نقيب (&ldquo;نحن&rdquo;)
+يجمع ويستخدم ويكشف عن المعلومات التي تحصل عليها حول زوار الموقع الإلكتروني (&ldquo;الموقع&rdquo;) <a href="https://nakibrayan2.codeberg.page">https://nakibrayan2.codeberg.page</a> و الخدمات المتاحة من خلال موقعنا (&ldquo;الخدمات&rdquo;).</p>
+<p>من خلال زيارة الموقع ، أو استخدام أي من خدماتنا ، فإنك توافق على أنه سيتم التعامل مع معلوماتك الشخصية كما هو موضح في هذه السياسة.</p>
+<h2 id="المعلومات-التي-نجمعها-عنك">المعلومات التي نجمعها عنك</h2>
+<p>نحن لا نجمع أي معلومات عنك مباشرة.</p>
+<h2 id="log-files">Log Files</h2>
+<p>لا يمتلك ريان نقيب إمكانية الوصول إلى أي <code>log files</code> من مزود خدمة إستضافة الموقع <a href="https://codeberg.page">CodeBerg Pages</a> ، لكن قد يخزن مزود خدمة إستضافة الموقع <a href="https://codeberg.page">CodeBerg Pages</a> ملفات <code>log files</code>.</p>
+<h2 id="سياسات-الخصوصية-الخاصة-بمقدمي-الخدمات-من-الطرف-الثالث">سياسات الخصوصية الخاصة بمقدمي الخدمات من الطرف الثالث</h2>
+<p>لا تنطبق سياسة خصوصية ريان نقيب على المعلنين أو المواقع الإلكترونية الأخرى. وبالتالي فإننا ننصح بالرجوع إلى سياسات الخصوصية الخاصة بمقدمي الخدمات من الطرف الثالث للحصول على معلومات أكثر تفصيلاً.</p>
+<p>هذه قائمة مقدمي الخدمات من الطرف الثالث التي يستخدمها الموقع:</p>
+<ul>
+<li>
+<p>مقدم خدمة إستظافة الموقع: <a href="https://codeberg.page">CodeBerg Pages</a></p>
+</li>
+<li>
+<p>مقدم خدمة نظام التعليقات: <a href="https://giscus.app/">giscus</a></p>
+</li>
+</ul>
+<h2 id="تغيرات-في-سياسة-الخصوصية">تغيرات في سياسة الخصوصية</h2>
+<p>قد نقوم بتحديث سياسة الخصوصية الخاصة بنا من وقت لآخر. وبالتالي ، ينصحك مراجعة هذه الصفحة بشكل دوري لأية تغييرات. سنقوم بنشر أي تغييرات عن طريق نشر سياسة الخصوصية الجديدة على هذه الصفحة. تسري هذه التغييرات فور نشرها على هذه الصفحة.</p>
+]]></description></item><item><title>شروط الخدمة</title><pubDate>2023-06-09 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/terms-of-service/</link><guid>https://nakibrayan2.codeberg.page/ar/terms-of-service/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page" alt="شروط الخدمة"/> <p>يرجى قراءة شروط الخدمة هذه (&ldquo;الشروط&rdquo; أو &ldquo;شروط الخدمة&rdquo;) بعناية قبل استخدام الموقع الإلكتروني (&ldquo;الموقع&rdquo;) <a href="https://nakibrayan2.codeberg.page">https://nakibrayan2.codeberg.page</a>  أو الخدمات المتاحة من خلال الموقع (&ldquo;الخدمات&rdquo;). تحت إدارة ريان نقيب (&ldquo;نحن&rdquo;).</p>
+<p>من خلال زيارة الموقع ، أو استخدام أي من خدماتنا ، فإنك توافق على هذه الشروط. إذا كنت لا توافق على أي جزء من الشروط ، فلا يجوز لك الوصول إلى الخدمة.</p>
+<h2 id="روابط-لمواقع-أخرى">روابط لمواقع أخرى</h2>
+<p>قد تحتوي خدمتنا على روابط لمواقع أو خدمات ويب تابعة لجهات خارجية لا نمتلكها أو نسيطر عليها.</p>
+<p>ليس لدينا أي سيطرة ولا نتحمل أي مسؤولية عن المحتوى أو سياسات الخصوصية أو الممارسات الخاصة بأي مواقع أو خدمات ويب خاصة بطرف ثالث. أنت تقر وتوافق أيضًا على أننا لن نكون مسؤولين بشكل مباشر أو غير مباشر عن أي ضرر أو خسارة ناتجة أو يُزعم أنها ناتجة عن استخدام أو الاعتماد على أي محتوى أو سلع أو خدمات متاحة على أو من خلال أي من مواقع الويب أو الخدمات الخاصة بنا.</p>
+<p>ينصح بشدة قراءة الشروط والأحكام وسياسات الخصوصية الخاصة بأي مواقع ويب أو خدمات تابعة لجهات خارجية تقوم بزيارتها.</p>
+<h2 id="حظر">حظر</h2>
+<p>يمكن أن نقوم بحظر أو تعليق وصولك لخدماتنا على الفور ، دون إشعار مسبق أو مسؤولية ، لأي سبب من الأسباب ، بما في ذلك على سبيل المثال الحظر بسبب انتهاك هذه الشروط والأحكام.</p>
+<p>عند الحظر ، سيتوقف حقك في استخدام الخدمة على الفور.</p>
+<h2 id="إخلاء-المسؤولية">إخلاء المسؤولية</h2>
+<p>الخدمة مقدمة لك &ldquo;كما هي&rdquo; وبكافة العيوب دون ضمان من أي نوع. إلى أقصى حد يسمح به القانون.</p>
+<h2 id="أولوية-القانون">أولوية القانون</h2>
+<p>تحكم قوانين الدولة  ، هذه الشروط واستخدامك للخدمة. قد يخضع استخدامك للخدمة أيضًا لقوانين محلية أو وطنية أو دولية أخرى.</p>
+<h2 id="حل-النزاعات">حل النزاعات</h2>
+<p>إذا كان لديك أي قلق أو نزاع حول سياسة الخدمة ، فأنت توافق على محاولة حل النزاع أولاً عن طريق الاتصال بنا.</p>
+<h2 id="للمستخدمين-من-الإتحاد-الأوروبي">للمستخدمين من الإتحاد الأوروبي</h2>
+<p>إذا كنت مستخدما من الاتحاد الأوروبي ، فستستفيد من أي قوانين إلزامية للبلد الذي تقيم فيه.</p>
+<h2 id="الامتثال-القانوني-للولايات-المتحدة">الامتثال القانوني للولايات المتحدة</h2>
+<p>أنت تقر وتتعهد بأنك (1) لست مقيمًا في بلد خاضع لحظر من حكومة الولايات المتحدة ، أو التي حددتها حكومة الولايات المتحدة كدولة &ldquo;داعمة للإرهاب&rdquo; ، و (2) أنت لست مدرجة في أي قائمة لحكومة الولايات المتحدة للأطراف المحظورة أو المقيدة.</p>
+<h2 id="حدوث-نزاع-في-الترجمة">حدوث نزاع في الترجمة</h2>
+<p>ربما تمت ترجمة هذه الشروط والأحكام إلى عدة لغات. أنت توافق على أن النص الأصلي باللغة الإنجليزية هو الذي يسود في حالة حدوث نزاع.</p>
+<h2 id="تغيريات">تغيريات</h2>
+<p>نحتفظ بالحق ، وفقًا لتقديرنا الخاص ، في تعديل أو استبدال هذه الشروط في أي وقت. إذا كانت المراجعة جوهرية ، فسنحاول تقديم إشعار قبل 30 يومًا على الأقل قبل تفعيل أي شروط جديدة. سيتم تحديد ما يشكل تغييرًا جوهريًا وفقًا لتقديرنا الخاص.</p>
+<p>من خلال الاستمرار في الوصول إلى خدمتنا أو استخدامها بعد أن تصبح هذه المراجعات فعالة ، فإنك توافق على الالتزام بالشروط المعدلة. إذا كنت لا توافق على الشروط الجديدة ، فيرجى التوقف عن استخدام الخدمة.</p>
+]]></description></item><item><title>عمل نسخة إحتياطية لمفتاح GPG</title><pubDate>2023-05-30 00:00:00 +0000 UTC</pubDate><link>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</link><guid>https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/</guid><description><![CDATA[<img src="https://nakibrayan2.codeberg.page/ar/blog/backup-and-restore-gpg-key/thumbnail.ar.webp" alt="عمل نسخة إحتياطية لمفتاح GPG"/> <h2 id="1-عمل-نسخة-إحتياطية-إلكترونية">1. عمل نسخة إحتياطية إلكترونية</h2>
 <h3 id="11-عمل-النسخة-الإحتياطية">1.1 عمل النسخة الإحتياطية</h3>
 <ol>
 <li>تحديد مفتاح gpg المراد عمل نسخة إحتياطية عليه.</li>
@@ -930,19 +974,11 @@ Enter passphrase for /dev/sda2:
 </ul>
 <h2 id="إتصل-بي">إتصل بي</h2>
 <p><a href="mailto:rayan.nakib@tutamail.com">rayan.nakib@tutamail.com</a></p>
-<!--
-[تحميل مفتاح GPG](/about/nakibrayan.gpg)
-
- ```bash
- curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg | gpg --import
- ```
-بصمة مفتاح ال GPG:
-
-```txt
-3261 4C8B 0231 FB14 3A37 6E6E CB9C 40C3 A494 2A3D
-```
--->
-<h2 id="البرمجيات-التي-أستخدمها">البرمجيات التي أستخدمها</h2>
+<p><a href="/about/nakibrayan.gpg">تحميل مفتاح GPG</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -sL https://nakibrayan2.pages.dev/nakibrayan.gpg <span style="color:#eceff4">|</span> gpg --import
+</span></span></code></pre></div><p>بصمة مفتاح ال GPG:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>6D61 D7E3 57AB 9003 1053 DF90 24E8 D31C FF24 63D9
+</span></span></code></pre></div><h2 id="البرمجيات-التي-أستخدمها">البرمجيات التي أستخدمها</h2>
 <table>
 <thead>
 <tr>
